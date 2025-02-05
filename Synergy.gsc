@@ -1,7 +1,7 @@
 #include maps\mp\_utility;
 
 init() {
-	level.username = "";
+	level.username = "Username";
 	setup();
 }
 
