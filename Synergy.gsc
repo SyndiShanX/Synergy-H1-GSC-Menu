@@ -792,8 +792,6 @@ onPlayerConnect() {
 			player thread on_event();
 			player thread on_ended();
 			player thread onPlayerSpawned();
-		} else {
-			player thread create_text(player.name, "default", 1, "top_left", "top", -370, -70, (1,1,1), 1, 3);
 		}
 	}
 }
