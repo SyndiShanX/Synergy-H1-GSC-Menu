@@ -19,7 +19,7 @@ If you have any Issues/Suggestions, please Submit them in [Issues](https://githu
 
 * Place it into `h1-mod/scripts/mp`
 
-* Open `Synergy.gsc` with a Text Editor and Replace `Username` on Line 4 with your Username and Clan Tag if you have one Set
+* If you aren't the Host of the Game or the Menu won't Open, then Open `Synergy.gsc` with a Text Editor and Replace `Username` on Line 4 with your Username and Clan Tag if you have one Set
 
 #### Campaign:
 * Download [Synergy_SP.gsc](https://syndishanx.github.io/Synergy-H1-GSC-Menu/Synergy_SP.gsc)
@@ -29,3 +29,10 @@ If you have any Issues/Suggestions, please Submit them in [Issues](https://githu
 ## Credits
 
 This menu is based on [M203](https://github.com/Xeirh/M203) by [Xeirh](https://github.com/Xeirh)
+
+- Apparition Structure Team:
+  * `CF4_99` Main developer
+  * `Extinct` Ideas, suggestions, constructive criticism
+  * `ItsFebiven` Some ideas and suggestions
+  * `Joel` Suggestions
+	
