@@ -358,8 +358,8 @@ initial_variable() {
 	self.syn["utility"].y_offset = -60;
 	self.syn["utility"].element_list = ["text", "subMenu", "toggle", "category", "slider"];
 	
-	self.syn["visions"][0] = ["None", "AC-130", "AC-130 inverted", "Default Night", "Night Vision", "Endgame", "Missile Cam", "MP Intro", "MP Nuke Aftermath"];
-	self.syn["visions"][1] = ["", "ac130", "ac130_inverted", "default_night", "default_night_mp", "end_game", "missilecam", "mpintro", "mpnuke_aftermath"];
+	self.syn["visions"][0] = ["None", "AC-130", "AC-130 inverted", "Black & White", "Endgame", "Night", "Night Vision", "MP Intro", "MP Nuke Aftermath", "Sepia"];
+	self.syn["visions"][1] = ["", "ac130", "ac130_inverted", "missilecam", "end_game", "default_night", "default_night_mp", "mpintro", "mpnuke_aftermath", "sepia"];
 	
 	self.syn["weapons"]["category"][0] = ["assault_rifles", "sub_machine_guns", "sniper_rifles", "shotguns", "light_machine_guns", "pistols", "melee", "equipment"];
 	self.syn["weapons"]["category"][1] = ["Assault Rifles", "Sub Machine Guns", "Sniper Rifles", "Shotguns", "Light Machine Guns", "Pistols", "Melee Weapons", "Equipment"];
@@ -780,8 +780,6 @@ onPlayerConnect() {
 		}
 		
 		if(player.name == level.username || player isHost()) {
-			player thread on_event();
-			player thread on_ended();
 			player thread onPlayerSpawned();
 		}
 	}
@@ -790,12 +788,17 @@ onPlayerConnect() {
 onPlayerSpawned() {
 	self endOn("disconnect");
 	level endOn("game_ended");
+	self thread on_event();
+	self thread on_ended();
+	if(!isDefined(self.menuInit)) {
+		self.menuInit = false;
+	}
 	for(;;) {
 		self waitTill("spawned_player");
 		
 		if(self isHost()) {
 			self freezeControls(false);
-			self thread create_text("SyndiShanX", "default", 1, "top_left", "top", 385, -220, "rainbow", 1, 3);
+			self.syn["watermark"] = self create_text("SyndiShanX", "default", 1, "left", "top", 5, 10, "rainbow", 1, 3);
 		}
 		
 		if(self in_menu()) {
@@ -825,21 +828,20 @@ onPlayerSpawned() {
 }
 
 close_controls_menu() {
-	self.syn["controls-hud"] destroy();
-	self.syn["controls-hud"]["title"][0] destroy();
-	self.syn["controls-hud"]["title"][1] destroy();
-	self.syn["controls-hud"]["title"][2] destroy();
+	if(isDefined(self.syn["controls-hud"]["title"][0])) {
+		self.syn["controls-hud"]["title"][0] destroy();
+		self.syn["controls-hud"]["title"][1] destroy();
+		
+		self.syn["controls-hud"]["background"][0] destroy();
+		self.syn["controls-hud"]["background"][1] destroy();
+		
+		self.syn["controls-hud"]["controls"][0] destroy();
+		self.syn["controls-hud"]["controls"][1] destroy();
+		self.syn["controls-hud"]["controls"][2] destroy();
+		self.syn["controls-hud"]["controls"][3] destroy();
 	
-	self.syn["controls-hud"]["background"][0] destroy();
-	self.syn["controls-hud"]["background"][1] destroy();
-	self.syn["controls-hud"]["foreground"][0] destroy();
-	
-	self.syn["controls-hud"]["controls"][0] destroy();
-	self.syn["controls-hud"]["controls"][1] destroy();
-	self.syn["controls-hud"]["controls"][2] destroy();
-	self.syn["controls-hud"]["controls"][3] destroy();
-	
-	self.jump_god_mode = false;
+		self.jump_god_mode = false;
+	}
 }
 
 menu_index() {
@@ -901,6 +903,10 @@ menu_index() {
 			} else {
 				self add_increment("Move Menu Y", ::modify_y_position, 0, -170, 100, 10);
 			}
+			
+			self add_toggle("Watermark", ::watermark, self.watermark);
+			self add_toggle("Hide UI", ::hide_ui, self.hide_ui);
+			self add_toggle("Hide Weapon", ::hide_weapon, self.hide_weapon);
 			
 			break;
 		case "Visions":
@@ -1099,6 +1105,27 @@ modify_y_position(offset) {
 	}
 	self close_menu();
 	open_menu("Menu Options");
+}
+
+watermark() {
+	self.watermark = !return_toggle(self.watermark);
+	if(!self.watermark) {
+		iPrintString("Watermark [^2ON^7]");
+		self.syn["watermark"].alpha = 1;
+	} else {
+		iPrintString("Watermark [^1OFF^7]");
+		self.syn["watermark"].alpha = 0;
+	}
+}
+
+hide_ui() {
+	self.hide_ui = !return_toggle(self.hide_ui);
+	setDvar("cg_draw2d", !self.hide_ui);
+}
+
+hide_weapon() {
+	self.hide_weapon = !return_toggle(self.hide_weapon);
+	setDvar("cg_drawgun", !self.hide_weapon);
 }
 
 god_mode() {
