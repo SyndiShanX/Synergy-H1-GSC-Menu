@@ -470,7 +470,7 @@ initial_monitor() {
 						self set_cursor((cursor + scrolling));
 						self update_scrolling(scrolling);
 					}
-					wait .25;
+					wait .15;
 				}
 				else if(self fragButtonPressed() && !self secondaryOffhandButtonPressed() || self secondaryOffhandButtonPressed() && !self fragButtonPressed()) {
 					if(return_toggle(self.structure[cursor].slider)) {
