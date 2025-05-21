@@ -1897,7 +1897,7 @@ player_rappel_think() {
   common_scripts\utility::flag_wait("gaz_rappels");
   var_4 = getent("player_rappel_trigger", "targetname");
   var_2 show();
-  var_4 sethintstring( & "BLACKOUT_RAPPEL_HINT");
+  var_4 sethintstring(&"BLACKOUT_RAPPEL_HINT");
   var_4 thread trigger_monitor_player_lean();
 
   for (;;) {

@@ -75,9 +75,9 @@ skipcreditscheck() {
           quitcredits();
       } else if(!level.wanttoshowskip) {
         if(level.console || level.player usinggamepad())
-          level.skipcredits settext( & "PLATFORM_HOLD_TO_SKIP");
+          level.skipcredits settext(&"PLATFORM_HOLD_TO_SKIP");
         else
-          level.skipcredits settext( & "PLATFORM_HOLD_TO_SKIP_KEYBOARD");
+          level.skipcredits settext(&"PLATFORM_HOLD_TO_SKIP_KEYBOARD");
 
         level.skipcredits fadeovertime(0.5);
         level.skipcredits.alpha = 1;

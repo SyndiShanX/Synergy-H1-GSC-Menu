@@ -139,12 +139,8 @@ moveswim_set(var_0) {
   if(var_0 == self.swim.combatstate) {
     return;
   }
-  [
-    [self.swim.statefns[self.swim.combatstate][1]]
-  ]();
-  [
-    [self.swim.statefns[var_0][0]]
-  ]();
+  [[self.swim.statefns[self.swim.combatstate][1]]]();
+  [[self.swim.statefns[var_0][0]]]();
   self.swim.combatstate = var_0;
 }
 
@@ -177,12 +173,8 @@ moveswim_combat_move_set(var_0) {
   if(var_0 == self.swim.movestate) {
     return;
   }
-  [
-    [self.swim.statefns[self.swim.movestate][1]]
-  ]();
-  [
-    [self.swim.statefns[var_0][0]]
-  ]();
+  [[self.swim.statefns[self.swim.movestate][1]]]();
+  [[self.swim.statefns[var_0][0]]]();
   self.swim.movestate = var_0;
 }
 
@@ -233,12 +225,8 @@ swim_track_set(var_0) {
   if(self.swim.trackstate == var_0) {
     return;
   }
-  [
-    [self.swim.statefns[self.swim.trackstate][1]]
-  ]();
-  [
-    [self.swim.statefns[var_0][0]]
-  ]();
+  [[self.swim.statefns[self.swim.trackstate][1]]]();
+  [[self.swim.statefns[var_0][0]]]();
   self.swim.trackstate = var_0;
 }
 

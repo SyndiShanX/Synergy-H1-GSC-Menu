@@ -11,8 +11,7 @@ snd_common_init() {
   apply_common_globalmix();
   level.mute_device_active = 0;
   level.player.radiation_state = "radiation_none";
-  level._snd.context_overrides = [
-    ["mute", 0],
+  level._snd.context_overrides = [["mute", 0],
     ["slomo", 0],
     ["deathsdoor", 0],
     ["underwater", 0],
@@ -43,29 +42,25 @@ register_radio_squelches() {
 }
 
 create_common_envelop_arrays() {
-  level._snd.envs["explo_shake_over_distance"] = [
-    [0.0, 1.0],
+  level._snd.envs["explo_shake_over_distance"] = [[0.0, 1.0],
     [0.25, 0.65],
     [0.35, 0.5],
     [0.75, 0.2],
     [1.0, 0.1]
   ];
-  level._snd.envs["veh_crash_intensity_to_pitch"] = [
-    [0.0, 0.7],
+  level._snd.envs["veh_crash_intensity_to_pitch"] = [[0.0, 0.7],
     [0.1, 0.7],
     [0.5, 0.8],
     [0.9, 1.0],
     [1.0, 1.1]
   ];
-  level._snd.envs["veh_crash_vel_to_lfe_vol"] = [
-    [0.0, 0.0],
+  level._snd.envs["veh_crash_vel_to_lfe_vol"] = [[0.0, 0.0],
     [200, 0.05],
     [500, 0.25],
     [850, 0.35],
     [1000, 0.6]
   ];
-  level._snd.envs["aud_mute_device_falloff"] = [
-    [0.0, 1.0],
+  level._snd.envs["aud_mute_device_falloff"] = [[0.0, 1.0],
     [0.1, 0.9],
     [0.2, 0.88],
     [0.3, 0.85],

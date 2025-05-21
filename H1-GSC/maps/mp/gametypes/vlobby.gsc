@@ -34,9 +34,7 @@ main() {
 menuclass(var_0) {
   level.ingraceperiod = 1;
   self.hasdonecombat = 0;
-  [
-    [level.classold]
-  ](var_0);
+  [[level.classold]](var_0);
 }
 
 onstartgametype() {

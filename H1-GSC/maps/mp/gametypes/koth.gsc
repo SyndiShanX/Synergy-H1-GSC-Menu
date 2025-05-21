@@ -145,10 +145,10 @@ onstartgametype() {
     maps\mp\_utility::setobjectivescoretext("axis", & "OBJECTIVES_KOTH_SCORE");
   }
 
-  level.objectivehint["prepare"] = hintstruct( & "MP_CONTROL_HQ", 0);
-  level.objectivehint["capture"] = hintstruct( & "MP_CAPTURE_HQ", 1);
-  level.objectivehint["destroy"] = hintstruct( & "MP_DESTROY_HQ", 2);
-  level.objectivehint["defend"] = hintstruct( & "MP_DEFEND_HQ", 3);
+  level.objectivehint["prepare"] = hintstruct(&"MP_CONTROL_HQ", 0);
+  level.objectivehint["capture"] = hintstruct(&"MP_CAPTURE_HQ", 1);
+  level.objectivehint["destroy"] = hintstruct(&"MP_DESTROY_HQ", 2);
+  level.objectivehint["defend"] = hintstruct(&"MP_DEFEND_HQ", 3);
 
   if(!level.hqclassicmode)
     level.objectivehint["destroy"] = level.objectivehint["capture"];
@@ -259,7 +259,7 @@ hqmainloop() {
     maps\mp\_utility::playsoundonplayers("mp_killstreak_radar");
     var_2 maps\mp\gametypes\_gameobjects::allowuse("any");
     var_2 maps\mp\gametypes\_gameobjects::setusetime(level.capturetime);
-    var_2 maps\mp\gametypes\_gameobjects::setusetext( & "MP_CAPTURING_HQ");
+    var_2 maps\mp\gametypes\_gameobjects::setusetext(&"MP_CAPTURING_HQ");
     var_2 updateicons();
     var_2 maps\mp\gametypes\_gameobjects::setvisibleteam("any");
     var_2.onuse = ::onradiocapture;
@@ -291,7 +291,7 @@ hqmainloop() {
       var_2 updateicons();
 
       if(level.hqclassicmode)
-        var_2 maps\mp\gametypes\_gameobjects::setusetext( & "MP_DESTROYING_HQ");
+        var_2 maps\mp\gametypes\_gameobjects::setusetext(&"MP_DESTROYING_HQ");
 
       var_2.onuse = ::onradiodestroy;
 

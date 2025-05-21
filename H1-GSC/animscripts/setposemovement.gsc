@@ -15,9 +15,7 @@ setposemovement(var_0, var_1) {
   if(!isdefined(var_1) || var_1 == "")
     var_1 = self.a.movement;
 
-  return [
-    [anim.setposemovementfnarray[var_0][var_1]]
-  ]();
+  return [[anim.setposemovementfnarray[var_0][var_1]]]();
 }
 
 initposemovementfunctions() {

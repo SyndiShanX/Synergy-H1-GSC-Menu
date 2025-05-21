@@ -415,7 +415,7 @@ chopper_fail_mission() {
         var_7 = vectordot(var_6, var_5);
 
         if(var_7 > var_1) {
-          maps\_player_death::set_deadquote( & "ICBM_MISSIONFAIL_ICBM_CHOPPERS_SHOT");
+          maps\_player_death::set_deadquote(&"ICBM_MISSIONFAIL_ICBM_CHOPPERS_SHOT");
           maps\_utility::missionfailedwrapper();
           break;
         }

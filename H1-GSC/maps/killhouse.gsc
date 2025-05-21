@@ -66,169 +66,169 @@ main() {
   precacheshader("h1_hud_tutorial_border");
   precacheshader("h1_hud_fng_results_blur");
   precacheshader("h1_hud_fng_results_border");
-  precachestring( & "KILLHOUSE_HINT_CHECK_OBJECTIVES_PAUSED");
-  precachestring( & "KILLHOUSE_HINT_CHECK_OBJECTIVES_PAUSED");
-  precachestring( & "KILLHOUSE_HINT_OBJECTIVE_MARKER");
-  precachestring( & "KILLHOUSE_HINT_CHECK_OBJECTIVES_PAUSED");
-  precachestring( & "KILLHOUSE_HINT_CHECK_OBJECTIVES_SCORES");
-  precachestring( & "KILLHOUSE_HINT_CHECK_OBJECTIVES_SCORES_PS3");
-  precachestring( & "KILLHOUSE_HINT_OBJECTIVE_MARKER");
-  precachestring( & "KILLHOUSE_HINT_OBJECTIVE_REMINDER");
-  precachestring( & "KILLHOUSE_HINT_OBJECTIVE_REMINDER2");
-  precachestring( & "KILLHOUSE_HINT_ATTACK_PC");
-  precachestring( & "KILLHOUSE_HINT_ATTACK");
-  precachestring( & "KILLHOUSE_HINT_HIP_ATTACK_PC");
-  precachestring( & "KILLHOUSE_HINT_HIP_ATTACK");
-  precachestring( & "KILLHOUSE_HINT_ADS_360");
-  precachestring( & "KILLHOUSE_HINT_ADS");
-  precachestring( & "KILLHOUSE_HINT_ADS_TOGGLE");
-  precachestring( & "KILLHOUSE_HINT_ADS_THROW_360");
-  precachestring( & "KILLHOUSE_HINT_ADS_THROW");
-  precachestring( & "KILLHOUSE_HINT_ADS_TOGGLE_THROW");
-  precachestring( & "KILLHOUSE_HINT_STOP_ADS");
-  precachestring( & "KILLHOUSE_HINT_STOP_ADS_TOGGLE");
-  precachestring( & "KILLHOUSE_HINT_STOP_ADS_THROW");
-  precachestring( & "KILLHOUSE_HINT_STOP_ADS_TOGGLE_THROW");
-  precachestring( & "KILLHOUSE_HINT_BREATH_MELEE");
-  precachestring( & "KILLHOUSE_HINT_BREATH_SPRINT");
-  precachestring( & "KILLHOUSE_HINT_BREATH_BINOCULARS");
-  precachestring( & "KILLHOUSE_HINT_MELEE_BREATH");
-  precachestring( & "KILLHOUSE_HINT_MELEE");
-  precachestring( & "KILLHOUSE_HINT_MELEE_BREATH_CLICK");
-  precachestring( & "KILLHOUSE_HINT_MELEE_CLICK");
-  precachestring( & "KILLHOUSE_HINT_PRONE");
-  precachestring( & "KILLHOUSE_HINT_PRONE_HOLD");
-  precachestring( & "KILLHOUSE_HINT_PRONE_TOGGLE");
-  precachestring( & "KILLHOUSE_HINT_PRONE_STANCE");
-  precachestring( & "KILLHOUSE_HINT_PRONE_DOUBLE");
-  precachestring( & "KILLHOUSE_HINT_CROUCH_STANCE");
-  precachestring( & "KILLHOUSE_HINT_CROUCH");
+  precachestring(&"KILLHOUSE_HINT_CHECK_OBJECTIVES_PAUSED");
+  precachestring(&"KILLHOUSE_HINT_CHECK_OBJECTIVES_PAUSED");
+  precachestring(&"KILLHOUSE_HINT_OBJECTIVE_MARKER");
+  precachestring(&"KILLHOUSE_HINT_CHECK_OBJECTIVES_PAUSED");
+  precachestring(&"KILLHOUSE_HINT_CHECK_OBJECTIVES_SCORES");
+  precachestring(&"KILLHOUSE_HINT_CHECK_OBJECTIVES_SCORES_PS3");
+  precachestring(&"KILLHOUSE_HINT_OBJECTIVE_MARKER");
+  precachestring(&"KILLHOUSE_HINT_OBJECTIVE_REMINDER");
+  precachestring(&"KILLHOUSE_HINT_OBJECTIVE_REMINDER2");
+  precachestring(&"KILLHOUSE_HINT_ATTACK_PC");
+  precachestring(&"KILLHOUSE_HINT_ATTACK");
+  precachestring(&"KILLHOUSE_HINT_HIP_ATTACK_PC");
+  precachestring(&"KILLHOUSE_HINT_HIP_ATTACK");
+  precachestring(&"KILLHOUSE_HINT_ADS_360");
+  precachestring(&"KILLHOUSE_HINT_ADS");
+  precachestring(&"KILLHOUSE_HINT_ADS_TOGGLE");
+  precachestring(&"KILLHOUSE_HINT_ADS_THROW_360");
+  precachestring(&"KILLHOUSE_HINT_ADS_THROW");
+  precachestring(&"KILLHOUSE_HINT_ADS_TOGGLE_THROW");
+  precachestring(&"KILLHOUSE_HINT_STOP_ADS");
+  precachestring(&"KILLHOUSE_HINT_STOP_ADS_TOGGLE");
+  precachestring(&"KILLHOUSE_HINT_STOP_ADS_THROW");
+  precachestring(&"KILLHOUSE_HINT_STOP_ADS_TOGGLE_THROW");
+  precachestring(&"KILLHOUSE_HINT_BREATH_MELEE");
+  precachestring(&"KILLHOUSE_HINT_BREATH_SPRINT");
+  precachestring(&"KILLHOUSE_HINT_BREATH_BINOCULARS");
+  precachestring(&"KILLHOUSE_HINT_MELEE_BREATH");
+  precachestring(&"KILLHOUSE_HINT_MELEE");
+  precachestring(&"KILLHOUSE_HINT_MELEE_BREATH_CLICK");
+  precachestring(&"KILLHOUSE_HINT_MELEE_CLICK");
+  precachestring(&"KILLHOUSE_HINT_PRONE");
+  precachestring(&"KILLHOUSE_HINT_PRONE_HOLD");
+  precachestring(&"KILLHOUSE_HINT_PRONE_TOGGLE");
+  precachestring(&"KILLHOUSE_HINT_PRONE_STANCE");
+  precachestring(&"KILLHOUSE_HINT_PRONE_DOUBLE");
+  precachestring(&"KILLHOUSE_HINT_CROUCH_STANCE");
+  precachestring(&"KILLHOUSE_HINT_CROUCH");
 
   if(!level.console) {
-    precachestring( & "PLATFORM_HINT_HOLD_CROUCH");
-    precachestring( & "PLATFORM_HINT_CROUCH_TOGGLE_PC");
+    precachestring(&"PLATFORM_HINT_HOLD_CROUCH");
+    precachestring(&"PLATFORM_HINT_CROUCH_TOGGLE_PC");
   }
 
-  precachestring( & "KILLHOUSE_HINT_CROUCH_TOGGLE");
-  precachestring( & "KILLHOUSE_HINT_STAND");
-  precachestring( & "KILLHOUSE_HINT_STAND_STANCE");
-  precachestring( & "KILLHOUSE_HINT_JUMP_STAND");
-  precachestring( & "KILLHOUSE_HINT_JUMP");
-  precachestring( & "KILLHOUSE_HINT_SPRINT_PC");
-  precachestring( & "KILLHOUSE_HINT_SPRINT");
-  precachestring( & "KILLHOUSE_HINT_SPRINT_BREATH_PC");
-  precachestring( & "KILLHOUSE_HINT_SPRINT_BREATH");
-  precachestring( & "KILLHOUSE_HINT_HOLDING_SPRINT");
-  precachestring( & "KILLHOUSE_HINT_HOLDING_SPRINT_BREATH");
-  precachestring( & "KILLHOUSE_HINT_RELOAD_USE");
-  precachestring( & "KILLHOUSE_HINT_RELOAD");
-  precachestring( & "KILLHOUSE_HINT_MANTLE");
-  precachestring( & "KILLHOUSE_HINT_ADS_SWITCH");
-  precachestring( & "KILLHOUSE_HINT_ADS_SWITCH_SHOULDER");
-  precachestring( & "KILLHOUSE_HINT_ADS_SWITCH_THROW");
-  precachestring( & "KILLHOUSE_HINT_ADS_SWITCH_THROW_SHOULDER");
-  precachestring( & "KILLHOUSE_HINT_SIDEARM_SWAP");
-  precachestring( & "KILLHOUSE_HINT_PRIMARY_SWAP");
-  precachestring( & "KILLHOUSE_HINT_SIDEARM");
-  precachestring( & "KILLHOUSE_HINT_SIDEARM_RELOAD");
-  precachestring( & "KILLHOUSE_HINT_SIDEARM_RELOAD_USE");
-  precachestring( & "KILLHOUSE_HINT_LADDER");
-  precachestring( & "KILLHOUSE_HINT_FRAG");
-  precachestring( & "KILLHOUSE_HINT_SWAP");
-  precachestring( & "KILLHOUSE_HINT_SWAP_RELOAD");
-  precachestring( & "KILLHOUSE_HINT_FIREMODE");
-  precachestring( & "KILLHOUSE_HINT_LAUNCHER_ATTACK");
-  precachestring( & "KILLHOUSE_HINT_LAUNCHER_ATTACK_PC");
-  precachestring( & "KILLHOUSE_HINT_EXPLOSIVES");
-  precachestring( & "KILLHOUSE_HINT_EXPLOSIVES_RELOAD");
-  precachestring( & "KILLHOUSE_HINT_EXPLOSIVES_PLANT");
-  precachestring( & "KILLHOUSE_HINT_EXPLOSIVES_PLANT_RELOAD");
-  precachestring( & "KILLHOUSE_MARINE3_USE_SIDEARM");
-  precachestring( & "KILLHOUSE_C4_PICKUP");
-  precachestring( & "KILLHOUSE_HINT_C4_ICON");
-  precachestring( & "KILLHOUSE_HINT_EQUIP_C4");
-  precachestring( & "KILLHOUSE_HINT_THROW_C4");
-  precachestring( & "KILLHOUSE_HINT_THROW_C4_TOGGLE");
-  precachestring( & "KILLHOUSE_HINT_THROW_C4_SPEED");
-  precachestring( & "KILLHOUSE_HINT_APPROACH_MELEE");
-  precachestring( & "KILLHOUSE_HINT_APPROACH_C4_THROW");
-  precachestring( & "KILLHOUSE_HINT_HUD_CHANGES");
-  precachestring( & "KILLHOUSE_DETONATE_C4");
-  precachestring( & "KILLHOUSE_HINT_CROSSHAIR_CHANGES");
-  precachestring( & "KILLHOUSE_HINT_ADS_ACCURACY");
-  precachestring( & "KILLHOUSE_USE_ROPE");
-  precachestring( & "KILLHOUSE_SHIP_TOO_SLOW");
-  precachestring( & "KILLHOUSE_YOUR_TIME");
-  precachestring( & "KILLHOUSE_YOUR_FINAL_TIME");
-  precachestring( & "KILLHOUSE_IW_BEST_TIME");
-  precachestring( & "KILLHOUSE_YOUR_DECK_TIME");
-  precachestring( & "KILLHOUSE_IW_DECK_TIME");
-  precachestring( & "KILLHOUSE_SHIP_OUT_OF_FLASH");
-  precachestring( & "KILLHOUSE_SHIP_JUMPED_TOO_EARLY");
-  precachestring( & "KILLHOUSE_SHIP_MUST_CLEAR_DECK_MOCK_UP");
-  precachestring( & "KILLHOUSE_HIT_FRIENDLY");
-  precachestring( & "KILLHOUSE_HINT_FLASH");
-  precachestring( & "KILLHOUSE_ACCURACY_BONUS");
-  precachestring( & "KILLHOUSE_SHIP_LABEL");
-  precachestring( & "KILLHOUSE_DECK_LABEL");
-  precachestring( & "KILLHOUSE_ACCURACY_BONUS_ZERO");
-  precachestring( & "KILLHOUSE_C4_OBJECTIVE");
-  precachestring( & "KILLHOUSE_HINT_GRENADE_TOO_LOW");
-  precachestring( & "KILLHOUSE_HINT_GL_TOO_LOW");
-  precachestring( & "KILLHOUSE_AXIS_OPTION_MENU1");
-  precachestring( & "KILLHOUSE_AXIS_OPTION_MENU2");
-  precachestring( & "KILLHOUSE_AXIS_OPTION_MENU1B");
-  precachestring( & "KILLHOUSE_AXIS_OPTION_MENU2B");
-  precachestring( & "KILLHOUSE_AXIS_OPTION_YES");
-  precachestring( & "KILLHOUSE_AXIS_OPTION_NO");
-  precachestring( & "KILLHOUSE_AXIS_OPTION_MENU1_ALL");
-  precachestring( & "KILLHOUSE_AXIS_OPTION_MENU2_ALL");
-  precachestring( & "KILLHOUSE_LOOK_UP");
-  precachestring( & "KILLHOUSE_LOOK_DOWN");
-  precachestring( & "KILLHOUSE_HINT_LAUNCHER_ICON");
-  precachestring( & "KILLHOUSE_FIRED_NEAR_FRIENDLY");
-  precachestring( & "KILLHOUSE_USE_YOUR_OBJECTIVE_INDICATOR");
-  precachestring( & "KILLHOUSE_PICK_UP_A_RIFLE_FROM");
-  precachestring( & "KILLHOUSE_GET_A_PISTOL_FROM_THE");
-  precachestring( & "KILLHOUSE_MELEE_THE_WATERMELON");
-  precachestring( & "KILLHOUSE_GO_OUTSIDE_AND_REPORT");
-  precachestring( & "KILLHOUSE_PICK_UP_THE_RIFLE_WITH");
-  precachestring( & "KILLHOUSE_PICK_UP_THE_C4_EXPLOSIVE");
-  precachestring( & "KILLHOUSE_RUN_THE_OBSTACLE_COURSE");
-  precachestring( & "KILLHOUSE_REPORT_TO_CAPTAIN_PRICE");
-  precachestring( & "KILLHOUSE_CLIMB_THE_LADDER");
-  precachestring( & "KILLHOUSE_DEBRIEF_WITH_CPT_PRICE");
-  precachestring( & "KILLHOUSE_ENTER_STATION_NUMBER");
-  precachestring( & "KILLHOUSE_SHOOT_EACH_TARGET_WHILE");
-  precachestring( & "KILLHOUSE_SHOOT_EACH_TARGET_WHILE1");
-  precachestring( & "KILLHOUSE_SHOOT_EACH_TARGET_AS");
-  precachestring( & "KILLHOUSE_EQUIP_THE_MP5_AND_PICK");
-  precachestring( & "KILLHOUSE_CLEAR_THE_CARGOSHIP_BRIDGE");
-  precachestring( & "KILLHOUSE_SWITCH_TO_YOUR_RIFLE");
-  precachestring( & "KILLHOUSE_PICK_UP_THE_FRAG_GRENADES");
-  precachestring( & "KILLHOUSE_ENTER_THE_SAFETY_PIT");
-  precachestring( & "KILLHOUSE_THROW_A_GRENADE_INTO");
-  precachestring( & "KILLHOUSE_RETURN_TO_THE_SAFETY");
-  precachestring( & "KILLHOUSE_FIRE_AT_THE_WALL_WITH");
-  precachestring( & "KILLHOUSE_PLANT_THE_C4_EXPLOSIVE");
-  precachestring( & "KILLHOUSE_FIRE_YOUR_GRENADE_LAUNCHER");
-  precachestring( & "KILLHOUSE_CLIMB_THE_LADDER1");
-  precachestring( & "KILLHOUSE_SHOOT_EACH_TARGET_THROUGH");
-  precachestring( & "KILLHOUSE_LINE_UP_AND_RUN_TO_THE_END");
-  precachestring( & "KILLHOUSE_SLIDE_DOWN_THE_ROPE");
-  precachestring( & "KILLHOUSE_COMPLETE_THE_DECK_MOCKUP");
-  precachestring( & "KILLHOUSE_RECOMMENDED_LABEL");
-  precachestring( & "KILLHOUSE_RECOMMENDED_LABEL2");
-  precachestring( & "KILLHOUSE_RECOMMENDED_EASY");
-  precachestring( & "KILLHOUSE_RECOMMENDED_NORMAL");
-  precachestring( & "KILLHOUSE_RECOMMENDED_HARD");
-  precachestring( & "KILLHOUSE_RECOMMENDED_VETERAN");
-  precachestring( & "KILLHOUSE_DEMOLITIONS_TRAINING");
-  precachestring( & "KILLHOUSE_EQUIP_C4");
-  precachestring( & "KILLHOUSE_FOLLOW_SGTNEWCASTLE");
-  precachestring( & "KILLHOUSE_THROW_C4_ON_CAR");
-  precachestring( & "KILLHOUSE_SHOOT_EACH_TARGET_WHILE");
-  precachestring( & "KILLHOUSE_SAFE_DISTANCE");
+  precachestring(&"KILLHOUSE_HINT_CROUCH_TOGGLE");
+  precachestring(&"KILLHOUSE_HINT_STAND");
+  precachestring(&"KILLHOUSE_HINT_STAND_STANCE");
+  precachestring(&"KILLHOUSE_HINT_JUMP_STAND");
+  precachestring(&"KILLHOUSE_HINT_JUMP");
+  precachestring(&"KILLHOUSE_HINT_SPRINT_PC");
+  precachestring(&"KILLHOUSE_HINT_SPRINT");
+  precachestring(&"KILLHOUSE_HINT_SPRINT_BREATH_PC");
+  precachestring(&"KILLHOUSE_HINT_SPRINT_BREATH");
+  precachestring(&"KILLHOUSE_HINT_HOLDING_SPRINT");
+  precachestring(&"KILLHOUSE_HINT_HOLDING_SPRINT_BREATH");
+  precachestring(&"KILLHOUSE_HINT_RELOAD_USE");
+  precachestring(&"KILLHOUSE_HINT_RELOAD");
+  precachestring(&"KILLHOUSE_HINT_MANTLE");
+  precachestring(&"KILLHOUSE_HINT_ADS_SWITCH");
+  precachestring(&"KILLHOUSE_HINT_ADS_SWITCH_SHOULDER");
+  precachestring(&"KILLHOUSE_HINT_ADS_SWITCH_THROW");
+  precachestring(&"KILLHOUSE_HINT_ADS_SWITCH_THROW_SHOULDER");
+  precachestring(&"KILLHOUSE_HINT_SIDEARM_SWAP");
+  precachestring(&"KILLHOUSE_HINT_PRIMARY_SWAP");
+  precachestring(&"KILLHOUSE_HINT_SIDEARM");
+  precachestring(&"KILLHOUSE_HINT_SIDEARM_RELOAD");
+  precachestring(&"KILLHOUSE_HINT_SIDEARM_RELOAD_USE");
+  precachestring(&"KILLHOUSE_HINT_LADDER");
+  precachestring(&"KILLHOUSE_HINT_FRAG");
+  precachestring(&"KILLHOUSE_HINT_SWAP");
+  precachestring(&"KILLHOUSE_HINT_SWAP_RELOAD");
+  precachestring(&"KILLHOUSE_HINT_FIREMODE");
+  precachestring(&"KILLHOUSE_HINT_LAUNCHER_ATTACK");
+  precachestring(&"KILLHOUSE_HINT_LAUNCHER_ATTACK_PC");
+  precachestring(&"KILLHOUSE_HINT_EXPLOSIVES");
+  precachestring(&"KILLHOUSE_HINT_EXPLOSIVES_RELOAD");
+  precachestring(&"KILLHOUSE_HINT_EXPLOSIVES_PLANT");
+  precachestring(&"KILLHOUSE_HINT_EXPLOSIVES_PLANT_RELOAD");
+  precachestring(&"KILLHOUSE_MARINE3_USE_SIDEARM");
+  precachestring(&"KILLHOUSE_C4_PICKUP");
+  precachestring(&"KILLHOUSE_HINT_C4_ICON");
+  precachestring(&"KILLHOUSE_HINT_EQUIP_C4");
+  precachestring(&"KILLHOUSE_HINT_THROW_C4");
+  precachestring(&"KILLHOUSE_HINT_THROW_C4_TOGGLE");
+  precachestring(&"KILLHOUSE_HINT_THROW_C4_SPEED");
+  precachestring(&"KILLHOUSE_HINT_APPROACH_MELEE");
+  precachestring(&"KILLHOUSE_HINT_APPROACH_C4_THROW");
+  precachestring(&"KILLHOUSE_HINT_HUD_CHANGES");
+  precachestring(&"KILLHOUSE_DETONATE_C4");
+  precachestring(&"KILLHOUSE_HINT_CROSSHAIR_CHANGES");
+  precachestring(&"KILLHOUSE_HINT_ADS_ACCURACY");
+  precachestring(&"KILLHOUSE_USE_ROPE");
+  precachestring(&"KILLHOUSE_SHIP_TOO_SLOW");
+  precachestring(&"KILLHOUSE_YOUR_TIME");
+  precachestring(&"KILLHOUSE_YOUR_FINAL_TIME");
+  precachestring(&"KILLHOUSE_IW_BEST_TIME");
+  precachestring(&"KILLHOUSE_YOUR_DECK_TIME");
+  precachestring(&"KILLHOUSE_IW_DECK_TIME");
+  precachestring(&"KILLHOUSE_SHIP_OUT_OF_FLASH");
+  precachestring(&"KILLHOUSE_SHIP_JUMPED_TOO_EARLY");
+  precachestring(&"KILLHOUSE_SHIP_MUST_CLEAR_DECK_MOCK_UP");
+  precachestring(&"KILLHOUSE_HIT_FRIENDLY");
+  precachestring(&"KILLHOUSE_HINT_FLASH");
+  precachestring(&"KILLHOUSE_ACCURACY_BONUS");
+  precachestring(&"KILLHOUSE_SHIP_LABEL");
+  precachestring(&"KILLHOUSE_DECK_LABEL");
+  precachestring(&"KILLHOUSE_ACCURACY_BONUS_ZERO");
+  precachestring(&"KILLHOUSE_C4_OBJECTIVE");
+  precachestring(&"KILLHOUSE_HINT_GRENADE_TOO_LOW");
+  precachestring(&"KILLHOUSE_HINT_GL_TOO_LOW");
+  precachestring(&"KILLHOUSE_AXIS_OPTION_MENU1");
+  precachestring(&"KILLHOUSE_AXIS_OPTION_MENU2");
+  precachestring(&"KILLHOUSE_AXIS_OPTION_MENU1B");
+  precachestring(&"KILLHOUSE_AXIS_OPTION_MENU2B");
+  precachestring(&"KILLHOUSE_AXIS_OPTION_YES");
+  precachestring(&"KILLHOUSE_AXIS_OPTION_NO");
+  precachestring(&"KILLHOUSE_AXIS_OPTION_MENU1_ALL");
+  precachestring(&"KILLHOUSE_AXIS_OPTION_MENU2_ALL");
+  precachestring(&"KILLHOUSE_LOOK_UP");
+  precachestring(&"KILLHOUSE_LOOK_DOWN");
+  precachestring(&"KILLHOUSE_HINT_LAUNCHER_ICON");
+  precachestring(&"KILLHOUSE_FIRED_NEAR_FRIENDLY");
+  precachestring(&"KILLHOUSE_USE_YOUR_OBJECTIVE_INDICATOR");
+  precachestring(&"KILLHOUSE_PICK_UP_A_RIFLE_FROM");
+  precachestring(&"KILLHOUSE_GET_A_PISTOL_FROM_THE");
+  precachestring(&"KILLHOUSE_MELEE_THE_WATERMELON");
+  precachestring(&"KILLHOUSE_GO_OUTSIDE_AND_REPORT");
+  precachestring(&"KILLHOUSE_PICK_UP_THE_RIFLE_WITH");
+  precachestring(&"KILLHOUSE_PICK_UP_THE_C4_EXPLOSIVE");
+  precachestring(&"KILLHOUSE_RUN_THE_OBSTACLE_COURSE");
+  precachestring(&"KILLHOUSE_REPORT_TO_CAPTAIN_PRICE");
+  precachestring(&"KILLHOUSE_CLIMB_THE_LADDER");
+  precachestring(&"KILLHOUSE_DEBRIEF_WITH_CPT_PRICE");
+  precachestring(&"KILLHOUSE_ENTER_STATION_NUMBER");
+  precachestring(&"KILLHOUSE_SHOOT_EACH_TARGET_WHILE");
+  precachestring(&"KILLHOUSE_SHOOT_EACH_TARGET_WHILE1");
+  precachestring(&"KILLHOUSE_SHOOT_EACH_TARGET_AS");
+  precachestring(&"KILLHOUSE_EQUIP_THE_MP5_AND_PICK");
+  precachestring(&"KILLHOUSE_CLEAR_THE_CARGOSHIP_BRIDGE");
+  precachestring(&"KILLHOUSE_SWITCH_TO_YOUR_RIFLE");
+  precachestring(&"KILLHOUSE_PICK_UP_THE_FRAG_GRENADES");
+  precachestring(&"KILLHOUSE_ENTER_THE_SAFETY_PIT");
+  precachestring(&"KILLHOUSE_THROW_A_GRENADE_INTO");
+  precachestring(&"KILLHOUSE_RETURN_TO_THE_SAFETY");
+  precachestring(&"KILLHOUSE_FIRE_AT_THE_WALL_WITH");
+  precachestring(&"KILLHOUSE_PLANT_THE_C4_EXPLOSIVE");
+  precachestring(&"KILLHOUSE_FIRE_YOUR_GRENADE_LAUNCHER");
+  precachestring(&"KILLHOUSE_CLIMB_THE_LADDER1");
+  precachestring(&"KILLHOUSE_SHOOT_EACH_TARGET_THROUGH");
+  precachestring(&"KILLHOUSE_LINE_UP_AND_RUN_TO_THE_END");
+  precachestring(&"KILLHOUSE_SLIDE_DOWN_THE_ROPE");
+  precachestring(&"KILLHOUSE_COMPLETE_THE_DECK_MOCKUP");
+  precachestring(&"KILLHOUSE_RECOMMENDED_LABEL");
+  precachestring(&"KILLHOUSE_RECOMMENDED_LABEL2");
+  precachestring(&"KILLHOUSE_RECOMMENDED_EASY");
+  precachestring(&"KILLHOUSE_RECOMMENDED_NORMAL");
+  precachestring(&"KILLHOUSE_RECOMMENDED_HARD");
+  precachestring(&"KILLHOUSE_RECOMMENDED_VETERAN");
+  precachestring(&"KILLHOUSE_DEMOLITIONS_TRAINING");
+  precachestring(&"KILLHOUSE_EQUIP_C4");
+  precachestring(&"KILLHOUSE_FOLLOW_SGTNEWCASTLE");
+  precachestring(&"KILLHOUSE_THROW_C4_ON_CAR");
+  precachestring(&"KILLHOUSE_SHOOT_EACH_TARGET_WHILE");
+  precachestring(&"KILLHOUSE_SAFE_DISTANCE");
   maps\killhouse_precache::main();
   level.weaponclipmodels = [];
   level.weaponclipmodels[0] = "weapon_mp5_clip";
@@ -307,19 +307,19 @@ main() {
   common_scripts\utility::flag_init("approching_grenade_area");
   common_scripts\utility::flag_init("approching_hangar2");
   common_scripts\utility::flag_init("cargoshipTutoDone");
-  precachestring( & "KILLHOUSE_OBJ_GET_RIFLE_AMMO");
-  precachestring( & "KILLHOUSE_OBJ_ENTER_STALL");
-  precachestring( & "KILLHOUSE_HINT_SIDEARM");
-  precachestring( & "KILLHOUSE_HINT_OBJECTIVE_MARKER");
-  precachestring( & "KILLHOUSE_HINT_OBJECTIVE_REMINDER");
-  precachestring( & "KILLHOUSE_HINT_OBJECTIVE_REMINDER2");
-  precachestring( & "KILLHOUSE_HINT_LADDER");
-  precachestring( & "KILLHOUSE_HINT_HOLDING_SPRINT");
-  precachestring( & "KILLHOUSE_AXIS_OPTION_MENU1_ALL");
-  precachestring( & "KILLHOUSE_AXIS_OPTION_MENU2_ALL");
-  precachestring( & "MENU_TYPE_INVERT_AXIS");
-  precachestring( & "MENU_TYPE_INVERT_AXIS_CONFIRM");
-  precachestring( & "difficulty_selection_menu_fng");
+  precachestring(&"KILLHOUSE_OBJ_GET_RIFLE_AMMO");
+  precachestring(&"KILLHOUSE_OBJ_ENTER_STALL");
+  precachestring(&"KILLHOUSE_HINT_SIDEARM");
+  precachestring(&"KILLHOUSE_HINT_OBJECTIVE_MARKER");
+  precachestring(&"KILLHOUSE_HINT_OBJECTIVE_REMINDER");
+  precachestring(&"KILLHOUSE_HINT_OBJECTIVE_REMINDER2");
+  precachestring(&"KILLHOUSE_HINT_LADDER");
+  precachestring(&"KILLHOUSE_HINT_HOLDING_SPRINT");
+  precachestring(&"KILLHOUSE_AXIS_OPTION_MENU1_ALL");
+  precachestring(&"KILLHOUSE_AXIS_OPTION_MENU2_ALL");
+  precachestring(&"MENU_TYPE_INVERT_AXIS");
+  precachestring(&"MENU_TYPE_INVERT_AXIS_CONFIRM");
+  precachestring(&"difficulty_selection_menu_fng");
   maps\_utility::precache("electronics_pda");
   maps\_utility::precache("open_book_static");
   maps\_utility::precache("com_clipboard_mocap");
@@ -803,7 +803,7 @@ humvee_walker_think() {
 look_training() {
   soundscripts\_snd::snd_message("start_look_training_checkpoint");
   common_scripts\utility::flag_set("aa_look_training");
-  thread maps\killhouse_code::killhouse_hint( & "KILLHOUSE_LOOK_UP", 9999);
+  thread maps\killhouse_code::killhouse_hint(&"KILLHOUSE_LOOK_UP", 9999);
 
   for (;;) {
     var_0 = level.player getplayerangles();
@@ -817,7 +817,7 @@ look_training() {
 
   maps\killhouse_code::clear_hints();
   wait 0.5;
-  thread maps\killhouse_code::killhouse_hint( & "KILLHOUSE_LOOK_DOWN", 9999);
+  thread maps\killhouse_code::killhouse_hint(&"KILLHOUSE_LOOK_DOWN", 9999);
 
   for (;;) {
     var_0 = level.player getplayerangles();
@@ -839,7 +839,7 @@ look_training() {
     setdvar("ui_start_inverted", 1);
 
   wait 0.1;
-  level.player luiopenmenu( & "MENU_TYPE_INVERT_AXIS");
+  level.player luiopenmenu(&"MENU_TYPE_INVERT_AXIS");
   level.player freezecontrols(1);
   setblur(2, 0.1);
   level.player waittill("menuresponse", var_1, var_2);
@@ -847,7 +847,7 @@ look_training() {
   level.player freezecontrols(0);
 
   if(var_2 == "try_invert") {
-    thread maps\killhouse_code::killhouse_hint( & "KILLHOUSE_LOOK_UP", 9999);
+    thread maps\killhouse_code::killhouse_hint(&"KILLHOUSE_LOOK_UP", 9999);
 
     for (;;) {
       var_0 = level.player getplayerangles();
@@ -861,7 +861,7 @@ look_training() {
 
     maps\killhouse_code::clear_hints();
     wait 0.5;
-    thread maps\killhouse_code::killhouse_hint( & "KILLHOUSE_LOOK_DOWN", 9999);
+    thread maps\killhouse_code::killhouse_hint(&"KILLHOUSE_LOOK_DOWN", 9999);
 
     for (;;) {
       var_0 = level.player getplayerangles();
@@ -874,7 +874,7 @@ look_training() {
     }
 
     maps\killhouse_code::clear_hints();
-    level.player luiopenmenu( & "MENU_TYPE_INVERT_AXIS_CONFIRM");
+    level.player luiopenmenu(&"MENU_TYPE_INVERT_AXIS_CONFIRM");
     level.player freezecontrols(1);
     setblur(2, 0.1);
     level.player waittill("menuresponse", var_1, var_2);
@@ -1092,7 +1092,7 @@ new_look_training_handler() {
 
   if(common_scripts\utility::flag("player_has_look_problem")) {
     wait 0.1;
-    level.player luiopenmenu( & "MENU_TYPE_INVERT_AXIS");
+    level.player luiopenmenu(&"MENU_TYPE_INVERT_AXIS");
     level.player freezecontrols(1);
     setblur(2, 0.1);
     level.player waittill("menuresponse", var_4, var_5);
@@ -1103,7 +1103,7 @@ new_look_training_handler() {
       level.waters thread maps\killhouse_code::execdialog("onemoretime");
       var_1 maps\killhouse_code::new_look_wait_for_target(90, -90);
       var_0 maps\killhouse_code::new_look_wait_for_target(90, -90);
-      level.player luiopenmenu( & "MENU_TYPE_INVERT_AXIS_CONFIRM");
+      level.player luiopenmenu(&"MENU_TYPE_INVERT_AXIS_CONFIRM");
       level.player freezecontrols(1);
       setblur(2, 0.1);
       level.player waittill("menuresponse", var_4, var_5);
@@ -1131,7 +1131,7 @@ shoot_ads_handler() {
 
 rifle_hip_shooting() {
   wait 0.5;
-  thread maps\killhouse_code::killhouse_hint( & "KILLHOUSE_HINT_ADS_ACCURACY", 10);
+  thread maps\killhouse_code::killhouse_hint(&"KILLHOUSE_HINT_ADS_ACCURACY", 10);
   level.waters maps\killhouse_code::execdialog("firingfromhip");
   gaz_maybe_play_talk_anim();
   maps\killhouse_code::setobjectivestate_nomessage("obj_rifle", "current");
@@ -1159,7 +1159,7 @@ rifle_hip_shooting() {
     wait 0.1;
 
   var_0 = 1;
-  thread maps\killhouse_code::killhouse_hint( & "KILLHOUSE_HINT_CROSSHAIR_CHANGES", 6, var_0);
+  thread maps\killhouse_code::killhouse_hint(&"KILLHOUSE_HINT_CROSSHAIR_CHANGES", 6, var_0);
   common_scripts\utility::flag_wait("hip_targets_shot");
   level.hip_fire_required = 0;
   maps\killhouse_code::setobjectivestate("obj_rifle", "current");
@@ -1414,7 +1414,7 @@ melee_training() {
     var_0 = 1;
 
   if(!common_scripts\utility::flag("near_melee") && !common_scripts\utility::flag("melee_complete")) {
-    thread maps\killhouse_code::killhouse_hint( & "KILLHOUSE_HINT_APPROACH_MELEE", 9999);
+    thread maps\killhouse_code::killhouse_hint(&"KILLHOUSE_HINT_APPROACH_MELEE", 9999);
     level.waters thread maps\killhouse_code::execdialog("comethisway");
   }
 
@@ -1975,7 +1975,7 @@ gl_too_low_hint() {
     self waittill("trigger");
     maps\killhouse_code::clear_hints();
     level.currentkeyhintactionname = "";
-    maps\killhouse_code::killhouse_hint( & "KILLHOUSE_HINT_GL_TOO_LOW", 6);
+    maps\killhouse_code::killhouse_hint(&"KILLHOUSE_HINT_GL_TOO_LOW", 6);
   }
 }
 
@@ -2195,7 +2195,7 @@ c4_training() {
 
   var_0 = maps\_utility::flag_trigger_init("explosives_pickup", getent("c4_pickup", "targetname"));
   var_1 = getentarray(var_0.target, "targetname");
-  var_0 sethintstring( & "KILLHOUSE_C4_PICKUP");
+  var_0 sethintstring(&"KILLHOUSE_C4_PICKUP");
   var_0 common_scripts\utility::trigger_on();
 
   for (var_2 = 0; var_2 < var_1.size; var_2++)
@@ -2887,7 +2887,7 @@ debrief() {
   thread debrief_anims();
   thread h1_fadetoblackdifficultyselect(2.5);
   wait 12.5;
-  level.player luiopenmenu( & "difficulty_selection_menu_fng");
+  level.player luiopenmenu(&"difficulty_selection_menu_fng");
   level.player freezecontrols(1);
   setblur(2, 0.1);
   level.player waittill("menuresponse", var_1, var_2);

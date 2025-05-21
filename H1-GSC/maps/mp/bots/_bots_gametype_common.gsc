@@ -241,18 +241,10 @@ bot_gametype_get_players_by_role(var_0, var_1) {
 }
 
 bot_gametype_initialize_attacker_defender_role() {
-  var_0 = [
-    [level.bot_gametype_allied_attackers_for_team]
-  ](self.team);
-  var_1 = [
-    [level.bot_gametype_allied_defenders_for_team]
-  ](self.team);
-  var_2 = [
-    [level.bot_gametype_attacker_limit_for_team]
-  ](self.team);
-  var_3 = [
-    [level.bot_gametype_defender_limit_for_team]
-  ](self.team);
+  var_0 = [[level.bot_gametype_allied_attackers_for_team]](self.team);
+  var_1 = [[level.bot_gametype_allied_defenders_for_team]](self.team);
+  var_2 = [[level.bot_gametype_attacker_limit_for_team]](self.team);
+  var_3 = [[level.bot_gametype_defender_limit_for_team]](self.team);
   var_4 = level.bot_personality_type[self.personality];
 
   if(var_4 == "active") {

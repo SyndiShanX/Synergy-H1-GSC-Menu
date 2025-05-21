@@ -5,8 +5,8 @@
 ********************************/
 
 main() {
-  precachestring( & "SCOUTSNIPER_MRHR");
-  precachestring( & "SCRIPT_RADIATION_DEATH");
+  precachestring(&"SCOUTSNIPER_MRHR");
+  precachestring(&"SCRIPT_RADIATION_DEATH");
   precacheshellshock("radiation_low");
   precacheshellshock("radiation_med");
   precacheshellshock("radiation_high");

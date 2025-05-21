@@ -394,7 +394,7 @@ domflags() {
     var_8 = maps\mp\gametypes\_gameobjects::createuseobject("neutral", var_6, var_7, (0, 0, 100));
     var_8 maps\mp\gametypes\_gameobjects::allowuse("enemy");
     var_8 maps\mp\gametypes\_gameobjects::setusetime(level.domcapturetime);
-    var_8 maps\mp\gametypes\_gameobjects::setusetext( & "MP_SECURING_POSITION");
+    var_8 maps\mp\gametypes\_gameobjects::setusetext(&"MP_SECURING_POSITION");
     var_9 = var_8 maps\mp\gametypes\_gameobjects::getlabel();
     var_8.label = var_9;
     var_8 updatedomicon();

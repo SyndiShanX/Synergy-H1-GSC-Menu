@@ -101,7 +101,7 @@ main() {
   precacheshader("overlay_low_health_alt");
   precacheshader("overlay_low_health");
   precacheshader("overlay_low_health_compass");
-  precachestring( & "GAME_GET_TO_COVER");
+  precachestring(&"GAME_GET_TO_COVER");
   level.ai_number = 0;
 
   if(!isdefined(level.flag))
@@ -205,14 +205,14 @@ main() {
   precacherumble("artillery_rumble");
   precacherumble("slide_start");
   precacherumble("slide_loop");
-  precachestring( & "GAME_GET_TO_COVER");
-  precachestring( & "GAME_LAST_STAND_GET_BACK_UP");
-  precachestring( & "SCRIPT_GRENADE_DEATH");
-  precachestring( & "SCRIPT_GRENADE_SUICIDE_LINE1");
-  precachestring( & "SCRIPT_GRENADE_SUICIDE_LINE2");
-  precachestring( & "SCRIPT_EXPLODING_VEHICLE_DEATH");
-  precachestring( & "SCRIPT_EXPLODING_DESTRUCTIBLE_DEATH");
-  precachestring( & "SCRIPT_EXPLODING_BARREL_DEATH");
+  precachestring(&"GAME_GET_TO_COVER");
+  precachestring(&"GAME_LAST_STAND_GET_BACK_UP");
+  precachestring(&"SCRIPT_GRENADE_DEATH");
+  precachestring(&"SCRIPT_GRENADE_SUICIDE_LINE1");
+  precachestring(&"SCRIPT_GRENADE_SUICIDE_LINE2");
+  precachestring(&"SCRIPT_EXPLODING_VEHICLE_DEATH");
+  precachestring(&"SCRIPT_EXPLODING_DESTRUCTIBLE_DEATH");
+  precachestring(&"SCRIPT_EXPLODING_BARREL_DEATH");
   precacheshader("hud_grenadeicon");
   precacheshader("hud_grenadepointer");
   precacheshader("hud_burningcaricon");
@@ -220,8 +220,8 @@ main() {
   precacheshader("hud_destructibledeathicon");
   precacheshader("hud_burningbarrelicon");
   precacheshader("waypoint_ammo");
-  precachestring( & "init_hud");
-  precachestring( & "close_hud");
+  precachestring(&"init_hud");
+  precachestring(&"close_hud");
   precachelaser("nvg_laser");
   level._effect["deathfx_bloodpool_generic"] = loadfx("vfx\weaponimpact\deathfx_bloodpool_generic");
   animscripts\pain::initpainfx();
@@ -590,7 +590,7 @@ pianodamagethink() {
 pianothink() {
   var_0 = self getorigin();
   var_1 = "piano_" + self.script_noteworthy;
-  self sethintstring( & "SCRIPT_PLATFORM_PIANO");
+  self sethintstring(&"SCRIPT_PLATFORM_PIANO");
 
   for (;;) {
     self waittill("trigger");
@@ -1264,9 +1264,7 @@ check_flag_for_stat_tracking(var_0) {
   if(!common_scripts\utility::issuffix(var_0, "aa_")) {
     return;
   }
-  [
-    [level.sp_stat_tracking_func]
-  ](var_0);
+  [[level.sp_stat_tracking_func]](var_0);
 }
 
 precache_script_models() {
@@ -1666,7 +1664,7 @@ claymore_pickup_think_global() {
   precacheitem("claymore");
   self endon("deleted");
   self setcursorhint("HINT_NOICON");
-  self sethintstring( & "WEAPON_CLAYMORE_PICKUP");
+  self sethintstring(&"WEAPON_CLAYMORE_PICKUP");
   self makeusable();
   var_0 = weaponmaxammo("claymore") + weaponclipsize("claymore");
 

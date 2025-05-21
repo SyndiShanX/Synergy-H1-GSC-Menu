@@ -417,7 +417,7 @@ bombdefused(var_0) {
 }
 
 oncantuse(var_0) {
-  var_0 iprintlnbold( & "MP_CANT_PLANT_WITHOUT_BOMB");
+  var_0 iprintlnbold(&"MP_CANT_PLANT_WITHOUT_BOMB");
 }
 
 ontimelimit() {

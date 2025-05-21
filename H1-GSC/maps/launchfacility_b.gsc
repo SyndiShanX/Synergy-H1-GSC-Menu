@@ -30,15 +30,15 @@ main() {
   precacheshader("black");
   precacheshader("h1_hud_upload_codes_blur");
   precacheshader("h1_hud_upload_codes_border");
-  precachestring( & "LAUNCHFACILITY_B_PLANT_THE_C4");
-  precachestring( & "LAUNCHFACILITY_B_GET_TO_THE_TELEMETRY");
-  precachestring( & "LAUNCHFACILITY_B_CLEAR_ROOM");
-  precachestring( & "LAUNCHFACILITY_B_UPLOAD_THE_ABORT_CODES");
-  precachestring( & "LAUNCHFACILITY_B_BOMBS_GO_BOOM");
-  precachestring( & "LAUNCHFACILITY_B_TIME_TILL_ICBM_IMPACT");
-  precachestring( & "LAUNCHFACILITY_B_HINT_UPLOAD_CODES");
-  precachestring( & "LAUNCHFACILITY_B_FOLLOW_PRICE");
-  precachestring( & "LAUNCHFACILITY_B_UPLOADING_CODES");
+  precachestring(&"LAUNCHFACILITY_B_PLANT_THE_C4");
+  precachestring(&"LAUNCHFACILITY_B_GET_TO_THE_TELEMETRY");
+  precachestring(&"LAUNCHFACILITY_B_CLEAR_ROOM");
+  precachestring(&"LAUNCHFACILITY_B_UPLOAD_THE_ABORT_CODES");
+  precachestring(&"LAUNCHFACILITY_B_BOMBS_GO_BOOM");
+  precachestring(&"LAUNCHFACILITY_B_TIME_TILL_ICBM_IMPACT");
+  precachestring(&"LAUNCHFACILITY_B_HINT_UPLOAD_CODES");
+  precachestring(&"LAUNCHFACILITY_B_FOLLOW_PRICE");
+  precachestring(&"LAUNCHFACILITY_B_UPLOADING_CODES");
   precacheshader("h1_hud_timer_blur");
   precacheshader("h1_hud_timer_border");
   precacheshader("h1_timer_on_flare");
@@ -81,14 +81,14 @@ main() {
   precachemodel("weapon_c4");
   precacheshader("white");
   precacheshader("black");
-  precachestring( & "LAUNCHFACILITY_B_PLANT_THE_C4");
-  precachestring( & "LAUNCHFACILITY_B_GET_TO_THE_TELEMETRY");
-  precachestring( & "LAUNCHFACILITY_B_UPLOAD_THE_ABORT_CODES");
-  precachestring( & "LAUNCHFACILITY_B_BOMBS_GO_BOOM");
-  precachestring( & "LAUNCHFACILITY_B_TIME_TILL_ICBM_IMPACT");
-  precachestring( & "LAUNCHFACILITY_B_HINT_UPLOAD_CODES");
-  precachestring( & "LAUNCHFACILITY_B_FOLLOW_PRICE");
-  precachestring( & "LAUNCHFACILITY_B_UPLOADING_CODES");
+  precachestring(&"LAUNCHFACILITY_B_PLANT_THE_C4");
+  precachestring(&"LAUNCHFACILITY_B_GET_TO_THE_TELEMETRY");
+  precachestring(&"LAUNCHFACILITY_B_UPLOAD_THE_ABORT_CODES");
+  precachestring(&"LAUNCHFACILITY_B_BOMBS_GO_BOOM");
+  precachestring(&"LAUNCHFACILITY_B_TIME_TILL_ICBM_IMPACT");
+  precachestring(&"LAUNCHFACILITY_B_HINT_UPLOAD_CODES");
+  precachestring(&"LAUNCHFACILITY_B_FOLLOW_PRICE");
+  precachestring(&"LAUNCHFACILITY_B_UPLOADING_CODES");
   maps\_utility::battlechatter_off("allies");
   level.secondaryprogressbary = 75;
   level.secondaryprogressbarx = 0;
@@ -1410,7 +1410,7 @@ upload_codes_h1() {
       continue;
     }
 
-    var_1 sethintstring( & "LAUNCHFACILITY_B_HINT_UPLOAD_CODES");
+    var_1 sethintstring(&"LAUNCHFACILITY_B_HINT_UPLOAD_CODES");
 
     if(!level.player usebuttonpressed()) {
       waitframe();
@@ -1431,7 +1431,7 @@ upload_codes_h1() {
     level.player playsound("scn_enter_code_typing");
     var_7 thread maps\_anim::anim_single_solo(var_13, "typing_abort_codes");
     level.player startprogressbar(var_5);
-    level.player.progresstext settext( & "LAUNCHFACILITY_B_UPLOADING_CODES");
+    level.player.progresstext settext(&"LAUNCHFACILITY_B_UPLOADING_CODES");
     var_14 = 0;
     level thread h1_typing_dof_start();
 
@@ -1489,7 +1489,7 @@ upload_codes() {
   var_2 = 0;
   var_3 = 3;
   var_0 common_scripts\utility::trigger_on();
-  var_0 sethintstring( & "LAUNCHFACILITY_B_HINT_UPLOAD_CODES");
+  var_0 sethintstring(&"LAUNCHFACILITY_B_HINT_UPLOAD_CODES");
   var_0 usetriggerrequirelookat();
   var_4 = spawn("script_model", level.keyboard.origin);
   var_4.angles = (0, 315, 0);
@@ -1502,7 +1502,7 @@ upload_codes() {
     level.player playsound("scn_enter_code_typing");
     var_0 common_scripts\utility::trigger_off();
     level.player startprogressbar(var_3);
-    level.player.progresstext settext( & "LAUNCHFACILITY_B_UPLOADING_CODES");
+    level.player.progresstext settext(&"LAUNCHFACILITY_B_UPLOADING_CODES");
     var_5 = 0;
 
     for (;;) {

@@ -204,7 +204,7 @@ objective_hints(var_0) {
 compass_hint(var_0, var_1) {
   clear_hints();
   level endon("clearing_hints");
-  maps\_utility::hint( & "KILLHOUSE_HINT_OBJECTIVE_MARKER", undefined, undefined, 1);
+  maps\_utility::hint(&"KILLHOUSE_HINT_OBJECTIVE_MARKER", undefined, undefined, 1);
   level.iconelem = maps\_hud_util::createicon("objective", 32, 32);
   level.iconelem.hidewheninmenu = 1;
   level.iconelem maps\_hud_util::setpoint("TOP", undefined, 0, 155);
@@ -220,7 +220,7 @@ compass_hint(var_0, var_1) {
 compass_reminder() {
   clear_hints();
   level endon("clearing_hints");
-  maps\_utility::hint( & "KILLHOUSE_HINT_OBJECTIVE_REMINDER", undefined, undefined, 1);
+  maps\_utility::hint(&"KILLHOUSE_HINT_OBJECTIVE_REMINDER", undefined, undefined, 1);
   level.iconelem = maps\_hud_util::createicon("objective", 32, 32);
   level.iconelem.hidewheninmenu = 1;
   level.iconelem maps\_hud_util::setpoint("TOP", undefined, 0, 155);
@@ -358,7 +358,7 @@ flashed_debug() {
     level waittill("flashed");
     var_0 = maps\_hud_util::get_stats_display_hud();
     var_0.y = 130;
-    var_0 settext( & "KILLHOUSE_YOUR_TIME");
+    var_0 settext(&"KILLHOUSE_YOUR_TIME");
     level waittill("not_flashed");
     var_0 destroy();
   }
@@ -704,7 +704,7 @@ rope() {
   for (;;) {
     common_scripts\utility::flag_wait("activate_rope");
     thread rope_triggercheck_playerisinvalidstate();
-    var_0 sethintstring( & "KILLHOUSE_USE_ROPE");
+    var_0 sethintstring(&"KILLHOUSE_USE_ROPE");
 
     for (;;) {
       var_0 waittill("trigger");
@@ -2138,7 +2138,7 @@ keyhint(var_0, var_1, var_2) {
   var_3 = getactionbind(var_0);
 
   if(var_0 == "melee" && level.xenon && var_3.key == "BUTTON_RSTICK")
-    maps\_utility::hint( & "KILLHOUSE_HINT_MELEE_CLICK");
+    maps\_utility::hint(&"KILLHOUSE_HINT_MELEE_CLICK");
   else
     maps\_utility::hint(var_3.hint, undefined, undefined, var_2);
 
@@ -2572,7 +2572,7 @@ frag_too_low_hint() {
     self waittill("trigger");
     clear_hints();
     level.currentkeyhintactionname = "";
-    killhouse_hint( & "KILLHOUSE_HINT_GRENADE_TOO_LOW", 6);
+    killhouse_hint(&"KILLHOUSE_HINT_GRENADE_TOO_LOW", 6);
   }
 }
 

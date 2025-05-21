@@ -999,9 +999,7 @@ checktimelimit(var_0) {
     return;
   }
 
-  [
-    [level.ontimelimit]
-  ]();
+  [[level.ontimelimit]]();
 }
 
 checkhalftimescore() {
@@ -1801,9 +1799,7 @@ callback_startgametype() {
 
   thread updateuiscorelimit();
   level notify("update_scorelimit");
-  [
-    [level.onstartgametype]
-  ]();
+  [[level.onstartgametype]]();
   level.scorepercentagecutoff = getdvarint("scr_" + level.gametype + "_score_percentage_cut_off", 80);
   level.timepercentagecutoff = getdvarint("scr_" + level.gametype + "_time_percentage_cut_off", 80);
 

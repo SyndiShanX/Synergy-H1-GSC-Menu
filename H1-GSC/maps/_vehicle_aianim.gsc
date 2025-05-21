@@ -220,9 +220,7 @@ guy_deathimate_me(var_0, var_1) {
   var_3 = var_0.angles;
   var_4 = var_0.origin;
   var_0 = convert_guy_to_drone(var_0);
-  [
-    [level.global_kill_func]
-  ]("MOD_RIFLE_BULLET", "torso_upper", var_4);
+  [[level.global_kill_func]]("MOD_RIFLE_BULLET", "torso_upper", var_4);
   detach_models_with_substr(var_0, "weapon_");
   var_0 linkto(self, var_1.sittag, (0, 0, 0), (0, 0, 0));
   var_0 notsolid();
@@ -2034,9 +2032,7 @@ guy_blowup(var_0) {
   if(!isdefined(var_2.explosion_death)) {
     return;
   }
-  [
-    [level.global_kill_func]
-  ]("MOD_RIFLE_BULLET", "torso_upper", var_0.origin);
+  [[level.global_kill_func]]("MOD_RIFLE_BULLET", "torso_upper", var_0.origin);
   var_0.deathanim = var_2.explosion_death;
   var_3 = self.angles;
   var_4 = var_0.origin;

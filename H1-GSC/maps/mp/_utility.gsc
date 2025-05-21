@@ -3161,7 +3161,7 @@ validateusestreak(var_0, var_1) {
         var_5 = 1;
 
       if(!(isdefined(var_1) && var_1))
-        self iprintlnbold( & "MP_UNAVAILABLE_FOR_N", var_5);
+        self iprintlnbold(&"MP_UNAVAILABLE_FOR_N", var_5);
 
       return 0;
     }
@@ -3170,9 +3170,9 @@ validateusestreak(var_0, var_1) {
   if(isemped() && (!isdefined(level.iszombiegame) || !level.iszombiegame)) {
     if(!(isdefined(var_1) && var_1)) {
       if(isdefined(level.emptimeremaining) && level.emptimeremaining > 0)
-        self iprintlnbold( & "MP_UNAVAILABLE_FOR_N_WHEN_EMP", level.emptimeremaining);
+        self iprintlnbold(&"MP_UNAVAILABLE_FOR_N_WHEN_EMP", level.emptimeremaining);
       else if(isdefined(self.empendtime) && int((self.empendtime - gettime()) / 1000) > 0)
-        self iprintlnbold( & "MP_UNAVAILABLE_FOR_N", int((self.empendtime - gettime()) / 1000));
+        self iprintlnbold(&"MP_UNAVAILABLE_FOR_N", int((self.empendtime - gettime()) / 1000));
     }
 
     return 0;
@@ -3180,14 +3180,14 @@ validateusestreak(var_0, var_1) {
 
   if(self isusingturret() && (isridekillstreak(var_2) || iscarrykillstreak(var_2))) {
     if(!(isdefined(var_1) && var_1))
-      self iprintlnbold( & "MP_UNAVAILABLE_USING_TURRET");
+      self iprintlnbold(&"MP_UNAVAILABLE_USING_TURRET");
 
     return 0;
   }
 
   if(isdefined(self.laststand) && !_hasperk("specialty_finalstand")) {
     if(!(isdefined(var_1) && var_1))
-      self iprintlnbold( & "MP_UNAVILABLE_IN_LASTSTAND");
+      self iprintlnbold(&"MP_UNAVILABLE_IN_LASTSTAND");
 
     return 0;
   }

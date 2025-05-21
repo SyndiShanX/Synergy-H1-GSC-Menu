@@ -21,44 +21,32 @@ codecallback_playerconnect() {
     level waittill("eternity");
 
   self endon("disconnect");
-  [
-    [level.callbackplayerconnect]
-  ]();
+  [[level.callbackplayerconnect]]();
 }
 
 codecallback_playerdisconnect(var_0) {
   self notify("disconnect");
-  [
-    [level.callbackplayerdisconnect]
-  ](var_0);
+  [[level.callbackplayerdisconnect]](var_0);
 }
 
 codecallback_playerdamage(var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9) {
   self endon("disconnect");
-  [
-    [level.callbackplayerdamage]
-  ](var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9);
+  [[level.callbackplayerdamage]](var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8, var_9);
 }
 
 codecallback_playerkilled(var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8) {
   self endon("disconnect");
-  [
-    [level.callbackplayerkilled]
-  ](var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8);
+  [[level.callbackplayerkilled]](var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8);
 }
 
 codecallback_playergrenadesuicide(var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7) {
   self endon("disconnect");
-  [
-    [level.callbackplayergrenadesuicide]
-  ](var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7);
+  [[level.callbackplayergrenadesuicide]](var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7);
 }
 
 codecallback_entityoutofworld() {
   self endon("disconnect");
-  [
-    [level.callbackentityoutofworld]
-  ]();
+  [[level.callbackentityoutofworld]]();
 }
 
 codecallback_bullethitentity(var_0, var_1, var_2, var_3, var_4, var_5) {
@@ -84,29 +72,21 @@ codecallback_entitydamage(var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7
 
 codecallback_codeendgame() {
   self endon("disconnect");
-  [
-    [level.callbackcodeendgame]
-  ]();
+  [[level.callbackcodeendgame]]();
 }
 
 codecallback_playerlaststand(var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8) {
   self endon("disconnect");
-  [
-    [level.callbackplayerlaststand]
-  ](var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8);
+  [[level.callbackplayerlaststand]](var_0, var_1, var_2, var_3, var_4, var_5, var_6, var_7, var_8);
 }
 
 codecallback_playermigrated() {
   self endon("disconnect");
-  [
-    [level.callbackplayermigrated]
-  ]();
+  [[level.callbackplayermigrated]]();
 }
 
 codecallback_hostmigration() {
-  [
-    [level.callbackhostmigration]
-  ]();
+  [[level.callbackhostmigration]]();
 }
 
 codecallback_givekillstreak(var_0, var_1) {

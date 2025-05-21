@@ -1607,11 +1607,11 @@ equipmentenableuse(var_0) {
   self.trigger setcursorhint("HINT_NOICON");
 
   if(self.weaponname == "h1_c4_mp")
-    self.trigger sethintstring( & "MP_PICKUP_C4");
+    self.trigger sethintstring(&"MP_PICKUP_C4");
   else if(self.weaponname == "h1_claymore_mp")
-    self.trigger sethintstring( & "MP_PICKUP_CLAYMORE");
+    self.trigger sethintstring(&"MP_PICKUP_CLAYMORE");
   else if(self.weaponname == "bouncingbetty_mp")
-    self.trigger sethintstring( & "MP_PICKUP_BOUNCING_BETTY");
+    self.trigger sethintstring(&"MP_PICKUP_BOUNCING_BETTY");
 
   self.trigger maps\mp\_utility::setselfusable(var_0);
 }
@@ -3448,7 +3448,7 @@ watchgrenadegraceperiod() {
           var_4 = 1;
 
         if(isplayer(self))
-          self iprintlnbold( & "MP_EXPLOSIVES_UNAVAILABLE_FOR_N", var_4);
+          self iprintlnbold(&"MP_EXPLOSIVES_UNAVAILABLE_FOR_N", var_4);
       }
 
       continue;

@@ -60,7 +60,7 @@ c4_location(var_0, var_1, var_2, var_3, var_4, var_5) {
   if(isdefined(level.c4_hintstring))
     var_7.trigger sethintstring(level.c4_hintstring);
   else
-    var_7.trigger sethintstring( & "SCRIPT_PLATFORM_HINT_PLANTEXPLOSIVES");
+    var_7.trigger sethintstring(&"SCRIPT_PLATFORM_HINT_PLANTEXPLOSIVES");
 
   if(isdefined(var_0)) {
     var_7.trigger linkto(self, var_0, var_1, var_2);

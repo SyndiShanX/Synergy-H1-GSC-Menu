@@ -133,9 +133,7 @@ round_millisec_on_sec(var_0, var_1, var_2) {
 }
 
 can_set_vision_set(var_0) {
-  return !isdefined(level.can_change_vision_set_function) || [
-    [level.can_change_vision_set_function]
-  ](var_0);
+  return !isdefined(level.can_change_vision_set_function) || [[level.can_change_vision_set_function]](var_0);
 }
 
 set_vision_set(var_0, var_1, var_2) {
@@ -167,9 +165,7 @@ set_vision_set_player(var_0, var_1) {
 }
 
 can_set_light_set(var_0) {
-  return !isdefined(level.can_change_light_set_function) || [
-    [level.can_change_light_set_function]
-  ](var_0);
+  return !isdefined(level.can_change_light_set_function) || [[level.can_change_light_set_function]](var_0);
 }
 
 set_light_set_player(var_0, var_1) {
@@ -1615,9 +1611,7 @@ set_flag_on_func_wait_proc(var_0, var_1, var_2, var_3) {
   foreach(var_7, var_6 in var_0)
   var_6 ent_flag_wait(var_3);
 
-  [
-    [var_2]
-  ](var_4.ai);
+  [[var_2]](var_4.ai);
   common_scripts\utility::flag_set(var_1);
 }
 
@@ -5223,9 +5217,7 @@ check_hint_condition(var_0, var_1, var_2, var_3) {
       [level.trigger_hint_func[var_0]]
     ](var_1);
 
-  return [
-    [level.trigger_hint_func[var_0]]
-  ]();
+  return [[level.trigger_hint_func[var_0]]]();
 }
 
 getgenericanim(var_0) {
@@ -7229,9 +7221,7 @@ blend_movespeedscale(var_0, var_1) {
 player_speed_proc(var_0, var_1, var_2, var_3, var_4) {
   self notify(var_4);
   self endon(var_4);
-  var_5 = [
-    [var_2]
-  ]();
+  var_5 = [[var_2]]();
   var_6 = var_0;
 
   if(isdefined(var_1)) {
@@ -7249,9 +7239,7 @@ player_speed_proc(var_0, var_1, var_2, var_3, var_4) {
     }
   }
 
-  [
-    [var_3]
-  ](var_6);
+  [[var_3]](var_6);
 }
 
 player_speed_default(var_0) {

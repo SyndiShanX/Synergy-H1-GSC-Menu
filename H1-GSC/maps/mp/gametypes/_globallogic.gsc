@@ -34,22 +34,22 @@ init() {
   if(!isdefined(level.tweakablesinitialized))
     maps\mp\gametypes\_tweakables::init();
 
-  precachestring( & "MP_HALFTIME");
-  precachestring( & "MP_OVERTIME");
-  precachestring( & "MP_ROUNDEND");
-  precachestring( & "MP_INTERMISSION");
-  precachestring( & "MP_SWITCHING_SIDES");
-  precachestring( & "MP_FRIENDLY_FIRE_WILL_NOT");
-  precachestring( & "MP_SUICIDE_PUNISHED");
-  precachestring( & "PLATFORM_REVIVE");
-  precachestring( & "MP_OBITUARY_NEUTRAL");
-  precachestring( & "MP_OBITUARY_FRIENDLY");
-  precachestring( & "MP_OBITUARY_ENEMY");
+  precachestring(&"MP_HALFTIME");
+  precachestring(&"MP_OVERTIME");
+  precachestring(&"MP_ROUNDEND");
+  precachestring(&"MP_INTERMISSION");
+  precachestring(&"MP_SWITCHING_SIDES");
+  precachestring(&"MP_FRIENDLY_FIRE_WILL_NOT");
+  precachestring(&"MP_SUICIDE_PUNISHED");
+  precachestring(&"PLATFORM_REVIVE");
+  precachestring(&"MP_OBITUARY_NEUTRAL");
+  precachestring(&"MP_OBITUARY_FRIENDLY");
+  precachestring(&"MP_OBITUARY_ENEMY");
 
   if(level.splitscreen)
-    precachestring( & "MP_ENDED_GAME");
+    precachestring(&"MP_ENDED_GAME");
   else
-    precachestring( & "MP_HOST_ENDED_GAME");
+    precachestring(&"MP_HOST_ENDED_GAME");
 
   level.halftimetype = "halftime";
   level.halftimeonscorelimit = 0;

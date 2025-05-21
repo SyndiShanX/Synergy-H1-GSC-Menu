@@ -1122,18 +1122,12 @@ playidleanimation(var_0, var_1) {
 }
 
 set_anim_array(var_0) {
-  [
-    [self.animarrayfuncs["hiding"][var_0]]
-  ]();
-  [
-    [self.animarrayfuncs["exposed"][var_0]]
-  ]();
+  [[self.animarrayfuncs["hiding"][var_0]]]();
+  [[self.animarrayfuncs["exposed"][var_0]]]();
 }
 
 set_anim_array_aiming(var_0) {
-  [
-    [self.animarrayfuncs["exposed"][var_0]]
-  ]();
+  [[self.animarrayfuncs["exposed"][var_0]]]();
 }
 
 transitiontostance(var_0) {

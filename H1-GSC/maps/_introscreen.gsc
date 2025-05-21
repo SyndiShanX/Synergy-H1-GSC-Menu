@@ -308,7 +308,7 @@ village_defend_intro() {
   var_1.vertalign = "middle";
   var_1.sort = level.intro_text_sort;
   var_1.foreground = 1;
-  var_1 settext( & "VILLAGE_DEFEND_PRESENT_DAY");
+  var_1 settext(&"VILLAGE_DEFEND_PRESENT_DAY");
   var_1.fontscale = 1.6;
   var_1.color = (0.8, 1, 0.8);
   var_1.font = "objective";
@@ -356,7 +356,7 @@ scoutsniper_intro() {
   var_1.vertalign = "middle";
   var_1.sort = level.intro_text_sort;
   var_1.foreground = 1;
-  var_1 settext( & "SCOUTSNIPER_15_YEARS_AGO");
+  var_1 settext(&"SCOUTSNIPER_15_YEARS_AGO");
   var_1.fontscale = 1.6;
   var_1.color = (0.8, 1, 0.8);
   var_1.font = "objective";
@@ -688,120 +688,120 @@ should_revive_ammo_counter() {
 initialize_strings() {
   switch (level.script) {
     case "ac130":
-      introscreen_add_line( & "AC130_INTROSCREEN_LINE_1");
-      introscreen_add_line( & "AC130_INTROSCREEN_LINE_2");
-      introscreen_add_line( & "AC130_INTROSCREEN_LINE_3");
-      introscreen_add_line( & "AC130_INTROSCREEN_LINE_4");
-      introscreen_add_line( & "AC130_INTROSCREEN_LINE_5");
+      introscreen_add_line(&"AC130_INTROSCREEN_LINE_1");
+      introscreen_add_line(&"AC130_INTROSCREEN_LINE_2");
+      introscreen_add_line(&"AC130_INTROSCREEN_LINE_3");
+      introscreen_add_line(&"AC130_INTROSCREEN_LINE_4");
+      introscreen_add_line(&"AC130_INTROSCREEN_LINE_5");
       break;
     case "airlift":
-      introscreen_add_line( & "AIRLIFT_INTROSCREEN_LINE_1");
-      introscreen_add_line( & "AIRLIFT_INTROSCREEN_LINE_2");
-      introscreen_add_line( & "AIRLIFT_INTROSCREEN_LINE_3");
-      introscreen_add_line( & "AIRLIFT_INTROSCREEN_LINE_4");
+      introscreen_add_line(&"AIRLIFT_INTROSCREEN_LINE_1");
+      introscreen_add_line(&"AIRLIFT_INTROSCREEN_LINE_2");
+      introscreen_add_line(&"AIRLIFT_INTROSCREEN_LINE_3");
+      introscreen_add_line(&"AIRLIFT_INTROSCREEN_LINE_4");
       break;
     case "ambush":
-      introscreen_add_line( & "AMBUSH_INTROSCREEN_LINE_1");
-      introscreen_add_line( & "AMBUSH_INTROSCREEN_LINE_2");
-      introscreen_add_line( & "AMBUSH_INTROSCREEN_LINE_3");
-      introscreen_add_line( & "AMBUSH_INTROSCREEN_LINE_4");
-      introscreen_add_line( & "AMBUSH_INTROSCREEN_LINE_5");
+      introscreen_add_line(&"AMBUSH_INTROSCREEN_LINE_1");
+      introscreen_add_line(&"AMBUSH_INTROSCREEN_LINE_2");
+      introscreen_add_line(&"AMBUSH_INTROSCREEN_LINE_3");
+      introscreen_add_line(&"AMBUSH_INTROSCREEN_LINE_4");
+      introscreen_add_line(&"AMBUSH_INTROSCREEN_LINE_5");
       break;
     case "armada":
-      introscreen_add_line( & "ARMADA_INTRO");
-      introscreen_add_line( & "ARMADA_DATE");
-      introscreen_add_line( & "ARMADA_PLACE");
-      introscreen_add_line( & "ARMADA_INFO");
+      introscreen_add_line(&"ARMADA_INTRO");
+      introscreen_add_line(&"ARMADA_DATE");
+      introscreen_add_line(&"ARMADA_PLACE");
+      introscreen_add_line(&"ARMADA_INFO");
       break;
     case "blackout":
-      introscreen_add_line( & "BLACKOUT_INTRO_1");
-      introscreen_add_line( & "BLACKOUT_INTRO_2");
-      introscreen_add_line( & "BLACKOUT_INTRO_3");
-      introscreen_add_line( & "BLACKOUT_INTRO_4");
-      introscreen_add_line( & "BLACKOUT_INTRO_5");
+      introscreen_add_line(&"BLACKOUT_INTRO_1");
+      introscreen_add_line(&"BLACKOUT_INTRO_2");
+      introscreen_add_line(&"BLACKOUT_INTRO_3");
+      introscreen_add_line(&"BLACKOUT_INTRO_4");
+      introscreen_add_line(&"BLACKOUT_INTRO_5");
       break;
     case "bog_a":
-      introscreen_add_line( & "BOG_A_INTRO_1");
-      introscreen_add_line( & "BOG_A_INTRO_2");
-      introscreen_add_line( & "BOG_A_SGT_PAUL_JACKSON");
-      introscreen_add_line( & "BOG_A_1ST_FORCE_RECON_CO_USMC");
+      introscreen_add_line(&"BOG_A_INTRO_1");
+      introscreen_add_line(&"BOG_A_INTRO_2");
+      introscreen_add_line(&"BOG_A_SGT_PAUL_JACKSON");
+      introscreen_add_line(&"BOG_A_1ST_FORCE_RECON_CO_USMC");
       break;
     case "bog_b":
-      introscreen_add_line( & "BOG_B_INTROSCREEN_LINE_1");
-      introscreen_add_line( & "BOG_B_INTROSCREEN_LINE_2");
-      introscreen_add_line( & "BOG_B_INTROSCREEN_LINE_3");
-      introscreen_add_line( & "BOG_B_INTROSCREEN_LINE_4");
+      introscreen_add_line(&"BOG_B_INTROSCREEN_LINE_1");
+      introscreen_add_line(&"BOG_B_INTROSCREEN_LINE_2");
+      introscreen_add_line(&"BOG_B_INTROSCREEN_LINE_3");
+      introscreen_add_line(&"BOG_B_INTROSCREEN_LINE_4");
       break;
     case "cargoship":
-      introscreen_add_line( & "CARGOSHIP_LINE1");
-      introscreen_add_line( & "CARGOSHIP_LINE2");
-      introscreen_add_line( & "CARGOSHIP_LINE3");
-      introscreen_add_line( & "CARGOSHIP_LINE4");
-      introscreen_add_line( & "CARGOSHIP_LINE5");
+      introscreen_add_line(&"CARGOSHIP_LINE1");
+      introscreen_add_line(&"CARGOSHIP_LINE2");
+      introscreen_add_line(&"CARGOSHIP_LINE3");
+      introscreen_add_line(&"CARGOSHIP_LINE4");
+      introscreen_add_line(&"CARGOSHIP_LINE5");
       break;
     case "hunted":
-      introscreen_add_line( & "HUNTED_INTROSCREEN_LINE_1");
-      introscreen_add_line( & "HUNTED_INTROSCREEN_LINE_2");
-      introscreen_add_line( & "HUNTED_INTROSCREEN_LINE_3");
-      introscreen_add_line( & "HUNTED_INTROSCREEN_LINE_4");
-      introscreen_add_line( & "HUNTED_INTROSCREEN_LINE_5");
+      introscreen_add_line(&"HUNTED_INTROSCREEN_LINE_1");
+      introscreen_add_line(&"HUNTED_INTROSCREEN_LINE_2");
+      introscreen_add_line(&"HUNTED_INTROSCREEN_LINE_3");
+      introscreen_add_line(&"HUNTED_INTROSCREEN_LINE_4");
+      introscreen_add_line(&"HUNTED_INTROSCREEN_LINE_5");
       break;
     case "icbm":
-      introscreen_add_line( & "ICBM_INTROSCREEN_LINE_1");
-      introscreen_add_line( & "ICBM_INTROSCREEN_LINE_2");
-      introscreen_add_line( & "ICBM_INTROSCREEN_LINE_3");
-      introscreen_add_line( & "ICBM_INTROSCREEN_LINE_4");
-      introscreen_add_line( & "ICBM_INTROSCREEN_LINE_5");
+      introscreen_add_line(&"ICBM_INTROSCREEN_LINE_1");
+      introscreen_add_line(&"ICBM_INTROSCREEN_LINE_2");
+      introscreen_add_line(&"ICBM_INTROSCREEN_LINE_3");
+      introscreen_add_line(&"ICBM_INTROSCREEN_LINE_4");
+      introscreen_add_line(&"ICBM_INTROSCREEN_LINE_5");
       break;
     case "jeepride":
-      introscreen_add_line( & "JEEPRIDE_INTROSCREEN_LINE1");
-      introscreen_add_line( & "JEEPRIDE_INTROSCREEN_LINE2");
-      introscreen_add_line( & "JEEPRIDE_INTROSCREEN_LINE3");
-      introscreen_add_line( & "JEEPRIDE_INTROSCREEN_LINE4");
-      introscreen_add_line( & "JEEPRIDE_INTROSCREEN_LINE5");
+      introscreen_add_line(&"JEEPRIDE_INTROSCREEN_LINE1");
+      introscreen_add_line(&"JEEPRIDE_INTROSCREEN_LINE2");
+      introscreen_add_line(&"JEEPRIDE_INTROSCREEN_LINE3");
+      introscreen_add_line(&"JEEPRIDE_INTROSCREEN_LINE4");
+      introscreen_add_line(&"JEEPRIDE_INTROSCREEN_LINE5");
       break;
     case "killhouse":
-      introscreen_add_line( & "KILLHOUSE_INTROSCREEN_LINE_1");
-      introscreen_add_line( & "KILLHOUSE_INTROSCREEN_LINE_2");
-      introscreen_add_line( & "KILLHOUSE_INTROSCREEN_LINE_3");
-      introscreen_add_line( & "KILLHOUSE_INTROSCREEN_LINE_4");
-      introscreen_add_line( & "KILLHOUSE_INTROSCREEN_LINE_5");
+      introscreen_add_line(&"KILLHOUSE_INTROSCREEN_LINE_1");
+      introscreen_add_line(&"KILLHOUSE_INTROSCREEN_LINE_2");
+      introscreen_add_line(&"KILLHOUSE_INTROSCREEN_LINE_3");
+      introscreen_add_line(&"KILLHOUSE_INTROSCREEN_LINE_4");
+      introscreen_add_line(&"KILLHOUSE_INTROSCREEN_LINE_5");
       break;
     case "launchfacility_a":
-      introscreen_add_line( & "LAUNCHFACILITY_A_INTROSCREEN_LINE_1");
-      introscreen_add_line( & "LAUNCHFACILITY_A_INTROSCREEN_LINE_2");
-      introscreen_add_line( & "LAUNCHFACILITY_A_INTROSCREEN_LINE_3");
-      introscreen_add_line( & "LAUNCHFACILITY_A_INTROSCREEN_LINE_4");
-      introscreen_add_line( & "LAUNCHFACILITY_A_INTROSCREEN_LINE_5");
+      introscreen_add_line(&"LAUNCHFACILITY_A_INTROSCREEN_LINE_1");
+      introscreen_add_line(&"LAUNCHFACILITY_A_INTROSCREEN_LINE_2");
+      introscreen_add_line(&"LAUNCHFACILITY_A_INTROSCREEN_LINE_3");
+      introscreen_add_line(&"LAUNCHFACILITY_A_INTROSCREEN_LINE_4");
+      introscreen_add_line(&"LAUNCHFACILITY_A_INTROSCREEN_LINE_5");
       break;
     case "launchfacility_b":
-      introscreen_add_line( & "LAUNCHFACILITY_B_INTROSCREEN_LINE_1");
-      introscreen_add_line( & "LAUNCHFACILITY_B_INTROSCREEN_LINE_2");
-      introscreen_add_line( & "LAUNCHFACILITY_B_INTROSCREEN_LINE_3");
-      introscreen_add_line( & "LAUNCHFACILITY_B_INTROSCREEN_LINE_4");
-      introscreen_add_line( & "LAUNCHFACILITY_B_INTROSCREEN_LINE_5");
+      introscreen_add_line(&"LAUNCHFACILITY_B_INTROSCREEN_LINE_1");
+      introscreen_add_line(&"LAUNCHFACILITY_B_INTROSCREEN_LINE_2");
+      introscreen_add_line(&"LAUNCHFACILITY_B_INTROSCREEN_LINE_3");
+      introscreen_add_line(&"LAUNCHFACILITY_B_INTROSCREEN_LINE_4");
+      introscreen_add_line(&"LAUNCHFACILITY_B_INTROSCREEN_LINE_5");
       break;
     case "scoutsniper":
-      introscreen_add_line( & "SCOUTSNIPER_INTRO_1");
-      introscreen_add_line( & "SCOUTSNIPER_INTRO_2");
-      introscreen_add_line( & "SCOUTSNIPER_INTRO_3");
-      introscreen_add_line( & "SCOUTSNIPER_INTRO_4");
-      precachestring( & "SCOUTSNIPER_15_YEARS_AGO");
+      introscreen_add_line(&"SCOUTSNIPER_INTRO_1");
+      introscreen_add_line(&"SCOUTSNIPER_INTRO_2");
+      introscreen_add_line(&"SCOUTSNIPER_INTRO_3");
+      introscreen_add_line(&"SCOUTSNIPER_INTRO_4");
+      precachestring(&"SCOUTSNIPER_15_YEARS_AGO");
       break;
     case "village_assault":
-      introscreen_add_line( & "VILLAGE_ASSAULT_INTROSCREEN_LINE_1");
-      introscreen_add_line( & "VILLAGE_ASSAULT_INTROSCREEN_LINE_2");
-      introscreen_add_line( & "VILLAGE_ASSAULT_INTROSCREEN_LINE_3");
-      introscreen_add_line( & "VILLAGE_ASSAULT_INTROSCREEN_LINE_4");
-      introscreen_add_line( & "VILLAGE_ASSAULT_INTROSCREEN_LINE_5");
+      introscreen_add_line(&"VILLAGE_ASSAULT_INTROSCREEN_LINE_1");
+      introscreen_add_line(&"VILLAGE_ASSAULT_INTROSCREEN_LINE_2");
+      introscreen_add_line(&"VILLAGE_ASSAULT_INTROSCREEN_LINE_3");
+      introscreen_add_line(&"VILLAGE_ASSAULT_INTROSCREEN_LINE_4");
+      introscreen_add_line(&"VILLAGE_ASSAULT_INTROSCREEN_LINE_5");
       break;
     case "village_defend":
-      introscreen_add_line( & "VILLAGE_DEFEND_INTRO_1");
-      introscreen_add_line( & "VILLAGE_DEFEND_INTRO_2");
-      introscreen_add_line( & "VILLAGE_DEFEND_INTRO_3");
-      introscreen_add_line( & "VILLAGE_DEFEND_INTRO_4");
-      introscreen_add_line( & "VILLAGE_DEFEND_INTRO_5");
-      precachestring( & "VILLAGE_DEFEND_PRESENT_DAY");
+      introscreen_add_line(&"VILLAGE_DEFEND_INTRO_1");
+      introscreen_add_line(&"VILLAGE_DEFEND_INTRO_2");
+      introscreen_add_line(&"VILLAGE_DEFEND_INTRO_3");
+      introscreen_add_line(&"VILLAGE_DEFEND_INTRO_4");
+      introscreen_add_line(&"VILLAGE_DEFEND_INTRO_5");
+      precachestring(&"VILLAGE_DEFEND_PRESENT_DAY");
       break;
   }
 }

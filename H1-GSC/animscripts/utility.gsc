@@ -650,9 +650,7 @@ shootenemywrapper(var_0) {
   if(!isdefined(var_0))
     var_0 = 1;
 
-  [
-    [anim.shootenemywrapper_func]
-  ](var_0);
+  [[anim.shootenemywrapper_func]](var_0);
 }
 
 shootenemywrapper_normal(var_0) {

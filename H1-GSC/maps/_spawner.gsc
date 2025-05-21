@@ -1490,9 +1490,7 @@ spawn_think_action(var_0) {
   init_reset_ai();
   spawn_think_game_skill_related();
   spawn_think_script_inits();
-  [
-    [level.team_specific_spawn_functions[self.team]]
-  ]();
+  [[level.team_specific_spawn_functions[self.team]]]();
   thread[[level.subclass_spawn_functions[self.subclass]]]();
   thread maps\_damagefeedback::monitordamage();
   set_goal_height_from_settings();
@@ -2577,7 +2575,7 @@ friendly_mg42_wait_for_use(var_0) {
   var_0 endon("friendly_finished_using_mg42");
   self.useable = 1;
   self setcursorhint("HINT_NOICON");
-  self sethintstring( & "PLATFORM_USEAIONMG42");
+  self sethintstring(&"PLATFORM_USEAIONMG42");
   self waittill("trigger");
   self.useable = 0;
   self sethintstring("");

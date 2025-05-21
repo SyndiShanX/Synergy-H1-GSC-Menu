@@ -49,14 +49,14 @@ setmeleeattackdist() {
 initdoganimations() {
   if(!isdefined(level.dogsinitialized)) {
     level.dogsinitialized = 1;
-    precachestring( & "SCRIPT_PLATFORM_DOG_DEATH_DO_NOTHING");
-    precachestring( & "SCRIPT_PLATFORM_DOG_DEATH_TOO_LATE");
-    precachestring( & "SCRIPT_PLATFORM_DOG_DEATH_TOO_SOON");
-    precachestring( & "SCRIPT_PLATFORM_DOG_HINT");
-    precachestring( & "SCRIPT_PLATFORM_DOG_HINT_KEYBOARD");
-    precachestring( & "NEW_DOG_DEATH_DO_NOTHING_ALT");
-    precachestring( & "NEW_DOG_DEATH_TOO_LATE_ALT");
-    precachestring( & "NEW_DOG_DEATH_TOO_SOON_ALT");
+    precachestring(&"SCRIPT_PLATFORM_DOG_DEATH_DO_NOTHING");
+    precachestring(&"SCRIPT_PLATFORM_DOG_DEATH_TOO_LATE");
+    precachestring(&"SCRIPT_PLATFORM_DOG_DEATH_TOO_SOON");
+    precachestring(&"SCRIPT_PLATFORM_DOG_HINT");
+    precachestring(&"SCRIPT_PLATFORM_DOG_HINT_KEYBOARD");
+    precachestring(&"NEW_DOG_DEATH_DO_NOTHING_ALT");
+    precachestring(&"NEW_DOG_DEATH_TOO_LATE_ALT");
+    precachestring(&"NEW_DOG_DEATH_TOO_SOON_ALT");
   }
 
   if(isdefined(anim.notfirsttimedogs)) {

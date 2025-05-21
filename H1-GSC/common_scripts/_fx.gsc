@@ -564,9 +564,7 @@ oneshotfxthread() {
   if(self.v["delay"] > 0)
     wait(self.v["delay"]);
 
-  [
-    [level.func["create_triggerfx"]]
-  ]();
+  [[level.func["create_triggerfx"]]]();
 }
 
 add_reactive_fx() {

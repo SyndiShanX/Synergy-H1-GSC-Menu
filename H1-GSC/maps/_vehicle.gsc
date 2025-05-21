@@ -981,9 +981,7 @@ build_grenadeshield(var_0) {
 
 build_aianims(var_0, var_1) {
   var_2 = level.vtclassname;
-  level.vehicle_aianims[var_2] = [
-    [var_0]
-  ]();
+  level.vehicle_aianims[var_2] = [[var_0]]();
 
   if(isdefined(var_1))
     level.vehicle_aianims[var_2] = [
@@ -992,9 +990,7 @@ build_aianims(var_0, var_1) {
 }
 
 build_aianims_with_classname(var_0, var_1, var_2) {
-  level.vehicle_aianims[var_0] = [
-    [var_1]
-  ]();
+  level.vehicle_aianims[var_0] = [[var_1]]();
 
   if(isdefined(var_2))
     level.vehicle_aianims[var_0] = [
@@ -1007,15 +1003,11 @@ build_frontarmor(var_0) {
 }
 
 build_attach_models(var_0) {
-  level.vehicle_attachedmodels[level.vtclassname] = [
-    [var_0]
-  ]();
+  level.vehicle_attachedmodels[level.vtclassname] = [[var_0]]();
 }
 
 build_unload_groups(var_0) {
-  level.vehicle_unloadgroups[level.vtclassname] = [
-    [var_0]
-  ]();
+  level.vehicle_unloadgroups[level.vtclassname] = [[var_0]]();
 }
 
 build_life(var_0, var_1, var_2) {

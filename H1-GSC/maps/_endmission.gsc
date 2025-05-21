@@ -36,7 +36,7 @@ main() {
     level.endmission_main_func = undefined;
   }
 
-  precachestring( & "campaign_completed_popup");
+  precachestring(&"campaign_completed_popup");
   level.missionsettings = var_0;
 }
 
@@ -104,7 +104,7 @@ _nextmission() {
 
   if(level.script == "airplane") {
     if(getdvarint("arcademode_full")) {
-      level.player luiopenmenu( & "AIRPLANE_CAMPAIGN_COMPLETED");
+      level.player luiopenmenu(&"AIRPLANE_CAMPAIGN_COMPLETED");
       level.player waittill("menuresponse");
     }
 
@@ -113,7 +113,7 @@ _nextmission() {
     return;
   } else {
     if(var_1 != level.missionsettings isallmisioncompleted()) {
-      level.player luiopenmenu( & "campaign_completed_popup");
+      level.player luiopenmenu(&"campaign_completed_popup");
       level.player waittill("menuresponse", var_3, var_4);
 
       if(var_4 == "quit") {

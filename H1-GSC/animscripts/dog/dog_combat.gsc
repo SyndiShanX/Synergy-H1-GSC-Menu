@@ -654,7 +654,7 @@ show_prepare_dog_hint_h1() {
 
     self.meleeingplayer.doghintelem = self.meleeingplayer maps\_hud_util::createclientfontstring("timer", var_0);
     self.meleeingplayer.doghintelem.color = (1, 1, 1);
-    self.meleeingplayer.doghintelem settext( & "SCRIPT_PLATFORM_DOG_HINT");
+    self.meleeingplayer.doghintelem settext(&"SCRIPT_PLATFORM_DOG_HINT");
     self.meleeingplayer.doghintelem.x = 0;
     self.meleeingplayer.doghintelem.y = 20;
     self.meleeingplayer.doghintelem.alignx = "center";
@@ -678,7 +678,7 @@ show_prepare_dog_hint_h1() {
   } else {
     self.meleeingplayer.doghintelem = self.meleeingplayer maps\_hud_util::createclientfontstring("timer", 0.5);
     self.meleeingplayer.doghintelem.color = (1, 1, 1);
-    self.meleeingplayer.doghintelem settext( & "SCRIPT_PLATFORM_DOG_HINT_KEYBOARD");
+    self.meleeingplayer.doghintelem settext(&"SCRIPT_PLATFORM_DOG_HINT_KEYBOARD");
     self.meleeingplayer.doghintelem.x = 0;
     self.meleeingplayer.doghintelem.y = 20;
     self.meleeingplayer.doghintelem.font = "timer";
@@ -787,7 +787,7 @@ dog_hint_fail_effect() {
   }
   if(isdefined(self.meleeingplayer.doghintbackerblur)) {
     var_0 = 1.0;
-    self.meleeingplayer.doghintelem settext( & "SCRIPT_PLATFORM_DOG_HINT_KEYBOARD_FAIL");
+    self.meleeingplayer.doghintelem settext(&"SCRIPT_PLATFORM_DOG_HINT_KEYBOARD_FAIL");
     wait 0.05;
     self.meleeingplayer.doghintelem fadeovertime(var_0);
     self.meleeingplayer.doghintbackerblur fadeovertime(var_0);

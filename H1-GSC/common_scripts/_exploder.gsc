@@ -902,9 +902,7 @@ activate_exploder(var_0, var_1, var_2) {
 }
 
 exploder(var_0, var_1, var_2) {
-  [
-    [level._fx.exploderfunction]
-  ](var_0, var_1, var_2);
+  [[level._fx.exploderfunction]](var_0, var_1, var_2);
 }
 
 kill_exploder(var_0) {

@@ -891,9 +891,7 @@ init_light_def() {
   var_0["pulse"] = ::def_pulse;
   var_0["neon"] = ::def_neon;
   var_0["fire"] = ::def_fire;
-  [
-    [var_0[self.script_light]]
-  ]();
+  [[var_0[self.script_light]]]();
 }
 
 def_pulse() {

@@ -395,11 +395,11 @@ updaterankannouncehud() {
     if(isdefined(var_9) && var_8 != self) {
       if(var_9 == var_0) {
         if(var_1 > level.maxrank) {
-          var_8 iprintln( & "RANK_PLAYER_WAS_PROMOTED_N", self, var_6, var_1 + 1);
+          var_8 iprintln(&"RANK_PLAYER_WAS_PROMOTED_N", self, var_6, var_1 + 1);
           continue;
         }
 
-        var_8 iprintln( & "RANK_PLAYER_WAS_PROMOTED", self, var_6);
+        var_8 iprintln(&"RANK_PLAYER_WAS_PROMOTED", self, var_6);
       }
     }
   }
@@ -419,8 +419,8 @@ xppointspopup(var_0, var_1) {
 
   if(getdvarint("scr_lua_score")) {
     if(var_2 >= 0) {
-      self luinotifyevent( & "score_event", 2, var_2, var_1);
-      self luinotifyeventtospectators( & "score_event", 2, var_2, var_1);
+      self luinotifyevent(&"score_event", 2, var_2, var_1);
+      self luinotifyeventtospectators(&"score_event", 2, var_2, var_1);
     }
 
     return;

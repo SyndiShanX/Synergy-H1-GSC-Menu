@@ -74,9 +74,9 @@ main() {
   precacheitem("m1a1_turret_blank");
   precacheitem("remote_missile_detonator");
   precacheitem("remote_missile");
-  precachestring( & "BOG_B_OBJ_ESCORT_TANK");
-  precachestring( & "BOG_B_OBJ_SEAKNIGHT");
-  precachestring( & "BOG_B_T72_MG_DEATH");
+  precachestring(&"BOG_B_OBJ_ESCORT_TANK");
+  precachestring(&"BOG_B_OBJ_SEAKNIGHT");
+  precachestring(&"BOG_B_T72_MG_DEATH");
   precacherumble("tank_fire");
   precacherumble("tank_impact");
   precachemodel("h1_bog_b_patch_concrete_slab");

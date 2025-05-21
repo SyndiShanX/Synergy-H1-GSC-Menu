@@ -388,7 +388,7 @@ dialogue_smoke_hints() {
     while (isdefined(level.current_hint))
       wait 0.05;
 
-    thread maps\_utility::hint( & "SCRIPT_PLATFORM_LAUNCHFACILITY_A_HINT_SMOKE", 5);
+    thread maps\_utility::hint(&"SCRIPT_PLATFORM_LAUNCHFACILITY_A_HINT_SMOKE", 5);
     wait(randomfloatrange(6, 11));
   }
 
@@ -1866,7 +1866,7 @@ player_rappel() {
   var_4 setmodel("rope_coil_obj");
   var_4.angles = var_2.angles;
   var_5 = getent("trig_rappel", "targetname");
-  var_5 sethintstring( & "SCRIPT_PLATFORM_HINTSTR_RAPPEL");
+  var_5 sethintstring(&"SCRIPT_PLATFORM_HINTSTR_RAPPEL");
   var_5 thread trigger_monitor_player_lean();
 
   for (;;) {
@@ -2117,7 +2117,7 @@ vent_nag() {
   thread vent_nag_cleanup();
 
   if(!common_scripts\utility::flag("obj_rappel_complete"))
-    thread maps\_utility::hint( & "LAUNCHFACILITY_A_HINTSTR_RAPPEL_DOWN_SHAFT", 9999);
+    thread maps\_utility::hint(&"LAUNCHFACILITY_A_HINTSTR_RAPPEL_DOWN_SHAFT", 9999);
 
   while (!common_scripts\utility::flag("obj_rappel_complete")) {
     wait(randomfloatrange(6, 10));
@@ -2218,7 +2218,7 @@ bmp_nags(var_0, var_1, var_2) {
       while (isdefined(level.current_hint))
         wait 0.05;
 
-      thread maps\_utility::hint( & "SCRIPT_PLATFORM_LAUNCHFACILITY_A_HINT_PLANT_C4_GLOW", 7);
+      thread maps\_utility::hint(&"SCRIPT_PLATFORM_LAUNCHFACILITY_A_HINT_PLANT_C4_GLOW", 7);
     }
 
     if(isdefined(var_2) && var_2 == 1) {
@@ -2628,7 +2628,7 @@ vehicle_damage_hints() {
       case "mod_grenade_splash":
       case "mod_grenade":
         thread maps\_utility::hint_fade();
-        thread maps\_utility::hint( & "SCRIPT_ARMOR_DAMAGE", 5, undefined, 1);
+        thread maps\_utility::hint(&"SCRIPT_ARMOR_DAMAGE", 5, undefined, 1);
         wait 10;
         break;
     }
@@ -3455,11 +3455,11 @@ attach_saw(var_0) {
 }
 
 initprecache() {
-  precachestring( & "LAUNCHFACILITY_A_OBJ_GAIN_ACCESS");
-  precachestring( & "LAUNCHFACILITY_A_OBJ_RIGHT_GATE");
-  precachestring( & "LAUNCHFACILITY_A_OBJ_ENEMY_ARMOR");
-  precachestring( & "LAUNCHFACILITY_A_OBJ_NORTH_TARMAC");
-  precachestring( & "LAUNCHFACILITY_A_OBJ_RAPPEL");
+  precachestring(&"LAUNCHFACILITY_A_OBJ_GAIN_ACCESS");
+  precachestring(&"LAUNCHFACILITY_A_OBJ_RIGHT_GATE");
+  precachestring(&"LAUNCHFACILITY_A_OBJ_ENEMY_ARMOR");
+  precachestring(&"LAUNCHFACILITY_A_OBJ_NORTH_TARMAC");
+  precachestring(&"LAUNCHFACILITY_A_OBJ_RAPPEL");
   precacheitem("m14_scoped");
   precacheitem("rpg_player");
   precacheitem("hind_turret");
@@ -3475,15 +3475,15 @@ initprecache() {
   precachemodel("weapon_saw_rescue");
   precacheshader("h1_hud_tutorial_blur");
   precacheshader("h1_hud_tutorial_border");
-  precachestring( & "SCRIPT_ARMOR_DAMAGE");
-  precachestring( & "LAUNCHFACILITY_A_DEBUG_LEVEL_END");
-  precachestring( & "SCRIPT_PLATFORM_LAUNCHFACILITY_A_HINT_SMOKE");
-  precachestring( & "SCRIPT_PLATFORM_LAUNCHFACILITY_A_HINT_PLANT_C4_GLOW");
-  precachestring( & "LAUNCHFACILITY_A_HINTSTR_C4_PLANT");
-  precachestring( & "LAUNCHFACILITY_A_HINTSTR_C4_DETONATE");
-  precachestring( & "SCRIPT_PLATFORM_HINTSTR_RAPPEL");
-  precachestring( & "LAUNCHFACILITY_A_HINTSTR_RAPPEL_DOWN_SHAFT");
-  precachestring( & "LAUNCHFACILITY_A_HINTSTR_EXPLOSIVES_PLANTED");
+  precachestring(&"SCRIPT_ARMOR_DAMAGE");
+  precachestring(&"LAUNCHFACILITY_A_DEBUG_LEVEL_END");
+  precachestring(&"SCRIPT_PLATFORM_LAUNCHFACILITY_A_HINT_SMOKE");
+  precachestring(&"SCRIPT_PLATFORM_LAUNCHFACILITY_A_HINT_PLANT_C4_GLOW");
+  precachestring(&"LAUNCHFACILITY_A_HINTSTR_C4_PLANT");
+  precachestring(&"LAUNCHFACILITY_A_HINTSTR_C4_DETONATE");
+  precachestring(&"SCRIPT_PLATFORM_HINTSTR_RAPPEL");
+  precachestring(&"LAUNCHFACILITY_A_HINTSTR_RAPPEL_DOWN_SHAFT");
+  precachestring(&"LAUNCHFACILITY_A_HINTSTR_EXPLOSIVES_PLANTED");
   precacherumble("generic_attack_light_500");
   precacherumble("generic_attack_light_1000");
   precacherumble("generic_attack_light_1500");

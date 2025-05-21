@@ -63,13 +63,13 @@ main() {
   precachemodel("com_folding_chair");
   precachemodel("weapon_c4");
   precachemodel("weapon_c4_obj");
-  precachestring( & "ICBM_GRIGGSUSETRIGGER");
-  precachestring( & "ICBM_LOCATE_SSGTGRIGGS");
-  precachestring( & "ICBM_DESTROY_THE_POWER_TRANSMISSION");
-  precachestring( & "ICBM_REGROUP_WITH_SECOND_SQUAD");
-  precachestring( & "ICBM_PLANT_C4_ON_TOWER_LEGS");
-  precachestring( & "ICBM_GET_TO_A_SAFE_DISTANCE");
-  precachestring( & "ICBM_MISSIONFAIL_ICBM_CHOPPERS_SHOT");
+  precachestring(&"ICBM_GRIGGSUSETRIGGER");
+  precachestring(&"ICBM_LOCATE_SSGTGRIGGS");
+  precachestring(&"ICBM_DESTROY_THE_POWER_TRANSMISSION");
+  precachestring(&"ICBM_REGROUP_WITH_SECOND_SQUAD");
+  precachestring(&"ICBM_PLANT_C4_ON_TOWER_LEGS");
+  precachestring(&"ICBM_GET_TO_A_SAFE_DISTANCE");
+  precachestring(&"ICBM_MISSIONFAIL_ICBM_CHOPPERS_SHOT");
   maps\_utility::add_hint_string("one_more_c4", & "ICBM_ONE_MORE_C4", undefined);
   setsaveddvar("r_reactiveMotionWindAmplitudeScale", 3);
   setsaveddvar("r_reactiveMotionWindStrength", 1);
@@ -631,7 +631,7 @@ allow_free_griggs_when_looking_in_position() {
     var_1 = common_scripts\utility::within_fov(level.player geteye(), level.player getplayerangles(), level.griggs.origin, var_0);
 
     if((var_1 || level.player islookingat(level.griggs)) && level.player istouching(self) && !level.player isleaning()) {
-      self sethintstring( & "ICBM_GRIGGSUSETRIGGER");
+      self sethintstring(&"ICBM_GRIGGSUSETRIGGER");
 
       if(level.player usebuttonpressed()) {
         self notify("griggs_trigger_used");
@@ -645,7 +645,7 @@ allow_free_griggs_when_looking_in_position() {
 player_cut_grigs_loose() {
   if(getdvarint("use_old_griggs_rescue") == 1) {
     self usetriggerrequirelookat();
-    self sethintstring( & "ICBM_GRIGGSUSETRIGGER");
+    self sethintstring(&"ICBM_GRIGGSUSETRIGGER");
     self waittill("trigger");
   } else {
     common_scripts\utility::flag_wait("price_ready_for_griggs_rescue");
@@ -835,7 +835,7 @@ second_c4_plant_check() {
     }
 
     if(level.player attackbuttonpressed() && !var_0 && gettime() > var_1) {
-      thread maps\_utility::hint( & "ICBM_ONE_MORE_C4", 3);
+      thread maps\_utility::hint(&"ICBM_ONE_MORE_C4", 3);
       var_1 = gettime() + 4000;
     }
 

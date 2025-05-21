@@ -10,9 +10,7 @@ movewalk() {
   if(isdefined(self.pathgoalpos) && distancesquared(self.origin, self.pathgoalpos) > 4096)
     var_0 = "stand";
 
-  var_1 = [
-    [self.chooseposefunc]
-  ](var_0);
+  var_1 = [[self.chooseposefunc]](var_0);
 
   switch (var_1) {
     case "stand":

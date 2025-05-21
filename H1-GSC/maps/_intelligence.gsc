@@ -8,7 +8,7 @@ main() {
   if(!maps\_utility::is_h1_level()) {
     return;
   }
-  precachestring( & "SCRIPT_INTELLIGENCE_OF_THIRTY");
+  precachestring(&"SCRIPT_INTELLIGENCE_OF_THIRTY");
   precacheshader("h1_hud_ammo_status_glow");
   precacheshader("h1_hud_ammo_status_scanlines");
   level.intel_items_total = 30;
@@ -91,7 +91,7 @@ create_array_of_origins_from_table() {
 }
 
 wait_for_pickup() {
-  self sethintstring( & "SCRIPT_INTELLIGENCE_PICKUP");
+  self sethintstring(&"SCRIPT_INTELLIGENCE_PICKUP");
   self usetriggerrequirelookat();
   self endon("end_trigger_thread");
   self waittill("trigger");

@@ -405,9 +405,7 @@ custommovetransition() {
   if(!isdefined(self.permanentcustommovetransition))
     self.custommovetransition = undefined;
 
-  var_1 = [
-    [var_0]
-  ]();
+  var_1 = [[var_0]]();
 
   if(!isdefined(self.permanentcustommovetransition))
     self.startmovetransitionanim = undefined;

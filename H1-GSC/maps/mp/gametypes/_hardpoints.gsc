@@ -36,7 +36,7 @@ init() {
   precachestring(level.hardpointhints["radar_mp_not_available"]);
   precachestring(level.hardpointhints["airstrike_mp_not_available"]);
   precachestring(level.hardpointhints["helicopter_mp_not_available"]);
-  precachestring( & "MP_KILLSTREAK_N");
+  precachestring(&"MP_KILLSTREAK_N");
   precachelocationselector("map_artillery_selector");
 
   if(!isdefined(level.airstrikefx))
@@ -184,7 +184,7 @@ doartillery(var_0, var_1, var_2) {
       for (var_8 = 0; var_8 < var_7.size; var_8++) {
         if(isalive(var_7[var_8]) && isdefined(var_7[var_8].pers["team"]) && var_7[var_8].pers["team"] == var_2) {
           if(pointisinairstrikearea(var_7[var_8].origin, var_4, var_6))
-            var_7[var_8] iprintlnbold( & "MP_WAR_AIRSTRIKE_INBOUND_NEAR_YOUR_POSITION");
+            var_7[var_8] iprintlnbold(&"MP_WAR_AIRSTRIKE_INBOUND_NEAR_YOUR_POSITION");
         }
       }
     }
@@ -197,7 +197,7 @@ doartillery(var_0, var_1, var_2) {
 
       if(isdefined(var_10)) {
         if(var_10 == var_2)
-          var_9 iprintln( & "MP_WAR_AIRSTRIKE_INBOUND", var_1);
+          var_9 iprintln(&"MP_WAR_AIRSTRIKE_INBOUND", var_1);
       }
     }
   } else {
@@ -205,7 +205,7 @@ doartillery(var_0, var_1, var_2) {
 
     if(!level.hardcoremode) {
       if(pointisinairstrikearea(var_1.origin, var_4, var_6))
-        var_1 iprintlnbold( & "MP_WAR_AIRSTRIKE_INBOUND_NEAR_YOUR_POSITION");
+        var_1 iprintlnbold(&"MP_WAR_AIRSTRIKE_INBOUND_NEAR_YOUR_POSITION");
     }
   }
 
@@ -808,7 +808,7 @@ triggerhardpoint(var_0) {
       if(!var_2)
         var_2 = 1;
 
-      self iprintlnbold( & "MP_UNAVAILABLE_FOR_N", var_2);
+      self iprintlnbold(&"MP_UNAVAILABLE_FOR_N", var_2);
       return 0;
     }
   }
@@ -849,7 +849,7 @@ triggerhardpoint(var_0) {
 
         if(isdefined(var_11)) {
           if(var_11 == var_7)
-            var_10 iprintln( & "MP_HELICOPTER_INBOUND", self);
+            var_10 iprintln(&"MP_HELICOPTER_INBOUND", self);
         }
       }
     } else {
@@ -877,12 +877,12 @@ uavacquiredprintandsound(var_0, var_1, var_2, var_3) {
 
       if(isdefined(var_8)) {
         if(var_8 == var_0) {
-          var_7 iprintln( & "MP_WAR_RADAR_ACQUIRED", var_2, var_3);
+          var_7 iprintln(&"MP_WAR_RADAR_ACQUIRED", var_2, var_3);
           continue;
         }
 
         if(var_8 == var_1)
-          var_7 iprintln( & "MP_WAR_RADAR_ACQUIRED_ENEMY", var_3);
+          var_7 iprintln(&"MP_WAR_RADAR_ACQUIRED_ENEMY", var_3);
       }
     }
 
@@ -897,12 +897,12 @@ uavacquiredprintandsound(var_0, var_1, var_2, var_3) {
 
       if(isdefined(var_8)) {
         if(var_8 == var_0) {
-          var_7 iprintln( & "MP_WAR_RADAR_ACQUIRED", var_2, var_3);
+          var_7 iprintln(&"MP_WAR_RADAR_ACQUIRED", var_2, var_3);
           continue;
         }
 
         if(var_8 == var_1)
-          var_7 iprintln( & "MP_WAR_RADAR_ACQUIRED_ENEMY", var_3);
+          var_7 iprintln(&"MP_WAR_RADAR_ACQUIRED_ENEMY", var_3);
       }
     }
   }
@@ -921,7 +921,7 @@ useradaritem() {
     thread useteamuav(var_0, var_1);
   } else {
     maps\mp\_utility::leaderdialogonplayer("uav_online");
-    self iprintln( & "MP_WAR_RADAR_ACQUIRED", self, level.radarviewtime);
+    self iprintln(&"MP_WAR_RADAR_ACQUIRED", self, level.radarviewtime);
     self notify("radar_timer_kill");
     thread useplayeruav();
   }
@@ -970,7 +970,7 @@ useplayeruav(var_0, var_1) {
 
   if(isdefined(var_3) && var_3 == "expire") {
     self.hasradar = 0;
-    self iprintln( & "MP_WAR_RADAR_EXPIRED");
+    self iprintln(&"MP_WAR_RADAR_EXPIRED");
   }
 
   var_2 removeactiveuav();

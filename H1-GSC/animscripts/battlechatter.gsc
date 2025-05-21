@@ -1838,9 +1838,7 @@ battlechatter_print_internal(var_0, var_1) {
   if(var_0 != "")
     var_2 = common_scripts\utility::ter_op(self.team == "allies", "^5", "^6") + "BC: ";
 
-  [
-    [var_1]
-  ](var_2 + var_0);
+  [[var_1]](var_2 + var_0);
 }
 
 battlechatter_canprintdump() {

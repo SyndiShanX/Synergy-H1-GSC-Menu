@@ -4404,10 +4404,10 @@ miscprecache() {
   precachemodel("tag_origin");
   precachemodel("com_folding_chair");
   precachemodel("vehicle_bm21_mobile_cover");
-  precachestring( & "SCRIPT_ARMOR_DAMAGE");
-  precachestring( & "SCOUTSNIPER_FRIENDLY_FIRE_WILL_NOT");
-  precachestring( & "SCOUTSNIPER_YOUR_ACTIONS_GOT_CPT");
-  precachestring( & "SCOUTSNIPER_LEFT_BEHIND");
+  precachestring(&"SCRIPT_ARMOR_DAMAGE");
+  precachestring(&"SCOUTSNIPER_FRIENDLY_FIRE_WILL_NOT");
+  precachestring(&"SCOUTSNIPER_YOUR_ACTIONS_GOT_CPT");
+  precachestring(&"SCOUTSNIPER_LEFT_BEHIND");
   precacherumble("bmp_rumble");
   precacherumble("heli_loop");
 }

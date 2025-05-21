@@ -5,7 +5,7 @@
 ******************************************/
 
 init() {
-  precachestring( & "MP_CHALLENGE_COMPLETED");
+  precachestring(&"MP_CHALLENGE_COMPLETED");
 
   if(!mayprocesschallenges()) {
     return;

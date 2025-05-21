@@ -30,9 +30,9 @@ init() {
   precacheshader("remotemissile_infantry_target_2plr");
   precacheshader("hud_fofbox_self_sp");
   precacheshader("dpad_killstreak_hellfire_missile_inactive");
-  precachestring( & "HELLFIRE_DRONE_VIEW");
-  precachestring( & "HELLFIRE_MISSILE_VIEW");
-  precachestring( & "HELLFIRE_FIRE");
+  precachestring(&"HELLFIRE_DRONE_VIEW");
+  precachestring(&"HELLFIRE_MISSILE_VIEW");
+  precachestring(&"HELLFIRE_FIRE");
   level.uav_struct = spawnstruct();
   level.uav_struct.view_cone = 4;
   common_scripts\utility::flag_init("predator_missile_launch_allowed");
@@ -549,7 +549,7 @@ text_titledestroy() {
 
 display_wait_to_fire(var_0) {
   text_noticedestroy();
-  text_labelcreate( & "HELLFIRE_RELOADING_WITH_TIME", var_0);
+  text_labelcreate(&"HELLFIRE_RELOADING_WITH_TIME", var_0);
   wait 1;
   text_noticedestroy();
 }
@@ -745,7 +745,7 @@ uavremotelaunchersequence(var_0, var_1) {
       var_0[[level.activate_uav_hud_cb]]();
     else {
       var_0 text_titlecreate();
-      text_titlesettext( & "HELLFIRE_DRONE_VIEW");
+      text_titlesettext(&"HELLFIRE_DRONE_VIEW");
     }
 
     if(isdefined(level.remotemissile_usethermal) && level.remotemissile_usethermal) {
@@ -778,7 +778,7 @@ uavremotelaunchersequence(var_0, var_1) {
     var_10 thread flash_for_explosion_early(var_0);
 
     if(var_2) {
-      var_0 text_noticecreate( & "HELLFIRE_FIRE");
+      var_0 text_noticecreate(&"HELLFIRE_FIRE");
       var_4 = waitwithabortondamage(1.2);
 
       if(!var_4) {
@@ -796,7 +796,7 @@ uavremotelaunchersequence(var_0, var_1) {
     if(isdefined(level.firemissile_uav_hud_cb))
       var_0[[level.firemissile_uav_hud_cb]](0);
     else {
-      text_titlesettext( & "HELLFIRE_MISSILE_VIEW");
+      text_titlesettext(&"HELLFIRE_MISSILE_VIEW");
       text_noticedestroy();
     }
 

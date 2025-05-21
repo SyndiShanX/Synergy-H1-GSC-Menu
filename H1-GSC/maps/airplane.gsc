@@ -1285,7 +1285,7 @@ plane_explodes() {
 
   if(!maps\_utility::arcademode()) {
     wait 4.0;
-    level.player luiopenmenu( & "AIRPLANE_CAMPAIGN_COMPLETED");
+    level.player luiopenmenu(&"AIRPLANE_CAMPAIGN_COMPLETED");
     level.player waittill("menuresponse");
   }
 
@@ -1772,7 +1772,7 @@ timer_logic(var_0, var_1, var_2) {
   common_scripts\utility::flag_set("timer_expired");
   thread kill_all_ai();
   maps\_hud_util::destroy_countdown_hud(level.timer);
-  level thread mission_failed_out_of_time( & "AIRPLANE_TIMER_EXPIRED");
+  level thread mission_failed_out_of_time(&"AIRPLANE_TIMER_EXPIRED");
 }
 
 hostage_timer_cleanup() {
@@ -1810,7 +1810,7 @@ hostage_timer(var_0) {
   wait(var_0 + 0.15);
   common_scripts\utility::flag_set("hostage_timer_expired");
   maps\_hud_util::destroy_countdown_hud(level.timer);
-  level thread mission_failed_out_of_time( & "AIRPLANE_HOSTAGE_TIMER_EXPIRED");
+  level thread mission_failed_out_of_time(&"AIRPLANE_HOSTAGE_TIMER_EXPIRED");
 }
 
 timer_tick() {
@@ -2006,15 +2006,15 @@ ai_drone_think() {}
 
 initprecache() {
   precacheshellshock("nosound");
-  precachestring( & "AIRPLANE_TIME_TILL_EXPLOSION");
-  precachestring( & "AIRPLANE_TIME_TO_LOCATE_VIP");
-  precachestring( & "AIRPLANE_TIMER_EXPIRED");
-  precachestring( & "AIRPLANE_FAILED_JUMPED_OUT");
-  precachestring( & "AIRPLANE_OBJ_RESCUE_VIP");
-  precachestring( & "AIRPLANE_OBJ_FREEFALL");
-  precachestring( & "AIRPLANE_TIME_TILL_HOSTAGE_KILL");
-  precachestring( & "AIRPLANE_HOSTAGE_NO_HEADSHOT");
-  precachestring( & "AIRPLANE_CAMPAIGN_COMPLETED");
+  precachestring(&"AIRPLANE_TIME_TILL_EXPLOSION");
+  precachestring(&"AIRPLANE_TIME_TO_LOCATE_VIP");
+  precachestring(&"AIRPLANE_TIMER_EXPIRED");
+  precachestring(&"AIRPLANE_FAILED_JUMPED_OUT");
+  precachestring(&"AIRPLANE_OBJ_RESCUE_VIP");
+  precachestring(&"AIRPLANE_OBJ_FREEFALL");
+  precachestring(&"AIRPLANE_TIME_TILL_HOSTAGE_KILL");
+  precachestring(&"AIRPLANE_HOSTAGE_NO_HEADSHOT");
+  precachestring(&"AIRPLANE_CAMPAIGN_COMPLETED");
   precachemodel("viewhands_player_usmc");
   precachemodel("worldbody_h1_sas_ct");
   precacheitem("facemask");

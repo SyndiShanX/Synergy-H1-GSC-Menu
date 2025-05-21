@@ -390,8 +390,8 @@ killstreaksplashnotify(var_0, var_1, var_2, var_3, var_4) {
     var_5 = tablelookuprownum("mp\splashTable.csv", 0, var_0);
 
     if(var_5 >= 0) {
-      self luinotifyevent( & "killstreak_splash", 3, var_5, var_1, var_4);
-      self luinotifyeventtospectators( & "killstreak_splash", 3, var_5, var_1, var_4);
+      self luinotifyevent(&"killstreak_splash", 3, var_5, var_1, var_4);
+      self luinotifyeventtospectators(&"killstreak_splash", 3, var_5, var_1, var_4);
       insertluasplash(level.lua_splash_type_killstreak, var_5);
     }
 
@@ -446,8 +446,8 @@ challengesplashnotify(var_0, var_1, var_2) {
 
       if(var_5 != "") {
         var_6 = int(var_5);
-        self luinotifyevent( & "challenge_splash", 3, var_6, var_3, var_4);
-        self luinotifyeventtospectators( & "challenge_splash", 3, var_6, var_3, var_4);
+        self luinotifyevent(&"challenge_splash", 3, var_6, var_3, var_4);
+        self luinotifyeventtospectators(&"challenge_splash", 3, var_6, var_3, var_4);
         insertluasplash(level.lua_splash_type_challenge, var_6);
       }
 
@@ -470,8 +470,8 @@ medalsplashnotify(var_0) {
     var_1 = tablelookuprownum("mp\splashTable.csv", 0, var_0);
 
     if(var_1 >= 0) {
-      self luinotifyevent( & "medal_splash", 1, var_1);
-      self luinotifyeventtospectators( & "medal_splash", 1, var_1);
+      self luinotifyevent(&"medal_splash", 1, var_1);
+      self luinotifyeventtospectators(&"medal_splash", 1, var_1);
       insertluasplash(level.lua_splash_type_medal, var_1);
       return;
     }
@@ -488,11 +488,11 @@ splashnotify(var_0, var_1, var_2) {
 
     if(var_3 >= 0) {
       if(isdefined(var_1)) {
-        self luinotifyevent( & "generic_splash_number", 2, var_3, var_1);
-        self luinotifyeventtospectators( & "generic_splash_number", 2, var_3, var_1);
+        self luinotifyevent(&"generic_splash_number", 2, var_3, var_1);
+        self luinotifyeventtospectators(&"generic_splash_number", 2, var_3, var_1);
       } else {
-        self luinotifyevent( & "generic_splash", 1, var_3);
-        self luinotifyeventtospectators( & "generic_splash", 1, var_3);
+        self luinotifyevent(&"generic_splash", 1, var_3);
+        self luinotifyeventtospectators(&"generic_splash", 1, var_3);
       }
 
       insertluasplash(level.lua_splash_type_generic, var_3);
@@ -534,8 +534,8 @@ rankupsplashnotify(var_0, var_1, var_2) {
     var_3 = tablelookuprownum("mp\splashTable.csv", 0, var_0);
 
     if(var_3 >= 0) {
-      self luinotifyevent( & "rankup_splash", 3, var_3, var_1, var_2);
-      self luinotifyeventtospectators( & "rankup_splash", 3, var_3, var_1, var_2);
+      self luinotifyevent(&"rankup_splash", 3, var_3, var_1, var_2);
+      self luinotifyeventtospectators(&"rankup_splash", 3, var_3, var_1, var_2);
       insertluasplash(level.lua_splash_type_rankup, var_3);
     }
 

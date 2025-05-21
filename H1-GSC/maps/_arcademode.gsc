@@ -5,25 +5,25 @@
 ********************************/
 
 main() {
-  precachestring( & "SCRIPT_COLON");
-  precachestring( & "SCRIPT_TIME_REMAINING");
-  precachestring( & "SCRIPT_TOTAL_SCORE");
-  precachestring( & "SCRIPT_EXTRA_LIFE");
-  precachestring( & "SCRIPT_CHECKPOINT");
-  precachestring( & "SCRIPT_MISSION_SCORE");
-  precachestring( & "SCRIPT_ZERO_DEATHS");
-  precachestring( & "SCRIPT_PLUS");
-  precachestring( & "SCRIPT_TIME_UP");
-  precachestring( & "SCRIPT_1UP");
-  precachestring( & "SCRIPT_GAME_OVER");
-  precachestring( & "SCRIPT_DIFFICULTY_BONUS_ONEANDAHALF");
-  precachestring( & "SCRIPT_DIFFICULTY_BONUS_THREE");
-  precachestring( & "SCRIPT_DIFFICULTY_BONUS_FOUR");
-  precachestring( & "SCRIPT_MISSION_COMPLETE");
-  precachestring( & "SCRIPT_NEW_HIGH_SCORE");
-  precachestring( & "SCRIPT_STREAK_BONUS_LOST");
-  precachestring( & "SCRIPT_STREAK_COMPLETE");
-  precachestring( & "SCRIPT_X");
+  precachestring(&"SCRIPT_COLON");
+  precachestring(&"SCRIPT_TIME_REMAINING");
+  precachestring(&"SCRIPT_TOTAL_SCORE");
+  precachestring(&"SCRIPT_EXTRA_LIFE");
+  precachestring(&"SCRIPT_CHECKPOINT");
+  precachestring(&"SCRIPT_MISSION_SCORE");
+  precachestring(&"SCRIPT_ZERO_DEATHS");
+  precachestring(&"SCRIPT_PLUS");
+  precachestring(&"SCRIPT_TIME_UP");
+  precachestring(&"SCRIPT_1UP");
+  precachestring(&"SCRIPT_GAME_OVER");
+  precachestring(&"SCRIPT_DIFFICULTY_BONUS_ONEANDAHALF");
+  precachestring(&"SCRIPT_DIFFICULTY_BONUS_THREE");
+  precachestring(&"SCRIPT_DIFFICULTY_BONUS_FOUR");
+  precachestring(&"SCRIPT_MISSION_COMPLETE");
+  precachestring(&"SCRIPT_NEW_HIGH_SCORE");
+  precachestring(&"SCRIPT_STREAK_BONUS_LOST");
+  precachestring(&"SCRIPT_STREAK_COMPLETE");
+  precachestring(&"SCRIPT_X");
   precacheshader("arcademode_life");
   precacheshader("arcademode_life_empty");
   precacheshader("h1_arcademode_scanelines_border");
@@ -1039,7 +1039,7 @@ extra_lives_sizzle() {
   var_0 = new_ending_hud("center", 0.2, 0, -100);
   var_0.alpha = randomfloatrange(0.1, 0.45);
   var_0.sort = var_0.sort - 1;
-  var_0 settext( & "SCRIPT_EXTRA_LIFE");
+  var_0 settext(&"SCRIPT_EXTRA_LIFE");
   var_0 maps\_utility::delaythread(3, ::fade_out, 1);
   var_0 endon("death");
   var_1 = var_0.x;
@@ -1289,12 +1289,12 @@ ending_screen_mission_complete_flourish(var_0) {
   var_1.fontscale = 3;
   var_1.color = (1, 1, 1);
   var_1 _meth_8347(-0.6, 0, 0, 0, (0.247, 0.439, 0.094), 0.3, -0.1, 0, (0.302, 0.588, 0.047), 0.75);
-  var_1 settext( & "SCRIPT_MISSION_COMPLETE");
+  var_1 settext(&"SCRIPT_MISSION_COMPLETE");
   var_2 = new_ending_hud("center", 0.15, 0, var_0);
   var_2.fontscale = 4.5;
   var_2.color = (1, 1, 1);
   var_2 _meth_8347(-0.6, 0, 0, 0, (0.247, 0.439, 0.094), 0.3, -0.1, 0, (0.302, 0.588, 0.047), 0.75);
-  var_2 settext( & "SCRIPT_MISSION_COMPLETE");
+  var_2 settext(&"SCRIPT_MISSION_COMPLETE");
   var_1 changefontscaleovertime(0.15);
   var_1.fontscale = 4.5;
   var_2 changefontscaleovertime(0.15);
@@ -1471,7 +1471,7 @@ arcademode_ends() {
     var_15.color = (1, 1, 1);
     var_15 _meth_8347(-0.6, 0, 0, 0, (0.247, 0.439, 0.094), 0.3, -0.1, 0, (0.302, 0.588, 0.047), 0.75);
     var_16 setshader("h1_arcademode_scanelines_border", int(344 * var_17), 65);
-    var_15 settext( & "SCRIPT_MISSION_COMPLETE");
+    var_15 settext(&"SCRIPT_MISSION_COMPLETE");
     level.player playsound("h1_arcademode_mission_success");
     thread ending_screen_mission_complete_flourish(var_6);
   } else {
@@ -1516,7 +1516,7 @@ arcademode_ends() {
     var_23.fontscale = 1.875;
     var_23.color = (1, 1, 1);
     var_23 _meth_8347(-0.6, 0, 0, 0, (0.247, 0.439, 0.094), 0.3, -0.1, 0, (0.302, 0.588, 0.047), 0.75);
-    var_23 settext( & "SCRIPT_TOTAL_SCORE");
+    var_23 settext(&"SCRIPT_TOTAL_SCORE");
     create_total_score_hud(0, var_8);
     var_22 = getdvarint("arcademode_combined_score");
     set_total_score_hud(var_22);
@@ -1528,7 +1528,7 @@ arcademode_ends() {
   var_24.fontscale = 1.875;
   var_24.color = (1, 1, 1);
   var_24 _meth_8347(-0.6, 0, 0, 0, (0.247, 0.439, 0.094), 0.3, -0.1, 0, (0.302, 0.588, 0.047), 0.75);
-  var_24 settext( & "SCRIPT_MISSION_SCORE");
+  var_24 settext(&"SCRIPT_MISSION_SCORE");
   level.arcademode_hud_mission_scores = [];
 
   for (var_21 = 0; var_21 < level.arcademode_hud_digits; var_21++) {
@@ -1561,12 +1561,12 @@ arcademode_ends() {
   var_28.fontscale = 1.7;
   var_28.color = (1, 1, 1);
   var_28 _meth_8347(-0.6, 0, 0, 0, (0.247, 0.439, 0.094), 0.3, -0.1, 0, (0.302, 0.588, 0.047), 0.75);
-  var_28 settext( & "SCRIPT_TIME_REMAINING");
+  var_28 settext(&"SCRIPT_TIME_REMAINING");
   level.arcademode_hud_timer = [];
   level.arcademode_hud_timer[0] = new_ending_hud("center", var_4, 0, var_11);
   level.arcademode_hud_timer[1] = new_ending_hud("center", var_4, 0, var_11);
   level.arcademode_hud_timer[2] = new_ending_hud("center", var_4, 0, var_11);
-  level.arcademode_hud_timer[2] settext( & "SCRIPT_COLON");
+  level.arcademode_hud_timer[2] settext(&"SCRIPT_COLON");
   level.arcademode_hud_timer[3] = new_ending_hud("center", var_4, 0, var_11);
   level.arcademode_hud_timer[4] = new_ending_hud("center", var_4, 0, var_11);
 
@@ -1806,7 +1806,7 @@ arcademode_ends() {
     var_62 = new_ending_hud("center", var_4, 0, var_13);
     var_62.fontscale = 2.25;
     var_62 _meth_8347(-0.6, 0, 0, 0, (0.247, 0.439, 0.094), 0.5, -0.1, 0, (0.302, 0.588, 0.047), 0.75);
-    var_62 settext( & "SCRIPT_NEW_HIGH_SCORE");
+    var_62 settext(&"SCRIPT_NEW_HIGH_SCORE");
     var_62 fadeovertime(0.05);
     var_62.alpha = 1;
     var_62 setpulsefx(30, 3000, 1000);
@@ -1995,7 +1995,7 @@ draw_checkpoint(var_0, var_1, var_2) {
   var_3.color = (1, 1, 1);
   var_3.font = "objective";
   var_3 _meth_8347(-0.1, 0, 0, -0.001, (0, 0, 0), 0.2, -0.1, 0, (0, 0, 0), 0.5);
-  var_3 settext( & "SCRIPT_CHECKPOINT");
+  var_3 settext(&"SCRIPT_CHECKPOINT");
   var_3.alpha = 0;
   wait 0.15;
   var_3 fadeovertime(0.05);
@@ -2154,10 +2154,10 @@ arcademode_killstreak_complete_display() {
 
   if(level.arcademode_kill_streak_current_multiplier >= 8) {
     level.player thread common_scripts\utility::play_sound_in_space("arcademode_kill_streak_won", level.player geteye());
-    var_0 settext( & "SCRIPT_STREAK_COMPLETE");
+    var_0 settext(&"SCRIPT_STREAK_COMPLETE");
   } else {
     level.player thread common_scripts\utility::play_sound_in_space("arcademode_kill_streak_lost", level.player geteye());
-    var_0 settext( & "SCRIPT_STREAK_BONUS_LOST");
+    var_0 settext(&"SCRIPT_STREAK_BONUS_LOST");
   }
 
   wait 5;

@@ -432,9 +432,9 @@ dialog_opening() {
   wait 1;
   maps\_ac130::playsoundoverradio(level.scr_sound["fco"]["ac130_fco_nofirestrobe"], 1);
   wait 0.5;
-  maps\ac130_code::hintprint( & "SCRIPT_PLATFORM_AC130_HINT_TOGGLE_THERMAL", 1);
+  maps\ac130_code::hintprint(&"SCRIPT_PLATFORM_AC130_HINT_TOGGLE_THERMAL", 1);
   wait 0.5;
-  maps\ac130_code::hintprint( & "AC130_HINT_CYCLE_WEAPONS");
+  maps\ac130_code::hintprint(&"AC130_HINT_CYCLE_WEAPONS");
   thread dialog_church_spotted();
 }
 
@@ -452,7 +452,7 @@ dialog_church_spotted() {
 
 dialog_cleared_to_engage() {
   if(getdvar("ac130_alternate_controls") == "1")
-    maps\ac130_code::hintprint( & "SCRIPT_PLATFORM_AC130_HINT_ZOOM_AND_FIRE");
+    maps\ac130_code::hintprint(&"SCRIPT_PLATFORM_AC130_HINT_ZOOM_AND_FIRE");
 
   maps\_ac130::playsoundoverradio(level.scr_sound["tvo"]["ac130_tvo_vehiclemovingnow"], 1);
   wait 1;

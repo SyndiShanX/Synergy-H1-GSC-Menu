@@ -98,7 +98,7 @@ monitorscopechange() {
       var_1.sniper_zoom_hint_hud.aligny = "top";
       var_1.sniper_zoom_hint_hud.x = 0;
       var_1.sniper_zoom_hint_hud.y = 20;
-      var_1.sniper_zoom_hint_hud settext( & "VARIABLE_SCOPE_SNIPER_ZOOM");
+      var_1.sniper_zoom_hint_hud settext(&"VARIABLE_SCOPE_SNIPER_ZOOM");
       var_1.sniper_zoom_hint_hud.alpha = 0;
       var_1.sniper_zoom_hint_hud.sort = 0.5;
       var_1.sniper_zoom_hint_hud.foreground = 1;

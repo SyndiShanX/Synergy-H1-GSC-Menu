@@ -194,7 +194,7 @@ updateteambalance() {
 
   if(level.teambalance && maps\mp\_utility::isroundbased()) {
     if(isdefined(game["BalanceTeamsNextRound"]))
-      iprintlnbold( & "MP_AUTOBALANCE_NEXT_ROUND");
+      iprintlnbold(&"MP_AUTOBALANCE_NEXT_ROUND");
 
     level waittill("restarting");
 
@@ -209,7 +209,7 @@ updateteambalance() {
     for (;;) {
       if(level.teambalance) {
         if(!getteambalance()) {
-          iprintlnbold( & "MP_AUTOBALANCE_SECONDS", 15);
+          iprintlnbold(&"MP_AUTOBALANCE_SECONDS", 15);
           wait 15.0;
 
           if(!getteambalance())

@@ -886,9 +886,7 @@ update_trigger_based_on_flags() {
     }
   }
 
-  [
-    [level.trigger_func[var_0 && var_5]]
-  ]();
+  [[level.trigger_func[var_0 && var_5]]]();
 }
 
 create_flags_and_return_tokens(var_0) {

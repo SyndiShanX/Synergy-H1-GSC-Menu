@@ -218,20 +218,12 @@ setdifficulty() {
 setglobaldifficulty() {
   var_0 = ::get_locked_difficulty_val_global;
   var_1 = get_skill_from_index(level.gameskill);
-  anim.dog_health = [
-    [var_0]
-  ]("dog_health", level.gameskill);
+  anim.dog_health = [[var_0]]("dog_health", level.gameskill);
   anim.pain_test = level.difficultysettings["pain_test"][var_1];
   level.explosiveplanttime = level.difficultysettings["explosivePlantTime"][var_1];
-  anim.min_sniper_burst_delay_time = [
-    [var_0]
-  ]("min_sniper_burst_delay_time", level.gameskill);
-  anim.max_sniper_burst_delay_time = [
-    [var_0]
-  ]("max_sniper_burst_delay_time", level.gameskill);
-  setsaveddvar("ai_accuracyDistScale", [
-    [var_0]
-  ]("accuracyDistScale", level.gameskill));
+  anim.min_sniper_burst_delay_time = [[var_0]]("min_sniper_burst_delay_time", level.gameskill);
+  anim.max_sniper_burst_delay_time = [[var_0]]("max_sniper_burst_delay_time", level.gameskill);
+  setsaveddvar("ai_accuracyDistScale", [[var_0]]("accuracyDistScale", level.gameskill));
 
   if(maps\_utility::laststand_enabled())
     level.player_downed_death_buffer_time = level.difficultysettings["player_downed_buffer_time"][var_1];
@@ -282,65 +274,27 @@ get_skill_from_index(var_0) {
 }
 
 apply_difficulty_frac_with_func(var_0, var_1) {
-  self.gs.invultime_preshield = [
-    [var_0]
-  ]("invulTime_preShield", var_1);
-  self.gs.invultime_onshield = [
-    [var_0]
-  ]("invulTime_onShield", var_1);
-  self.gs.invultime_postshield = [
-    [var_0]
-  ]("invulTime_postShield", var_1);
-  self.gs.playerhealth_regularregendelay = [
-    [var_0]
-  ]("playerHealth_RegularRegenDelay", var_1);
-  self.gs.worthydamageratio = [
-    [var_0]
-  ]("worthyDamageRatio", var_1);
-  self.threatbias = int([
-    [var_0]
-  ]("threatbias", var_1));
-  self.gs.longregentime = [
-    [var_0]
-  ]("longRegenTime", var_1);
-  self.gs.healthoverlaycutoff = [
-    [var_0]
-  ]("healthOverlayCutoff", var_1);
-  self.gs.regenrate = [
-    [var_0]
-  ]("health_regenRate", var_1);
-  self.gs.player_attacker_accuracy = [
-    [var_0]
-  ]("base_enemy_accuracy", var_1);
+  self.gs.invultime_preshield = [[var_0]]("invulTime_preShield", var_1);
+  self.gs.invultime_onshield = [[var_0]]("invulTime_onShield", var_1);
+  self.gs.invultime_postshield = [[var_0]]("invulTime_postShield", var_1);
+  self.gs.playerhealth_regularregendelay = [[var_0]]("playerHealth_RegularRegenDelay", var_1);
+  self.gs.worthydamageratio = [[var_0]]("worthyDamageRatio", var_1);
+  self.threatbias = int([[var_0]]("threatbias", var_1));
+  self.gs.longregentime = [[var_0]]("longRegenTime", var_1);
+  self.gs.healthoverlaycutoff = [[var_0]]("healthOverlayCutoff", var_1);
+  self.gs.regenrate = [[var_0]]("health_regenRate", var_1);
+  self.gs.player_attacker_accuracy = [[var_0]]("base_enemy_accuracy", var_1);
   self.attackeraccuracy = self.gs.player_attacker_accuracy;
   update_player_attacker_accuracy();
-  self.gs.playergrenadebasetime = int([
-    [var_0]
-  ]("playerGrenadeBaseTime", var_1));
-  self.gs.playergrenaderangetime = int([
-    [var_0]
-  ]("playerGrenadeRangeTime", var_1));
-  self.gs.playerdoublegrenadetime = int([
-    [var_0]
-  ]("playerDoubleGrenadeTime", var_1));
-  self.gs.min_sniper_burst_delay_time = [
-    [var_0]
-  ]("min_sniper_burst_delay_time", var_1);
-  self.gs.max_sniper_burst_delay_time = [
-    [var_0]
-  ]("max_sniper_burst_delay_time", var_1);
-  self.gs.dog_presstime = [
-    [var_0]
-  ]("dog_presstime", var_1);
-  self.deathinvulnerabletime = int([
-    [var_0]
-  ]("player_deathInvulnerableTime", var_1));
-  self.criticalbulletdamagedist = int([
-    [var_0]
-  ]("player_criticalBulletDamageDist", var_1));
-  self.damagemultiplier = 100 / [
-    [var_0]
-  ]("playerDifficultyHealth", var_1);
+  self.gs.playergrenadebasetime = int([[var_0]]("playerGrenadeBaseTime", var_1));
+  self.gs.playergrenaderangetime = int([[var_0]]("playerGrenadeRangeTime", var_1));
+  self.gs.playerdoublegrenadetime = int([[var_0]]("playerDoubleGrenadeTime", var_1));
+  self.gs.min_sniper_burst_delay_time = [[var_0]]("min_sniper_burst_delay_time", var_1);
+  self.gs.max_sniper_burst_delay_time = [[var_0]]("max_sniper_burst_delay_time", var_1);
+  self.gs.dog_presstime = [[var_0]]("dog_presstime", var_1);
+  self.deathinvulnerabletime = int([[var_0]]("player_deathInvulnerableTime", var_1));
+  self.criticalbulletdamagedist = int([[var_0]]("player_criticalBulletDamageDist", var_1));
+  self.damagemultiplier = 100 / [[var_0]]("playerDifficultyHealth", var_1);
 }
 
 update_player_attacker_accuracy() {
@@ -352,18 +306,10 @@ update_player_attacker_accuracy() {
 }
 
 apply_difficulty_step_with_func(var_0, var_1) {
-  self.gs.misstimeconstant = [
-    [var_0]
-  ]("missTimeConstant", var_1);
-  self.gs.misstimedistancefactor = [
-    [var_0]
-  ]("missTimeDistanceFactor", var_1);
-  self.gs.dog_hits_before_kill = [
-    [var_0]
-  ]("dog_hits_before_kill", var_1);
-  self.gs.double_grenades_allowed = [
-    [var_0]
-  ]("double_grenades_allowed", var_1);
+  self.gs.misstimeconstant = [[var_0]]("missTimeConstant", var_1);
+  self.gs.misstimedistancefactor = [[var_0]]("missTimeDistanceFactor", var_1);
+  self.gs.dog_hits_before_kill = [[var_0]]("dog_hits_before_kill", var_1);
+  self.gs.double_grenades_allowed = [[var_0]]("double_grenades_allowed", var_1);
 }
 
 set_difficulty_from_locked_settings() {
@@ -1050,7 +996,7 @@ create_warning_elem() {
   var_0 add_hudelm_position_internal();
   var_0 thread destroy_warning_elem_when_hit_again();
   var_0 thread destroy_warning_elem_when_mission_failed();
-  var_0 settext( & "GAME_GET_TO_COVER");
+  var_0 settext(&"GAME_GET_TO_COVER");
   var_0.fontscale = 2;
   var_0.alpha = 1;
   var_0.color = (1, 0.9, 0.9);

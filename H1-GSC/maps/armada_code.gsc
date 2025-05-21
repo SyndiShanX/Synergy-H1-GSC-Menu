@@ -51,7 +51,7 @@ flashbang_hint() {
   wait 2;
 
   if(!common_scripts\utility::flag("player_has_flashed"))
-    thread maps\armada::keyhint( & "ARMADA_HINT_FLASH", "flash", "+smoke", 10);
+    thread maps\armada::keyhint(&"ARMADA_HINT_FLASH", "flash", "+smoke", 10);
 
   var_1 = getentarray("hq_breachers", "script_noteworthy");
 

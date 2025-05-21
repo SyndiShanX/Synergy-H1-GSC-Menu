@@ -35,9 +35,7 @@ init() {
 blank() {}
 
 hodgepodgeonstartgametype() {
-  [
-    [level.hodgepodgeonstartgametype]
-  ]();
+  [[level.hodgepodgeonstartgametype]]();
 
   if(level.hodgepodgemode == 2)
     initmmmode();

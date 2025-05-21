@@ -28,17 +28,14 @@ init_animset_death() {
   var_0["stand_pistol_torso_upper"] = [ % pistol_death_3, % pistol_death_1];
   var_0["stand_pistol_lower_body"] = [ % pistol_death_2];
   var_0["cover_right_stand"] = [ % corner_standr_deatha, % corner_standr_deathb];
-  var_0["cover_right_crouch_head"] = [
-    [ % h1_cornercrr_alert_death_neck_2],
+  var_0["cover_right_crouch_head"] = [[ % h1_cornercrr_alert_death_neck_2],
     [ % cornercrr_alert_death_slideout]
   ];
-  var_0["cover_right_crouch_default"] = [
-    [ % h1_cornercrr_alert_death_slideout_2, % h1_cornercrr_alert_death_fallout_2, % h1_cornercrr_alert_death_back_2],
+  var_0["cover_right_crouch_default"] = [[ % h1_cornercrr_alert_death_slideout_2, % h1_cornercrr_alert_death_fallout_2, % h1_cornercrr_alert_death_back_2],
     [ % cornercrr_alert_death_slideout, % cornercrr_alert_death_back]
   ];
   var_0["cover_left_stand"] = [ % corner_standl_deatha, % corner_standl_deathb];
-  var_0["cover_left_crouch"] = [
-    [ % h1_cornercrl_death_back_2, % h1_cornercrl_death_side_2],
+  var_0["cover_left_crouch"] = [[ % h1_cornercrl_death_back_2, % h1_cornercrl_death_side_2],
     [ % cornercrl_death_side, % cornercrl_death_back]
   ];
   var_0["cover_stand"] = [ % coverstand_death_left, % coverstand_death_right];

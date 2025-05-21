@@ -16,9 +16,9 @@ init() {
   if(!var_0.size) {
     return;
   }
-  precachestring( & "ELEVATOR_CALL_HINT");
-  precachestring( & "ELEVATOR_USE_HINT");
-  precachestring( & "ELEVATOR_FLOOR_SELECT_HINT");
+  precachestring(&"ELEVATOR_CALL_HINT");
+  precachestring(&"ELEVATOR_USE_HINT");
+  precachestring(&"ELEVATOR_FLOOR_SELECT_HINT");
   precachemenu("elevator_floor_selector");
   thread elevator_update_global_dvars();
   level.elevators = [];
@@ -603,16 +603,16 @@ setup_hints() {
     var_2 setcursorhint("HINT_NOICON");
 
     if(var_4 > 2) {
-      var_2 sethintstring( & "ELEVATOR_FLOOR_SELECT_HINT");
+      var_2 sethintstring(&"ELEVATOR_FLOOR_SELECT_HINT");
       continue;
     }
 
-    var_2 sethintstring( & "ELEVATOR_USE_HINT");
+    var_2 sethintstring(&"ELEVATOR_USE_HINT");
   }
 
   foreach(var_7 in level.elevator_callbuttons) {
     var_7 setcursorhint("HINT_NOICON");
-    var_7 sethintstring( & "ELEVATOR_CALL_HINT");
+    var_7 sethintstring(&"ELEVATOR_CALL_HINT");
   }
 }
 

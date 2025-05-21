@@ -49,13 +49,11 @@ init_animset_pain() {
   var_0["crouch_right_arm"] = [ % exposed_crouch_pain_right_arm];
   var_0["prone"] = [ % prone_reaction_a, % prone_reaction_b];
   var_0["cover_left_stand"] = [ % corner_standl_painb, % corner_standl_painc, % corner_standl_paind, % corner_standl_paine];
-  var_0["cover_left_crouch"] = [
-    [ % h1_cornercrl_painb_2],
+  var_0["cover_left_crouch"] = [[ % h1_cornercrl_painb_2],
     [ % cornercrl_painb]
   ];
   var_0["cover_right_stand"] = [ % corner_standr_pain, % corner_standr_painb, % corner_standr_painc];
-  var_0["cover_right_crouch"] = [
-    [ % h1_cornercrr_alert_paina_2, % h1_cornercrr_alert_painb_2, % h1_cornercrr_alert_painc_2],
+  var_0["cover_right_crouch"] = [[ % h1_cornercrr_alert_paina_2, % h1_cornercrr_alert_painb_2, % h1_cornercrr_alert_painc_2],
     [ % cornercrr_alert_paina, % cornercrr_alert_painc]
   ];
   var_0["cover_right_stand_A"] = % h1_cornerstndr_pain_2_cover_a;
@@ -88,19 +86,15 @@ init_animset_pain() {
   var_0["aim_4"] = % dying_back_aim_4;
   var_0["aim_6"] = % dying_back_aim_6;
   var_0["longdeath"] = [];
-  var_0["longdeath"]["gut_b"] = [
-    [ % stand_2_longdeath_wander_gut, % longdeath_wander_gut, % longdeath_wander_gut_collapse, % longdeath_wander_gut_death],
+  var_0["longdeath"]["gut_b"] = [[ % stand_2_longdeath_wander_gut, % longdeath_wander_gut, % longdeath_wander_gut_collapse, % longdeath_wander_gut_death],
     [ % stand_2_longdeath_gut_wounded_b, % longdeath_gut_wounded_b_walk, % longdeath_gut_wounded_b_collapse],
     [ % stand_2_longdeath_gut_b, % longdeath_gut_b_walk, % longdeath_gut_b_impact]
   ];
-  var_0["longdeath"]["gut_l"] = [
-    [ % stand_2_longdeath_gut_l, % longdeath_gut_l_walk, % longdeath_gut_l_impact]
+  var_0["longdeath"]["gut_l"] = [[ % stand_2_longdeath_gut_l, % longdeath_gut_l_walk, % longdeath_gut_l_impact]
   ];
-  var_0["longdeath"]["gut_r"] = [
-    [ % stand_2_longdeath_gut_r, % longdeath_gut_r_walk, % longdeath_gut_r_impact]
+  var_0["longdeath"]["gut_r"] = [[ % stand_2_longdeath_gut_r, % longdeath_gut_r_walk, % longdeath_gut_r_impact]
   ];
-  var_0["longdeath"]["leg_b"] = [
-    [ % stand_2_longdeath_wander_leg_1, % longdeath_wander_leg_1, % longdeath_wander_leg_collapse_1, % longdeath_wander_leg_death],
+  var_0["longdeath"]["leg_b"] = [[ % stand_2_longdeath_wander_leg_1, % longdeath_wander_leg_1, % longdeath_wander_leg_collapse_1, % longdeath_wander_leg_death],
     [ % stand_2_longdeath_wander_leg_2, % longdeath_wander_leg_2, % longdeath_wander_leg_collapse_2, % longdeath_wander_leg_death],
     [ % stand_2_longdeath_leg_wounded_b_1, % longdeath_leg_wounded_b_walk_1, % longdeath_leg_wounded_b_collapse_1],
     [ % stand_2_longdeath_leg_wounded_b_2, % longdeath_leg_wounded_b_walk_2, % longdeath_leg_wounded_b_collapse_2]

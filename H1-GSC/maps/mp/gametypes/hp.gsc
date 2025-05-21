@@ -195,7 +195,7 @@ hpcaptureloop() {
   for (;;) {
     level.zone.gameobject maps\mp\gametypes\_gameobjects::allowuse("any");
     level.zone.gameobject maps\mp\gametypes\_gameobjects::setusetime(0);
-    level.zone.gameobject maps\mp\gametypes\_gameobjects::setusetext( & "MP_CAPTURING_OBJECTIVE");
+    level.zone.gameobject maps\mp\gametypes\_gameobjects::setusetext(&"MP_CAPTURING_OBJECTIVE");
     level.zone.gameobject maps\mp\gametypes\_gameobjects::setvisibleteam("any");
     level.zone.gameobject maps\mp\gametypes\_gameobjects::setmodelvisibility(1);
     level.zone.gameobject maps\mp\gametypes\_gameobjects::mustmaintainclaim(0);

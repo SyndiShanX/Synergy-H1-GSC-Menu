@@ -62,16 +62,16 @@ init() {
   precacheshader("h1_ac130_blur_40mm");
   precacheshader("h1_ac130_blur_25mm");
   precacheshader("h1_ac130_blur_105mm");
-  precachestring( & "AC130_HUD_TOP_BAR");
-  precachestring( & "AC130_HUD_LEFT_BLOCK");
-  precachestring( & "AC130_HUD_RIGHT_BLOCK");
-  precachestring( & "AC130_HUD_BOTTOM_BLOCK");
-  precachestring( & "AC130_HUD_THERMAL_WHOT");
-  precachestring( & "AC130_HUD_THERMAL_BHOT");
-  precachestring( & "AC130_HUD_WEAPON_105MM");
-  precachestring( & "AC130_HUD_WEAPON_40MM");
-  precachestring( & "AC130_HUD_WEAPON_25MM");
-  precachestring( & "AC130_HUD_AGL");
+  precachestring(&"AC130_HUD_TOP_BAR");
+  precachestring(&"AC130_HUD_LEFT_BLOCK");
+  precachestring(&"AC130_HUD_RIGHT_BLOCK");
+  precachestring(&"AC130_HUD_BOTTOM_BLOCK");
+  precachestring(&"AC130_HUD_THERMAL_WHOT");
+  precachestring(&"AC130_HUD_THERMAL_BHOT");
+  precachestring(&"AC130_HUD_WEAPON_105MM");
+  precachestring(&"AC130_HUD_WEAPON_40MM");
+  precachestring(&"AC130_HUD_WEAPON_25MM");
+  precachestring(&"AC130_HUD_AGL");
   precacherumble("ac130_25mm_fire");
 
   if(getdvar("ac130_alternate_controls") == "0") {

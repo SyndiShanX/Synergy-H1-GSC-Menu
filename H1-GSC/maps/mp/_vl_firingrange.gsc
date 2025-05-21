@@ -1002,9 +1002,7 @@ activate_targets(var_0) {
   thread monitorshotsfired(var_1);
   thread monitorhitpercent(var_1);
   var_1 playsound("killhouse_buzzer");
-  [
-    [level.firingrange.lanelogic[var_0]]
-  ](var_1);
+  [[level.firingrange.lanelogic[var_0]]](var_1);
   var_1 playsound("killhouse_buzzer");
   level notify("round_done");
   level.firingrange.roundactive = 0;

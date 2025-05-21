@@ -7,7 +7,7 @@
 init() {
   precacheshader("h1_hud_tutorial_blur");
   precacheshader("h1_hud_tutorial_border");
-  precachestring( & "SCRIPT_PLATFORM_CHEAT_USETOSLOWMO");
+  precachestring(&"SCRIPT_PLATFORM_CHEAT_USETOSLOWMO");
   precacheshellshock("chaplincheat");
   precachemodel("com_junktire");
   level.random_tire_model = "com_junktire";
@@ -91,9 +91,7 @@ checkcheatchanged(var_0) {
     common_scripts\utility::flag_set("has_cheated");
 
   level.cheatstates[var_0] = var_1;
-  [
-    [level.cheatfuncs[var_0]]
-  ](var_1);
+  [[level.cheatfuncs[var_0]]](var_1);
 }
 
 specialfeaturesmenu() {
@@ -348,7 +346,7 @@ slowmo_hintprint() {
   var_5.hidewheninmenu = 1;
   var_5 maps\_hud_util::setpoint("TOP", undefined, 0, var_1 + var_0);
   var_5.sort = 0.5;
-  var_5 settext( & "SCRIPT_PLATFORM_CHEAT_USETOSLOWMO");
+  var_5 settext(&"SCRIPT_PLATFORM_CHEAT_USETOSLOWMO");
 
   for (var_6 = 0; var_6 < 100; var_6++) {
     if(level.cheatshowslowmohint != 1) {

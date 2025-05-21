@@ -491,7 +491,7 @@ onenduse(var_0, var_1, var_2) {
 }
 
 oncantuse(var_0) {
-  var_0 iprintlnbold( & "MP_BOMBSITE_IN_USE");
+  var_0 iprintlnbold(&"MP_BOMBSITE_IN_USE");
 }
 
 onreset() {}

@@ -2359,7 +2359,7 @@ player_carries_price_until_he_drops_him() {
     level.price delete();
 
   var_0 = getent("price_drop_trigger", "targetname");
-  var_0 sethintstring( & "SNIPERESCAPE_HOLD_1_TO_PUT_CPT_MACMILLAN");
+  var_0 sethintstring(&"SNIPERESCAPE_HOLD_1_TO_PUT_CPT_MACMILLAN");
   level endon("player_made_it_to_seaknight");
   wait_for_player_to_drop_price(var_0);
   var_0.origin = (0, 0, -1500);
@@ -2461,7 +2461,7 @@ wounded_setup() {
   level.price.allowdeath = 1;
   level.price thread regen();
   level.price.a.pose = "prone";
-  level.price sethintstring( & "SNIPERESCAPE_HOLD_1_TO_PICK_UP_CPT");
+  level.price sethintstring(&"SNIPERESCAPE_HOLD_1_TO_PICK_UP_CPT");
   level.price setthreatbiasgroup("price");
   level.price setgoalpos(level.price.origin);
   level.price.fastfire = 0;

@@ -76,7 +76,7 @@ main() {
   for (var_1 = 0; var_1 < var_0.size; var_1++)
     precachestring(level.missionfailedquote[var_0[var_1]]);
 
-  precachestring( & "CARGOSHIP_INFINITY_WARD_PRESENTS");
+  precachestring(&"CARGOSHIP_INFINITY_WARD_PRESENTS");
   level.start_point = "default";
   maps\cargoship_code::jumptoinit();
   vehicle_scripts\_seaknight::main("vehicle_ch46e_opened_door_interior_a", "seaknight", "script_vehicle_seaknight");
@@ -4407,16 +4407,16 @@ misc_precacheinit() {
   precacheshader("h1_hud_tutorial_blur");
   precacheshader("h1_hud_tutorial_border");
   precacheshader("popmenu_bg");
-  precachestring( & "CARGOSHIP_HINT_FRAG");
-  precachestring( & "CARGOSHIP_HINT_CROUCH_STANCE");
-  precachestring( & "CARGOSHIP_HINT_CROUCH");
-  precachestring( & "CARGOSHIP_HINT_CROUCH_TOGGLE");
-  precachestring( & "CARGOSHIP_HINT_STAND");
-  precachestring( & "CARGOSHIP_HINT_STAND_STANCE");
+  precachestring(&"CARGOSHIP_HINT_FRAG");
+  precachestring(&"CARGOSHIP_HINT_CROUCH_STANCE");
+  precachestring(&"CARGOSHIP_HINT_CROUCH");
+  precachestring(&"CARGOSHIP_HINT_CROUCH_TOGGLE");
+  precachestring(&"CARGOSHIP_HINT_STAND");
+  precachestring(&"CARGOSHIP_HINT_STAND_STANCE");
 
   if(!level.console) {
-    precachestring( & "PLATFORM_HINT_HOLD_CROUCH_COVER");
-    precachestring( & "PLATFORM_HINT_CROUCH_TOGGLE_COVER_PC");
+    precachestring(&"PLATFORM_HINT_HOLD_CROUCH_COVER");
+    precachestring(&"PLATFORM_HINT_CROUCH_TOGGLE_COVER_PC");
   }
 
   level.misc_tv_damage_fx["tv_explode"] = loadfx("fx\explosions\tv_explosion");

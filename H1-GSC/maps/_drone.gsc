@@ -689,18 +689,10 @@ getpatharray(var_0, var_1) {
   var_5["vehicle_node"] = maps\_spawner::get_target_vehicle_nodes;
   var_5["struct"] = maps\_spawner::get_target_structs;
   var_6 = undefined;
-  var_7 = [
-    [var_5["entity"]]
-  ](var_4);
-  var_8 = [
-    [var_5["node"]]
-  ](var_4);
-  var_9 = [
-    [var_5["vehicle_node"]]
-  ](var_4);
-  var_10 = [
-    [var_5["struct"]]
-  ](var_4);
+  var_7 = [[var_5["entity"]]](var_4);
+  var_8 = [[var_5["node"]]](var_4);
+  var_9 = [[var_5["vehicle_node"]]](var_4);
+  var_10 = [[var_5["struct"]]](var_4);
 
   if(var_7.size)
     var_6 = "entity";

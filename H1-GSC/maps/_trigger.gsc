@@ -1146,9 +1146,7 @@ trigger_runs_function_on_touch(var_0, var_1, var_2) {
 touched_trigger_runs_func(var_0, var_1) {
   self endon("death");
   self.ignoreme = 1;
-  [
-    [var_1]
-  ](1);
+  [[var_1]](1);
   self.ignoretriggers = 1;
   wait 1;
   self.ignoretriggers = 0;
@@ -1156,9 +1154,7 @@ touched_trigger_runs_func(var_0, var_1) {
   while (self istouching(var_0))
     wait 1;
 
-  [
-    [var_1]
-  ](0);
+  [[var_1]](0);
 }
 
 trigger_radio(var_0) {

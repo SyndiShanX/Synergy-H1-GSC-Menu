@@ -36,9 +36,7 @@ main() {
   }
 
   self endon("killanimscript");
-  [
-    [self.exception["exposed"]]
-  ]();
+  [[self.exception["exposed"]]]();
   animscripts\utility::initialize("combat");
   self.a.arrivaltype = undefined;
 

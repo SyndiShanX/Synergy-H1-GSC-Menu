@@ -3786,9 +3786,7 @@ animate_drive_idle() {
 }
 
 setup_dynamic_detour(var_0, var_1) {
-  var_2 = [
-    [var_1]
-  ](var_0.targetname);
+  var_2 = [[var_1]](var_0.targetname);
   var_2.detoured = 0;
 }
 

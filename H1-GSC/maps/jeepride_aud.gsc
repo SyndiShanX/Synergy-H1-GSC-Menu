@@ -188,8 +188,7 @@ jeepride_intro_start() {
 }
 
 start_scripted_sfx_node() {
-  var_0 = [
-    ["auto1593", "scn_start_jeep_honk_crash", undefined, undefined, undefined],
+  var_0 = [["auto1593", "scn_start_jeep_honk_crash", undefined, undefined, undefined],
     ["auto1585", "scn_start_car_honk_crash", undefined, undefined, undefined],
     ["sideswipe_bmp_accelerate_01", "scn_sideswipe_bmp_accelerate_01", undefined, "bmp_accelerate_mix", undefined],
     ["auto1721", "scn_bmp_accelerate_01", undefined, "bmp_accelerate_mix", undefined],

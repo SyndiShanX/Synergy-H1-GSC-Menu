@@ -511,7 +511,7 @@ omausebar(var_0) {
   self endon("disconnect");
   var_1 = maps\mp\gametypes\_hud_util::createprimaryprogressbar(0, -25);
   var_2 = maps\mp\gametypes\_hud_util::createprimaryprogressbartext(0, -25);
-  var_2 settext( & "MPUI_CHANGING_KIT");
+  var_2 settext(&"MPUI_CHANGING_KIT");
   var_1 maps\mp\gametypes\_hud_util::updatebar(0, 1 / var_0);
 
   for (var_3 = 0; var_3 < var_0 && isalive(self) && !level.gameended; var_3 = var_3 + 0.05)

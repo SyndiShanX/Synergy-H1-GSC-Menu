@@ -1168,7 +1168,7 @@ depotopenlootcrate() {
       if(!isdefined(level.depotlootrarities))
         level waittill("depot_loot_rarities");
 
-      luinotifyevent( & "supply_drop_play_purchase_vo", 0);
+      luinotifyevent(&"supply_drop_play_purchase_vo", 0);
       var_1 = int(level.inventoryitemrarity["Common"]);
 
       for (var_2 = 0; var_2 < level.depotlootrarities.size && var_2 < level.depotlootcards.size; var_2++) {
@@ -1192,7 +1192,7 @@ depotopenlootcrate() {
         playrumbleonposition(level.raritycardfx[var_1].rumble, self.origin);
 
       level.depotlootprop waittillmatch("card_anim", "cards_off_screen");
-      luinotifyevent( & "supply_drop_ui", 0);
+      luinotifyevent(&"supply_drop_ui", 0);
       level.depotlootrarities = undefined;
       level.depotcrate waittillmatch("crate_anim", "crate_shut");
       level.depotcrate playsound("h1_ui_loot_box_close");
@@ -1204,7 +1204,7 @@ depotopenlootcrate() {
         stopfxontag(var_4.rarity_fx, var_4, "tag_card");
       }
 
-      luinotifyevent( & "supply_drop_allow_skip", 0);
+      luinotifyevent(&"supply_drop_allow_skip", 0);
     }
   }
 

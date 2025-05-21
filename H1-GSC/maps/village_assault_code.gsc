@@ -5,11 +5,11 @@
 *****************************************/
 
 precachelevelstuff() {
-  precachestring( & "VILLAGE_ASSAULT_OBJECTIVE_LOCATE_ALASAD");
-  precachestring( & "SCRIPT_ARMOR_DAMAGE");
-  precachestring( & "SCRIPT_LEARN_CHOPPER_AIR_SUPPORT1");
-  precachestring( & "SCRIPT_LEARN_CHOPPER_AIR_SUPPORT1_PC");
-  precachestring( & "VILLAGE_ASSAULT_YOU_KILLED_ALASAD");
+  precachestring(&"VILLAGE_ASSAULT_OBJECTIVE_LOCATE_ALASAD");
+  precachestring(&"SCRIPT_ARMOR_DAMAGE");
+  precachestring(&"SCRIPT_LEARN_CHOPPER_AIR_SUPPORT1");
+  precachestring(&"SCRIPT_LEARN_CHOPPER_AIR_SUPPORT1_PC");
+  precachestring(&"VILLAGE_ASSAULT_YOU_KILLED_ALASAD");
   precacheshader("black");
   precacheshader("hud_icon_cobra");
   precacheshader("popmenu_bg");
@@ -1455,7 +1455,7 @@ air_support_hint_print_activate() {
 
 display_air_support_hint_console() {
   level endon("clearing_hints");
-  maps\_utility::hint( & "SCRIPT_LEARN_CHOPPER_AIR_SUPPORT1");
+  maps\_utility::hint(&"SCRIPT_LEARN_CHOPPER_AIR_SUPPORT1");
   level.iconelem1 = maps\_hud_util::createicon("hud_dpad", 32, 32);
   level.iconelem1 maps\_hud_util::setpoint("TOP", undefined, -32, 165);
   level.iconelem3 = maps\_hud_util::createicon("hud_arrow_right", 24, 24);
@@ -1484,7 +1484,7 @@ display_air_support_hint_console() {
 
 display_air_support_hint_pc() {
   level endon("clearing_hints");
-  maps\_utility::hint( & "SCRIPT_LEARN_CHOPPER_AIR_SUPPORT1_PC");
+  maps\_utility::hint(&"SCRIPT_LEARN_CHOPPER_AIR_SUPPORT1_PC");
   setomnvar("ui_display_hud_for_equipment_motion", 1);
   level.iconelem2 = maps\_hud_util::createicon("hud_icon_cobra", 48, 48);
   level.iconelem2 maps\_hud_util::setpoint("TOP", undefined, 0, 140);
@@ -1765,7 +1765,7 @@ alasad_damage_monitor() {
     self waittill("damage", var_0, var_1, var_2, var_3, var_4, var_5, var_6);
 
     if(isdefined(var_1) && var_1 == level.player) {
-      maps\_player_death::set_deadquote( & "VILLAGE_ASSAULT_YOU_KILLED_ALASAD");
+      maps\_player_death::set_deadquote(&"VILLAGE_ASSAULT_YOU_KILLED_ALASAD");
       maps\_utility::missionfailedwrapper();
       return;
     }

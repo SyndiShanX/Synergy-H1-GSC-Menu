@@ -715,9 +715,7 @@ spawnplayer(var_0, var_1) {
     self.faux_spawn_stance = undefined;
   }
 
-  [
-    [level.onspawnplayer]
-  ]();
+  [[level.onspawnplayer]]();
 
   if(!var_0) {
     maps\mp\gametypes\_missions::playerspawned();

@@ -73,9 +73,7 @@ main() {
   }
 
   self endon("killanimscript");
-  [
-    [self.exception["move"]]
-  ]();
+  [[self.exception["move"]]]();
   var_0 = ::pathchangelistener;
 
   if(isdefined(self.pathchangecheckoverridefunc))
@@ -763,9 +761,7 @@ pathchange_cleanupturnanim() {
   self.ignorepathchange = undefined;
   self._id_04CA = 0;
   self orientmode("face default");
-  var_0 = [
-    [self.chooseposefunc]
-  ]();
+  var_0 = [[self.chooseposefunc]]();
   var_1 = 0.1;
 
   if(var_0 != "stand")

@@ -60,17 +60,17 @@ main() {
   precachemodel("weapon_saw_MG_setup");
   precachemodel("weapon_winchest1200");
   precachemodel("vehicle_pickup_rear_tailgate");
-  precachestring( & "ARMADA_INTRO");
-  precachestring( & "ARMADA_DATE");
-  precachestring( & "ARMADA_PLACE");
-  precachestring( & "ARMADA_INFO");
-  precachestring( & "ARMADA_HINT_FLASH");
-  precachestring( & "ARMADA_GET_INTO_POSITION_TO");
-  precachestring( & "ARMADA_SEARCH_THE_HQ_BUILDING");
-  precachestring( & "ARMADA_REGROUP_WITH_FIRST_SQUAD");
-  precachestring( & "ARMADA_MAKE_YOUR_WAY_TO_THE");
-  precachestring( & "ARMADA_MAKE_YOUR_WAY_TO_THE1");
-  precachestring( & "ARMADA_SEARCH_THE_TV_STATION");
+  precachestring(&"ARMADA_INTRO");
+  precachestring(&"ARMADA_DATE");
+  precachestring(&"ARMADA_PLACE");
+  precachestring(&"ARMADA_INFO");
+  precachestring(&"ARMADA_HINT_FLASH");
+  precachestring(&"ARMADA_GET_INTO_POSITION_TO");
+  precachestring(&"ARMADA_SEARCH_THE_HQ_BUILDING");
+  precachestring(&"ARMADA_REGROUP_WITH_FIRST_SQUAD");
+  precachestring(&"ARMADA_MAKE_YOUR_WAY_TO_THE");
+  precachestring(&"ARMADA_MAKE_YOUR_WAY_TO_THE1");
+  precachestring(&"ARMADA_SEARCH_THE_TV_STATION");
   precacheshader("h1_hud_tutorial_blur");
   precacheshader("h1_hud_tutorial_border");
   precachemodel("body_usmc_desert_assault_zack");
@@ -695,7 +695,7 @@ hq2tv_start() {
 end_of_script() {
   var_0 = getent("end_of_scripting", "targetname");
   var_0 waittill("trigger");
-  iprintlnbold( & "SCRIPT_DEBUG_LEVEL_END");
+  iprintlnbold(&"SCRIPT_DEBUG_LEVEL_END");
 }
 
 objectives() {

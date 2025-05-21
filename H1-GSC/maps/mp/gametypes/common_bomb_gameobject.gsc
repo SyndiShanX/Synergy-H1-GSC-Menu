@@ -113,7 +113,7 @@ resetbombzone(var_0, var_1, var_2, var_3) {
   maps\mp\gametypes\_gameobjects::allowuse(var_1);
   maps\mp\gametypes\_gameobjects::setvisibleteam(var_2);
   maps\mp\gametypes\_gameobjects::setusetime(level.planttime);
-  maps\mp\gametypes\_gameobjects::setusehinttext( & "PLATFORM_HOLD_TO_PLANT_EXPLOSIVES");
+  maps\mp\gametypes\_gameobjects::setusehinttext(&"PLATFORM_HOLD_TO_PLANT_EXPLOSIVES");
   maps\mp\gametypes\_gameobjects::setkeyobject(var_0);
   var_4 = "waypoint_defend";
   var_5 = "waypoint_target";
@@ -162,7 +162,7 @@ setupzonefordefusing(var_0) {
 
   maps\mp\gametypes\_gameobjects::allowuse("friendly");
   maps\mp\gametypes\_gameobjects::setusetime(level.defusetime);
-  maps\mp\gametypes\_gameobjects::setusehinttext( & "PLATFORM_HOLD_TO_DEFUSE_EXPLOSIVES");
+  maps\mp\gametypes\_gameobjects::setusehinttext(&"PLATFORM_HOLD_TO_DEFUSE_EXPLOSIVES");
   maps\mp\gametypes\_gameobjects::setkeyobject(undefined);
   maps\mp\gametypes\_gameobjects::set2dicon("friendly", var_1);
   maps\mp\gametypes\_gameobjects::set3dicon("friendly", var_1);

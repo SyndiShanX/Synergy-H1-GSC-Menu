@@ -96,7 +96,7 @@ handlesuicidedeath(var_0, var_1) {
     [[level.onsuicidedeath]](self);
 
   if(isdefined(self.friendlydamage))
-    self iprintlnbold( & "MP_FRIENDLY_FIRE_WILL_NOT");
+    self iprintlnbold(&"MP_FRIENDLY_FIRE_WILL_NOT");
 
   self.pers["suicideSpawnDelay"] = maps\mp\gametypes\_tweakables::gettweakablevalue("game", "suicidespawndelay");
 }
@@ -884,9 +884,9 @@ victimmodifydamageforcollats(var_0, var_1, var_2, var_3) {
 
 waittimerforspawn() {
   self endon("randomSpawnPressed");
-  self.kc_teamspawntext settext( & "PLATFORM_PRESS_TO_TEAMSPAWN");
+  self.kc_teamspawntext settext(&"PLATFORM_PRESS_TO_TEAMSPAWN");
   self.kc_teamspawntext.alpha = 1;
-  self.kc_randomspawntext settext( & "PLATFORM_PRESS_TO_RESPAWN");
+  self.kc_randomspawntext settext(&"PLATFORM_PRESS_TO_RESPAWN");
   self.kc_randomspawntext.alpha = 1;
   thread waitteamspawnbutton();
   thread waitspawnrandombutton();
@@ -2358,7 +2358,7 @@ laststandtimer(var_0, var_1) {
     var_2 = spawn("script_model", self.origin);
     var_2 setmodel("tag_origin");
     var_2 setcursorhint("HINT_NOICON");
-    var_2 sethintstring( & "PLATFORM_REVIVE");
+    var_2 sethintstring(&"PLATFORM_REVIVE");
     var_2 revivesetup(self);
     var_2 endon("death");
     var_3 = newteamhudelem(self.team);
@@ -2382,7 +2382,7 @@ laststandtimer(var_0, var_1) {
     var_2 = spawn("script_model", self.origin);
     var_2 setmodel("tag_origin");
     var_2 setcursorhint("HINT_NOICON");
-    var_2 sethintstring( & "PLATFORM_REVIVE");
+    var_2 sethintstring(&"PLATFORM_REVIVE");
     var_2 revivesetup(self);
     var_2 endon("death");
     var_3 = newteamhudelem(self.team);
@@ -2875,10 +2875,10 @@ personalusebar(var_0) {
 personalusebaroldstyle(var_0) {
   var_1 = maps\mp\gametypes\_hud_util::createprimaryprogressbar();
   var_2 = maps\mp\gametypes\_hud_util::createprimaryprogressbartext();
-  var_2 settext( & "MPUI_REVIVING");
+  var_2 settext(&"MPUI_REVIVING");
   var_3 = var_0.owner maps\mp\gametypes\_hud_util::createprimaryprogressbar();
   var_4 = var_0.owner maps\mp\gametypes\_hud_util::createprimaryprogressbartext();
-  var_4 settext( & "MPUI_BEING_REVIVED");
+  var_4 settext(&"MPUI_BEING_REVIVED");
   var_5 = -1;
 
   while (maps\mp\_utility::isreallyalive(self) && isdefined(var_0) && var_0.inuse && !level.gameended && isdefined(self)) {
@@ -2979,16 +2979,16 @@ _obituary(var_0, var_1, var_2, var_3) {
     var_7 = var_6.team;
 
     if(var_7 == "spectator") {
-      var_6 iprintln( & "MP_OBITUARY_NEUTRAL", var_1.name, var_0.name);
+      var_6 iprintln(&"MP_OBITUARY_NEUTRAL", var_1.name, var_0.name);
       continue;
     }
 
     if(var_7 == var_4) {
-      var_6 iprintln( & "MP_OBITUARY_ENEMY", var_1.name, var_0.name);
+      var_6 iprintln(&"MP_OBITUARY_ENEMY", var_1.name, var_0.name);
       continue;
     }
 
-    var_6 iprintln( & "MP_OBITUARY_FRIENDLY", var_1.name, var_0.name);
+    var_6 iprintln(&"MP_OBITUARY_FRIENDLY", var_1.name, var_0.name);
   }
 }
 

@@ -58,9 +58,7 @@ raininit(var_0) {
 }
 
 lightning(var_0, var_1) {
-  [
-    [var_0]
-  ]();
+  [[var_0]]();
   waittillframeend;
 
   for (;;)
@@ -196,9 +194,7 @@ fogflash(var_0) {
   if(isdefined(level.lightningexploderindex))
     common_scripts\_exploder::exploder(level.lightningexploder[level.lightningexploderindex]);
 
-  [
-    [var_0]
-  ]();
+  [[var_0]]();
 }
 
 lightningflash(var_0, var_1, var_2) {

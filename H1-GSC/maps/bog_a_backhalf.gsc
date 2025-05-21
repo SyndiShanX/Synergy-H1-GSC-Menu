@@ -500,7 +500,7 @@ cobra_sequence() {
   var_0 setmodel("com_night_beacon_obj");
   common_scripts\utility::flag_set("beacon_ready_to_use");
   var_1 = getent("beaconTrig", "targetname");
-  var_1 sethintstring( & "SCRIPT_PLATFORM_HINT_PLANTBEACON");
+  var_1 sethintstring(&"SCRIPT_PLATFORM_HINT_PLANTBEACON");
   var_1 waittill("trigger");
   level.player thread maps\_utility::play_sound_on_entity("scn_bog_a_beacon_plant");
   var_1 delete();

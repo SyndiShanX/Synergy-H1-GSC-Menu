@@ -5,9 +5,7 @@
 ********************************/
 
 moverun() {
-  var_0 = [
-    [self.chooseposefunc]
-  ]("stand");
+  var_0 = [[self.chooseposefunc]]("stand");
 
   switch (var_0) {
     case "stand":

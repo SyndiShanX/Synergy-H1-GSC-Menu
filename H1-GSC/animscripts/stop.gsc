@@ -49,9 +49,7 @@ main() {
 
   self notify("stopScript");
   self endon("killanimscript");
-  [
-    [self.exception["stop_immediate"]]
-  ]();
+  [[self.exception["stop_immediate"]]]();
   thread delayedexception();
   animscripts\utility::initialize("stop");
 
@@ -360,7 +358,5 @@ updatepronethread() {
 delayedexception() {
   self endon("killanimscript");
   wait 0.05;
-  [
-    [self.exception["stop"]]
-  ]();
+  [[self.exception["stop"]]]();
 }

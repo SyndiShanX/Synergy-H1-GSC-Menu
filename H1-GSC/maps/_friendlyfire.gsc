@@ -274,15 +274,15 @@ missionfail(var_0) {
   soundscripts\_snd::snd_message("friendly_fire_mission_failed");
 
   if(var_0)
-    maps\_player_death::set_deadquote( & "SCRIPT_MISSIONFAIL_CIVILIAN_KILLED");
+    maps\_player_death::set_deadquote(&"SCRIPT_MISSIONFAIL_CIVILIAN_KILLED");
   else if(isdefined(level.custom_friendly_fire_message))
     maps\_player_death::set_deadquote(level.custom_friendly_fire_message);
   else if(level.campaign == "british")
-    maps\_player_death::set_deadquote( & "SCRIPT_MISSIONFAIL_KILLTEAM_BRITISH");
+    maps\_player_death::set_deadquote(&"SCRIPT_MISSIONFAIL_KILLTEAM_BRITISH");
   else if(level.campaign == "russian")
-    maps\_player_death::set_deadquote( & "SCRIPT_MISSIONFAIL_KILLTEAM_RUSSIAN");
+    maps\_player_death::set_deadquote(&"SCRIPT_MISSIONFAIL_KILLTEAM_RUSSIAN");
   else
-    maps\_player_death::set_deadquote( & "SCRIPT_MISSIONFAIL_KILLTEAM_AMERICAN");
+    maps\_player_death::set_deadquote(&"SCRIPT_MISSIONFAIL_KILLTEAM_AMERICAN");
 
   if(isdefined(level.custom_friendly_fire_shader))
     thread maps\_player_death::set_death_icon(level.custom_friendly_fire_shader, 64, 64, 0);

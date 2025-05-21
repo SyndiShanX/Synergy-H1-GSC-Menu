@@ -906,9 +906,7 @@ donotetracksfortimeintercept(var_0, var_1, var_2, var_3) {
 
 donotetracksfortimeproc(var_0, var_1, var_2, var_3, var_4) {
   var_4 endon("stop_notetracks");
-  [
-    [var_0]
-  ](var_1, undefined, var_2, var_3);
+  [[var_0]](var_1, undefined, var_2, var_3);
 }
 
 donotetracksfortimeendnotify(var_0) {

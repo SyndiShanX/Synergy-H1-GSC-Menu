@@ -46,29 +46,29 @@ main() {
   setsaveddvar("r_lodFOVScaleOverrideStopMinAngle", 35);
   setsaveddvar("r_lodFOVScaleOverrideStartMaxAngle", 65);
   setsaveddvar("r_lodFOVScaleOverrideStartMinAngle", 55);
-  precachestring( & "VILLAGE_DEFEND_HINT_SPINUP_MINIGUN");
-  precachestring( & "VILLAGE_DEFEND_HELICOPTER_EXTRACTION");
-  precachestring( & "VILLAGE_DEFEND_HELICOPTER_WARNING");
-  precachestring( & "VILLAGE_DEFEND_CASREADY");
-  precachestring( & "SCRIPT_PLATFORM_HINT_GET_DETONATOR");
-  precachestring( & "VILLAGE_DEFEND_TAKE_UP_A_DEFENSIVE_POSITION");
-  precachestring( & "VILLAGE_DEFEND_DEFEND_THE_SOUTHERN_HILL");
-  precachestring( & "VILLAGE_DEFEND_FALL_BACK_AND_DEFEND");
-  precachestring( & "VILLAGE_DEFEND_USE_THE_DETONATORS_IN");
-  precachestring( & "VILLAGE_DEFEND_FALL_BACK_TO_THE_FARM");
-  precachestring( & "VILLAGE_DEFEND_GET_THE_JAVELIN_IN_THE");
-  precachestring( & "VILLAGE_DEFEND_SURVIVE_UNTIL_THE_HELICOPTER");
-  precachestring( & "VILLAGE_DEFEND_GET_TO_THE_LZ");
-  precachestring( & "VILLAGE_DEFEND_BOARD_THE_HELICOPTER");
-  precachestring( & "VILLAGE_DEFEND_USE_THE_DETONATORS_IN1");
-  precachestring( & "VILLAGE_DEFEND_DESTROY_THE_INCOMING");
-  precachestring( & "VILLAGE_DEFEND_OBTAIN_NEW_ORDERS_FROM");
-  precachestring( & "VILLAGE_DEFEND_YOU_DIDNT_REACH_THE_HELICOPTER");
-  precachestring( & "VILLAGE_DEFEND_CLOSE_AIR_SUPPORT_STANDING");
-  precachestring( & "VILLAGE_DEFEND_CLOSE_AIR_SUPPORT_STANDING_PC");
-  precachestring( & "VILLAGE_DEFEND_DESTROY_THE_INCOMING1");
-  precachestring( & "VILLAGE_DEFEND_AIRSTRIKE_UNAVAIL");
-  precachestring( & "SCRIPT_PLATFORM_SPOOL_MINIGUN");
+  precachestring(&"VILLAGE_DEFEND_HINT_SPINUP_MINIGUN");
+  precachestring(&"VILLAGE_DEFEND_HELICOPTER_EXTRACTION");
+  precachestring(&"VILLAGE_DEFEND_HELICOPTER_WARNING");
+  precachestring(&"VILLAGE_DEFEND_CASREADY");
+  precachestring(&"SCRIPT_PLATFORM_HINT_GET_DETONATOR");
+  precachestring(&"VILLAGE_DEFEND_TAKE_UP_A_DEFENSIVE_POSITION");
+  precachestring(&"VILLAGE_DEFEND_DEFEND_THE_SOUTHERN_HILL");
+  precachestring(&"VILLAGE_DEFEND_FALL_BACK_AND_DEFEND");
+  precachestring(&"VILLAGE_DEFEND_USE_THE_DETONATORS_IN");
+  precachestring(&"VILLAGE_DEFEND_FALL_BACK_TO_THE_FARM");
+  precachestring(&"VILLAGE_DEFEND_GET_THE_JAVELIN_IN_THE");
+  precachestring(&"VILLAGE_DEFEND_SURVIVE_UNTIL_THE_HELICOPTER");
+  precachestring(&"VILLAGE_DEFEND_GET_TO_THE_LZ");
+  precachestring(&"VILLAGE_DEFEND_BOARD_THE_HELICOPTER");
+  precachestring(&"VILLAGE_DEFEND_USE_THE_DETONATORS_IN1");
+  precachestring(&"VILLAGE_DEFEND_DESTROY_THE_INCOMING");
+  precachestring(&"VILLAGE_DEFEND_OBTAIN_NEW_ORDERS_FROM");
+  precachestring(&"VILLAGE_DEFEND_YOU_DIDNT_REACH_THE_HELICOPTER");
+  precachestring(&"VILLAGE_DEFEND_CLOSE_AIR_SUPPORT_STANDING");
+  precachestring(&"VILLAGE_DEFEND_CLOSE_AIR_SUPPORT_STANDING_PC");
+  precachestring(&"VILLAGE_DEFEND_DESTROY_THE_INCOMING1");
+  precachestring(&"VILLAGE_DEFEND_AIRSTRIKE_UNAVAIL");
+  precachestring(&"SCRIPT_PLATFORM_SPOOL_MINIGUN");
   precacherumble("minigun_rumble");
   precacherumble("generic_attack_light_500");
   precacherumble("generic_attack_medium_500");
@@ -1885,7 +1885,7 @@ clacker_standby(var_0) {
   thread clacker_markers(var_2, var_0);
 
   for (;;) {
-    var_1 sethintstring( & "SCRIPT_PLATFORM_HINT_GET_DETONATOR");
+    var_1 sethintstring(&"SCRIPT_PLATFORM_HINT_GET_DETONATOR");
     var_1 waittill("trigger");
 
     while (common_scripts\utility::flag("putting_clacker_away"))
@@ -3423,7 +3423,7 @@ return_trip_enemy_acc() {
 }
 
 airstrike_hint_console() {
-  maps\_utility::hint( & "VILLAGE_DEFEND_CLOSE_AIR_SUPPORT_STANDING");
+  maps\_utility::hint(&"VILLAGE_DEFEND_CLOSE_AIR_SUPPORT_STANDING");
   level.iconelem = maps\_hud_util::createicon("hud_dpad", 32, 32);
   level.iconelem maps\_hud_util::setpoint("TOP", undefined, -16, 165);
   level.iconelem2 = maps\_hud_util::createicon("compass_objpoint_airstrike", 32, 32);
@@ -3451,7 +3451,7 @@ airstrike_hint_console() {
 }
 
 airstrike_hint_pc() {
-  maps\_utility::hint( & "VILLAGE_DEFEND_CLOSE_AIR_SUPPORT_STANDING_PC");
+  maps\_utility::hint(&"VILLAGE_DEFEND_CLOSE_AIR_SUPPORT_STANDING_PC");
   setomnvar("ui_display_hud_for_equipment_motion", 1);
   level.iconelem2 = maps\_hud_util::createicon("compass_objpoint_airstrike", 32, 32);
   level.iconelem2 maps\_hud_util::setpoint("TOP", undefined, -15, 150);

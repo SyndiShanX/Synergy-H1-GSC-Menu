@@ -2035,9 +2035,7 @@ reach_death_notify(var_0, var_1, var_2) {
 begin_anim_reach(var_0, var_1, var_2, var_3, var_4, var_5, var_6) {
   self endon("death");
   self endon("new_anim_reach");
-  var_1 = [
-    [var_2]
-  ](var_1);
+  var_1 = [[var_2]](var_1);
   thread reach_death_notify(var_0, var_1, var_6);
   maps\_utility::set_goal_pos(var_1);
   self.reach_goal_pos = var_1;
@@ -2052,9 +2050,7 @@ begin_anim_reach(var_0, var_1, var_2, var_3, var_4, var_5, var_6) {
     self.reach_aborted = undefined;
 
   self notify("anim_reach_complete");
-  [
-    [var_3]
-  ]();
+  [[var_3]]();
   self notify("new_anim_reach");
 }
 

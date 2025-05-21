@@ -435,7 +435,7 @@ exchange_barrett_trigger() {
   thread h1_playergrabbarrettlogic();
   common_scripts\utility::flag_wait("can_use_turret");
   var_0 = getent("barrett_trigger", "targetname");
-  var_0 sethintstring( & "SNIPERESCAPE_BARRETT_USE");
+  var_0 sethintstring(&"SNIPERESCAPE_BARRETT_USE");
   var_1 = getent("turret2", "targetname");
   var_0 waittill("trigger");
   var_0 common_scripts\utility::trigger_off();
@@ -456,53 +456,53 @@ exchange_barrett_trigger() {
 
   if(getdvar("use_old_sniper_text_style") == "1") {
     if(getdvarint("loc_language", 0) == 12) {
-      thread sniper_text( & "SNIPERESCAPE_TARGET", 120, 0);
+      thread sniper_text(&"SNIPERESCAPE_TARGET", 120, 0);
       wait 0.5;
-      thread sniper_text( & "SNIPERESCAPE_ZAKHAEV", 0, 0);
+      thread sniper_text(&"SNIPERESCAPE_ZAKHAEV", 0, 0);
       wait 1.5;
-      thread sniper_text( & "SNIPERESCAPE_DISTANCE", 120, 1);
+      thread sniper_text(&"SNIPERESCAPE_DISTANCE", 120, 1);
       wait 0.85;
       thread sniper_text_countup(896.7, & "SNIPERESCAPE_M", 0, 1);
       wait 1.5;
-      thread sniper_text( & "SNIPERESCAPE_BULLET_TRAVEL", 120, 2);
+      thread sniper_text(&"SNIPERESCAPE_BULLET_TRAVEL", 120, 2);
       wait 0.8;
       thread sniper_text_countup(1.05, & "SNIPERESCAPE_S", 0, 2);
     } else {
-      thread sniper_text( & "SNIPERESCAPE_TARGET", 0, 0);
+      thread sniper_text(&"SNIPERESCAPE_TARGET", 0, 0);
       wait 0.5;
-      thread sniper_text( & "SNIPERESCAPE_ZAKHAEV", 70, 0);
+      thread sniper_text(&"SNIPERESCAPE_ZAKHAEV", 70, 0);
       wait 1.5;
-      thread sniper_text( & "SNIPERESCAPE_DISTANCE", 0, 1);
+      thread sniper_text(&"SNIPERESCAPE_DISTANCE", 0, 1);
       wait 0.85;
       thread sniper_text_countup(896.7, & "SNIPERESCAPE_M", 158, 1);
       wait 1.5;
-      thread sniper_text( & "SNIPERESCAPE_BULLET_TRAVEL", 0, 2);
+      thread sniper_text(&"SNIPERESCAPE_BULLET_TRAVEL", 0, 2);
       wait 0.8;
       thread sniper_text_countup(1.05, & "SNIPERESCAPE_S", 155, 2);
     }
   } else {
     if(getdvarint("loc_language", 0) == 12) {
-      thread sniper_text( & "SNIPERESCAPE_TARGET", 120, 0, 4.45);
+      thread sniper_text(&"SNIPERESCAPE_TARGET", 120, 0, 4.45);
       wait 0.25;
-      thread sniper_text( & "SNIPERESCAPE_ZAKHAEV", 0, 0, 4.2);
+      thread sniper_text(&"SNIPERESCAPE_ZAKHAEV", 0, 0, 4.2);
       wait 1.5;
-      thread sniper_text( & "SNIPERESCAPE_DISTANCE", 120, 1, 2.7);
+      thread sniper_text(&"SNIPERESCAPE_DISTANCE", 120, 1, 2.7);
       wait 0.6;
       thread sniper_text_countup(896.7, & "SNIPERESCAPE_M", 0, 1, 2.1);
       wait 1.5;
-      thread sniper_text( & "SNIPERESCAPE_BULLET_TRAVEL", 120, 2, 0.6);
+      thread sniper_text(&"SNIPERESCAPE_BULLET_TRAVEL", 120, 2, 0.6);
       wait 0.6;
       thread sniper_text_countup(1.05, & "SNIPERESCAPE_S", 0, 2, 0);
     } else {
-      thread sniper_text( & "SNIPERESCAPE_TARGET", 0, 0, 4.45);
+      thread sniper_text(&"SNIPERESCAPE_TARGET", 0, 0, 4.45);
       wait 0.25;
-      thread sniper_text( & "SNIPERESCAPE_ZAKHAEV", 70, 0, 4.2);
+      thread sniper_text(&"SNIPERESCAPE_ZAKHAEV", 70, 0, 4.2);
       wait 1.5;
-      thread sniper_text( & "SNIPERESCAPE_DISTANCE", 0, 1, 2.7);
+      thread sniper_text(&"SNIPERESCAPE_DISTANCE", 0, 1, 2.7);
       wait 0.6;
       thread sniper_text_countup(896.7, & "SNIPERESCAPE_M", 158, 1, 2.1);
       wait 1.5;
-      thread sniper_text( & "SNIPERESCAPE_BULLET_TRAVEL", 0, 2, 0.6);
+      thread sniper_text(&"SNIPERESCAPE_BULLET_TRAVEL", 0, 2, 0.6);
       wait 0.6;
       thread sniper_text_countup(1.05, & "SNIPERESCAPE_S", 155, 2, 0);
     }

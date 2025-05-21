@@ -2404,7 +2404,7 @@ cobrapilot_think() {
 
   if(!getdvarint("limited_mode")) {
     self setcursorhint("HINT_NOICON");
-    self sethintstring( & "SCRIPT_PLATFORM_AIRLIFT_HINT_PICKUP_PILOT");
+    self sethintstring(&"SCRIPT_PLATFORM_AIRLIFT_HINT_PICKUP_PILOT");
   }
 
   thread trigger_monitor_player_lean();
@@ -3771,7 +3771,7 @@ carrying_hint() {
 
     if(!var_0) {
       var_0 = 1;
-      thread maps\_utility::hint( & "AIRLIFT_HINT_CARRYING_PILOT", 3);
+      thread maps\_utility::hint(&"AIRLIFT_HINT_CARRYING_PILOT", 3);
       wait 5;
       var_0 = 0;
     }
@@ -4024,17 +4024,17 @@ initprecache() {
   precachemodel("h1_me_roof_sign_02_destroyed2");
   precachemodel("com_water_tower_tank_destroyed");
   precachemodel("com_water_tower_base_destroyed");
-  precachestring( & "AIRLIFT_OBJ_PLAZA_CLEAR");
-  precachestring( & "AIRLIFT_OBJ_EXTRACT_TEAM");
-  precachestring( & "AIRLIFT_OBJ_EXTRACT_TO_LZ");
-  precachestring( & "AIRLIFT_OBJ_RESCUE_PILOT");
-  precachestring( & "AIRLIFT_OBJ_RETURN_PILOT");
-  precachestring( & "SCRIPT_PLATFORM_AIRLIFT_HINT_GETPILOT");
-  precachestring( & "AIRLIFT_TIME_REMAINING");
-  precachestring( & "AIRLIFT_RAN_OUT_OF_TIME");
-  precachestring( & "AIRLIFT_HINT_CARRYING_PILOT");
-  precachestring( & "SCRIPT_PLATFORM_AIRLIFT_HINT_PICKUP_PILOT");
-  precachestring( & "SCRIPT_PLATFORM_HINT_PILOT_PUTDOWN");
+  precachestring(&"AIRLIFT_OBJ_PLAZA_CLEAR");
+  precachestring(&"AIRLIFT_OBJ_EXTRACT_TEAM");
+  precachestring(&"AIRLIFT_OBJ_EXTRACT_TO_LZ");
+  precachestring(&"AIRLIFT_OBJ_RESCUE_PILOT");
+  precachestring(&"AIRLIFT_OBJ_RETURN_PILOT");
+  precachestring(&"SCRIPT_PLATFORM_AIRLIFT_HINT_GETPILOT");
+  precachestring(&"AIRLIFT_TIME_REMAINING");
+  precachestring(&"AIRLIFT_RAN_OUT_OF_TIME");
+  precachestring(&"AIRLIFT_HINT_CARRYING_PILOT");
+  precachestring(&"SCRIPT_PLATFORM_AIRLIFT_HINT_PICKUP_PILOT");
+  precachestring(&"SCRIPT_PLATFORM_HINT_PILOT_PUTDOWN");
   precacheshader("white");
   precacheshader("black");
   precacheshader("h1_hud_temperature_border");

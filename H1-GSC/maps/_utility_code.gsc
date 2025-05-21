@@ -175,9 +175,7 @@ ent_wait_for_flag_or_time_elapses(var_0, var_1) {
 
 waittill_either_function_internal(var_0, var_1, var_2) {
   var_0 endon("done");
-  [
-    [var_1]
-  ](var_2);
+  [[var_1]](var_2);
   var_0 notify("done");
 }
 

@@ -3178,11 +3178,11 @@ hint_setup() {
   precacheshader("h1_hud_tutorial_blur");
   precacheshader("h1_hud_tutorial_border");
   precacheshader("popmenu_bg");
-  precachestring( & "SCOUTSNIPER_HINT_PRONE_STANCE");
-  precachestring( & "SCOUTSNIPER_HINT_PRONE");
-  precachestring( & "SCOUTSNIPER_HINT_PRONE_TOGGLE");
-  precachestring( & "SCOUTSNIPER_HINT_PRONE_HOLD");
-  precachestring( & "SCOUTSNIPER_HINT_PRONE_DOUBLE");
+  precachestring(&"SCOUTSNIPER_HINT_PRONE_STANCE");
+  precachestring(&"SCOUTSNIPER_HINT_PRONE");
+  precachestring(&"SCOUTSNIPER_HINT_PRONE_TOGGLE");
+  precachestring(&"SCOUTSNIPER_HINT_PRONE_HOLD");
+  precachestring(&"SCOUTSNIPER_HINT_PRONE_DOUBLE");
   level.actionbinds = [];
   registeractionbinding("prone", "+stance", & "SCOUTSNIPER_HINT_PRONE_STANCE");
   registeractionbinding("prone", "goprone", & "SCOUTSNIPER_HINT_PRONE");
