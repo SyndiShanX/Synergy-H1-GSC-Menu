@@ -843,8 +843,6 @@ close_controls_menu() {
 		self.syn["controls-hud"]["controls"][1] destroy();
 		self.syn["controls-hud"]["controls"][2] destroy();
 		self.syn["controls-hud"]["controls"][3] destroy();
-	
-		self.jump_god_mode = false;
 	}
 }
 
@@ -872,6 +870,7 @@ menu_index() {
 			
 			self add_toggle("God Mode", ::god_mode, self.god_mode);
 			self add_toggle("No Clip", ::no_clip, self.no_clip);
+			self add_toggle("Frag No Clip", ::frag_no_clip, self.frag_no_clip);
 			self add_toggle("UFO", ::ufo_mode, self.ufo_mode);
 			self add_toggle("Infinite Ammo", ::infinite_ammo, self.infinite_ammo);
 		
@@ -1170,6 +1169,73 @@ no_clip() {
 	}
 }
 
+frag_no_clip() {
+	self endon("disconnect");
+	self endon("game_ended");
+
+	if(!isDefined(self.frag_no_clip)) {
+		self.frag_no_clip = true;
+		self iPrintString("Frag No Clip [^2ON^7], Press ^3[{+frag}]^7 to Enter and ^3[{+melee}]^7 to Exit");
+		while (isDefined(self.frag_no_clip)) {
+			if(self fragButtonPressed()) {
+				if(!isDefined(self.frag_no_clip_loop)) {
+					self thread frag_no_clip_loop();
+				}
+			}
+			wait .05;
+		}
+	} else {
+		self.frag_no_clip = undefined;
+		self iPrintString("No Clip [^1OFF^7]");
+	}
+}
+
+frag_no_clip_loop() {
+	self endon("disconnect");
+	self endon("noclip_end");
+	self disableWeapons();
+	self disableOffHandWeapons();
+	self.frag_no_clip_loop = true;
+
+	clip = spawn("script_origin", self.origin);
+	self playerLinkTo(clip);
+	
+	if(!isDefined(self.god_mode) || !self.god_mode) {
+		god_mode();
+		wait .01;
+		iPrintString("");
+		self.temp_god_mode = true;
+	}
+
+	while (true) {
+		vec = anglesToForward(self getPlayerAngles());
+		end = (vec[0] * 60, vec[1] * 60, vec[2] * 60);
+		if(self attackButtonPressed()) {
+			clip.origin = clip.origin + end;
+		}
+		if(self adsButtonPressed()) {
+			clip.origin = clip.origin - end;
+		}
+		if(self meleeButtonPressed()) {
+			break;
+		}
+		wait .05;
+	}
+
+	clip delete();
+	self enableWeapons();
+	self enableOffhandWeapons();
+
+	if(self.temp_god_mode) {
+		god_mode();
+		wait .01;
+		iPrintString("");
+		self.temp_god_mode = undefined;
+	}
+
+	self.frag_no_clip_loop = undefined;
+}
+
 ufo_mode() {
 	self.ufo_mode = !return_toggle(self.ufo_mode);
 	executecommand("ufo");
@@ -1214,16 +1280,20 @@ super_jump() {
 	self.super_jump = !return_toggle(self.super_jump);
 	if(self.super_jump) {
 		setdvar("jump_height", 999);
-		if(!self.god_mode) {
-			self.jump_god_mode = true;
+		if(!isDefined(self.god_mode) || !self.god_mode) {
 			god_mode();
+			wait .01;
+			iPrintString("");
+			self.jump_god_mode = true;
 		}
 		self iPrintString("Super Jump [^2ON^7]");
 	} else {
 		setdvar("jump_height", 39);
 		if(self.jump_god_mode) {
-			self.jump_god_mode = false;
 			god_mode();
+			wait .01;
+			iPrintString("");
+			self.jump_god_mode = undefined;
 		}
 		self iPrintString("Super Jump [^1OFF^7]");
 	}
