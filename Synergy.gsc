@@ -411,6 +411,9 @@ initial_variable() {
 	self.syn["weapons"]["light_machine_guns"]["kits"][1] = ["Odin", "Glacier", "Celebration", "Mudder", "Phalanx", "Ultraviolet", "Czar", "Warfighter", "Elder", "Wartorn", "Titanium"];
 	self.syn["weapons"]["pistols"]["kits"][0] =            ["cpr", "btt", "rlc", "bss", "gsr", "spo", "eqr"];
 	self.syn["weapons"]["pistols"]["kits"][1] =            ["Competition", "Battle-Tested", "Relic", "Boss", "Gunslinger", "Spec Ops", "Avalanche"];
+	// Killstreaks
+	self.syn["killstreaks"][0] = ["radar_mp", "airstrike_mp", "helicopter_mp"];
+	self.syn["killstreaks"][1] = ["UAV Recon", "Airstrike", "Attack Helicopter"];
 	
 	self.syn["utility"].interaction = true;
 	
@@ -799,7 +802,7 @@ onPlayerSpawned() {
 		
 		if(self isHost()) {
 			self freezeControls(false);
-			self.syn["watermark"] = self create_text("SyndiShanX", "default", 1, "left", "top", 5, 10, "rainbow", 1, 3);
+			self.syn["watermark"] = self create_text("SyndiShanX", "default", 1, "left", "top", 385, -220, "rainbow", 0, 3);
 		}
 		
 		if(self in_menu()) {
@@ -876,6 +879,7 @@ menu_index() {
 		case "Fun Options":
 			self add_menu(menu, menu.size);
 			
+			//self add_option("Suicide", maps\mp\_utility::_suicide());
 			self add_toggle("Forge Mode (Not Working)", ::forge_mode, self.forge_mode);
 			
 			self add_toggle("Super Jump", ::super_jump, self.super_jump);
@@ -896,6 +900,14 @@ menu_index() {
 				self add_option("Attachments", ::new_menu, "Attachments");
 			}
 			self add_option("Take Current Weapon", ::take_weapon);
+			
+			break;
+		case "Give Killstreaks":
+			self add_menu(menu, menu.size, 1);
+			
+			for(i = 0; i < self.syn["killstreaks"][0].size; i++) {
+				self add_option(self.syn["killstreaks"][1][i], ::give_killstreak, self.syn["killstreaks"][0][i]);
+			}
 			
 			break;
 		case "Menu Options":
@@ -1115,7 +1127,7 @@ modify_y_position(offset) {
 
 watermark() {
 	self.watermark = !return_toggle(self.watermark);
-	if(!self.watermark) {
+	if(self.watermark) {
 		iPrintString("Watermark [^2ON^7]");
 		self.syn["watermark"].alpha = 1;
 	} else {
@@ -1306,6 +1318,12 @@ set_vision(vision) {
 	self visionSetNakedForPlayer(vision, 0.1);
 }
 
+// Killstreaks
+
+give_killstreak(streak) {
+	self maps\mp\gametypes\_hardpoints::giveHardpoint(streak, 1);
+}
+
 // Weapon Options
 
 get_category(weapon) {
@@ -1363,7 +1381,7 @@ equip_kit(kit) {
 	weapon = getBaseWeaponName(self getCurrentWeapon()) + "_mp_a";
 	weapon_attachment = strtok(self getCurrentWeapon(), "#")[1];
 	weapon_camo = strtok(strtok(self getCurrentWeapon(), "#")[2], "_")[1];
-
+	
 	if(check_weapons(weapon)) {
 		if(isDefined(weapon_camo)) {
 			weapon_kitted = weapon + "#" + weapon_attachment + "#" + kit + "_" + weapon_camo;
