@@ -161,7 +161,7 @@ create_text(text, font, font_scale, align_x, align_y, x, y, color, alpha, z_inde
 	
 	textElement maps\mp\gametypes\_hud_util::setpoint(align_x, align_y, x, y);
 	
-	if(isNumber(text)) {
+	if(isnumber(text)) {
 		textElement setValue(text);
 	} else {
 		textElement set_text(text);
@@ -290,7 +290,7 @@ add_toggle(text, function, toggle, array, argument_1, argument_2, argument_3) {
 	
 	if(isDefined(array)) {
 		option.slider = true;
-		option.array  = array;
+		option.array = array;
 	}
 	
 	self.structure[self.structure.size] = option;
@@ -363,7 +363,8 @@ initial_variable() {
 	
 	self.syn["weapons"]["category"][0] = ["assault_rifles", "sub_machine_guns", "sniper_rifles", "shotguns", "light_machine_guns", "pistols", "melee", "equipment"];
 	self.syn["weapons"]["category"][1] = ["Assault Rifles", "Sub Machine Guns", "Sniper Rifles", "Shotguns", "Light Machine Guns", "Pistols", "Melee Weapons", "Equipment"];
-
+	
+	// Weapon IDs Plus Default Attachments
 	self.syn["weapons"]["assault_rifles"][0] =     ["h1_m16_mp_a", "h1_ak47_mp_a", "h1_m4_mp_a", "h1_g3_mp_a", "h1_g36c_mp_a", "h1_m14_mp_a", "h1_mp44_mp_a", "h1_xmlar_mp_a", "h1_aprast_mp_a", "h1_augast_mp_a"];
 	self.syn["weapons"]["sub_machine_guns"][0] =   ["h1_mp5_mp_a", "h1_skorpion_mp_a", "h1_uzi_mp_a", "h1_ak74u_mp_a", "h1_p90_mp_a", "h1_febsmg_mp_a", "h1_aprsmg_mp_a", "h1_augsmg_mp_a"];
 	self.syn["weapons"]["sniper_rifles"][0] =      ["h1_m40a3_mp_a", "h1_dragunov_mp_a", "h1_m21_mp_a", "h1_remington700_mp_a", "h1_barrett_mp_a", "h1_febsnp_mp_a", "h1_junsnp_mp_a"];
@@ -371,7 +372,7 @@ initial_variable() {
 	self.syn["weapons"]["light_machine_guns"][0] = ["h1_saw_mp_a", "h1_rpd_mp_a", "h1_m60e4_mp_a", "h1_feblmg_mp_a", "h1_junlmg_mp_a"];
 	self.syn["weapons"]["pistols"][0] =            ["h1_beretta_mp_a", "h1_usp_mp_a", "h1_colt45_mp_a", "h1_deserteagle_mp_a", "h1_janpst_mp_a", "h1_aprpst_mp_a", "h1_augpst_mp_a"];
 	self.syn["weapons"]["melee"][0] =              ["h1_meleejun2_mp_a", "h1_meleeapr2_mp_a", "h1_meleefeb4_mp_a", "h1_meleejun4_mp_a", "h1_meleefeb2_mp_a", "h1_meleesickle_mp_a", "h1_meleebottle_mp_a", "h1_meleeaug3_mp_a", "h1_meleejun6_mp_a", "h1_meleeapr4_mp_a", "h1_meleeapr3_mp_a", "h1_meleejun1_mp_a", "h1_meleejun3_mp_a", "h1_meleeaug1_mp_a", "h1_meleejun5_mp_a", "h1_meleeaug2_mp_a", "h1_meleeicepick_mp_a", "h1_meleepaddle_mp_a", "h1_meleeblade_mp_a", "h1_meleeshovel_mp_a", "h1_meleegladius_mp_a", "h1_meleebayonet_mp_a", "h1_meleeaug4_mp_a", "h1_meleefeb1_mp_a", "h1_meleefeb3_mp_a", "h1_meleehatchet_mp_a", "h1_meleeapr1_mp_a", "h1_meleefeb5_mp_a"];
-
+	// Weapon Names
 	self.syn["weapons"]["assault_rifles"][1] =     ["M16A4", "AK-47", "M4 Carbine", "G3", "G36C", "M14", "MP44", "XM-LAR", "BOS14", "Lynx CQ300"];
 	self.syn["weapons"]["sub_machine_guns"][1] =   ["MP5", "Skorpion", "Mini-Uzi", "AK-74u", "P90", "Mac-10", "Fang 45", "PK-PSD9"];
 	self.syn["weapons"]["sniper_rifles"][1] =      ["M40A3", "M21", "Dragunov", "R700", "Barrett .50Cal", "D-25S", "S-Tac Aggressor"];
@@ -379,12 +380,12 @@ initial_variable() {
 	self.syn["weapons"]["light_machine_guns"][1] = ["M249 SAW", "RPD", "M60E4", "PKM", "Bered MK8"];
 	self.syn["weapons"]["pistols"][1] =            ["M9", "USP .45", "M1911 .45", "Desert Eagle", ".44 Magnum", "Prokolot", "BR9"];
 	self.syn["weapons"]["melee"][1] =              ["Cleaver", "Machete", "Thug", "Tidal", "Shamrock Blade", "Sickle", "Brawler's Brew", "Point Knife", "Sarsparilla", "Sawtooth", "Diabolical", "Bludgeon", "Nauticus", "Danger Close", "Tribal", "Barber", "Cliffhanger", "OMSK Hammer", "Scorpion", "Gravedigger", "Gladiator", "CQB Bayonet", "Enforce", "Mechanic", "Samurai", "Hatchetman", "Caveman", "Leprechaun"];
-
+	// Equipment
 	self.syn["weapons"]["equipment"][0] = ["h1_c4_mp", "h1_rpg_mp", "h1_fraggrenade_mp", "h1_flashgrenade_mp", "h1_concussiongrenade_mp", "h1_smokegrenade_mp", "h1_claymore_mp"];
 	self.syn["weapons"]["equipment"][1] = ["C4", "RPG-7", "Frag Grenade", "Flash Grenade", "Concussion Grenade", "Smoke Grenade", "Claymore"];
-
-	self.syn["weapons"]["attachments"][0] =                       ["none_f", "gl_f", "silencer_f"];
-	self.syn["weapons"]["attachments"][1] =                       ["None", "Grenade Launcher", "Silencer"];
+	//Weapon Attachments
+	self.syn["weapons"]["attachments"][0] =     									["none_f", "gl_f", "silencer_f"];
+	self.syn["weapons"]["attachments"][1] =     									["None", "Grenade Launcher", "Silencer"];
 	self.syn["weapons"]["assault_rifles"]["attachments"][0] =     ["reflex_f", "acog_f"];
 	self.syn["weapons"]["assault_rifles"]["attachments"][1] =     ["Red Dot Sight", "Acog"];
 	self.syn["weapons"]["sub_machine_guns"]["attachments"][0] =   ["reflex_f", "acog_f"];
@@ -397,7 +398,7 @@ initial_variable() {
 	self.syn["weapons"]["light_machine_guns"]["attachments"][1] = ["Red Dot Sight", "Foregrip", "Acog"];
 	self.syn["weapons"]["rangers"]["attachments"][0] =            ["akimbohidden_f"];
 	self.syn["weapons"]["rangers"]["attachments"][1] =            ["Akimbo"];
-	
+	//Weapon Kits
 	self.syn["weapons"]["assault_rifles"]["kits"][0] =     ["ish", "scn", "don", "bko", "ttf", "ctm", "wlf", "clr", "mtp", "ntb", "hnn", "btw", "frd"];
 	self.syn["weapons"]["assault_rifles"]["kits"][1] =     ["Irish", "Stinger", "Don", "Black Dot", "Tactical Fighter", "Center Mass", "Wolfen", "Challenger", "Mastercraft", "Noobtuber", "Peacekeeper", "Battleworn", "Fire Drake"];
 	self.syn["weapons"]["sub_machine_guns"]["kits"][0] =   ["tki", "prm", "clh", "msp", "rpr", "kin", "bts", "uop", "rwr", "stg"];
@@ -413,12 +414,12 @@ initial_variable() {
 	
 	self.syn["utility"].interaction = true;
 	
-	self.syn["utility"].color[0] = (0.752941176, 0.752941176, 0.752941176);
-	self.syn["utility"].color[1] = (0.074509804, 0.070588235, 0.078431373);
-	self.syn["utility"].color[2] = (0.074509804, 0.070588235, 0.078431373);
-	self.syn["utility"].color[3] = (0.243137255, 0.22745098, 0.247058824);
-	self.syn["utility"].color[4] = (1, 1, 1);
-	self.syn["utility"].color[5] = "rainbow";
+	self.syn["utility"].color[0] = (0.752941176, 0.752941176, 0.752941176); // Selected Slider Thumb and Category Text
+	self.syn["utility"].color[1] = (0.074509804, 0.070588235, 0.078431373); // Title Background and Unselected Slider Background
+	self.syn["utility"].color[2] = (0.074509804, 0.070588235, 0.078431373); // Main Background, Selected Slider Background
+	self.syn["utility"].color[3] = (0.243137255, 0.22745098, 0.247058824); // Cursor, Scrollbar Background, Unselected Slider Thumb, and Unchecked Toggle
+	self.syn["utility"].color[4] = (1, 1, 1); // Text Color
+	self.syn["utility"].color[5] = "rainbow"; // Outline and Separators
 	
 	self.cursor = [];
 	self.previous = [];
@@ -439,6 +440,7 @@ initial_monitor() {
 					}
 					
 					close_controls_menu();
+					clear_all();
 					
 					self open_menu();
 					wait .15;
@@ -457,9 +459,8 @@ initial_monitor() {
 						self close_menu();
 					}
 					
-					wait .75;
-				}
-				else if(self adsButtonPressed() && !self attackButtonPressed() || self attackButtonPressed() && !self adsButtonPressed()) {
+					wait .75; // Knife Cooldown
+				} else if(self adsButtonPressed() && !self attackButtonPressed() || self attackButtonPressed() && !self adsButtonPressed()) {
 					if(isDefined(self.structure) && self.structure.size >= 2) {
 						if(return_toggle(self.syn["utility"].interaction)) {
 							self playSoundToPlayer("h1_ui_menu_scroll", self);
@@ -470,9 +471,8 @@ initial_monitor() {
 						self set_cursor((cursor + scrolling));
 						self update_scrolling(scrolling);
 					}
-					wait .15;
-				}
-				else if(self fragButtonPressed() && !self secondaryOffhandButtonPressed() || self secondaryOffhandButtonPressed() && !self fragButtonPressed()) {
+					wait .15; // Scroll Cooldown
+				} else if(self fragButtonPressed() && !self secondaryOffhandButtonPressed() || self secondaryOffhandButtonPressed() && !self fragButtonPressed()) {
 					if(return_toggle(self.structure[cursor].slider)) {
 						if(return_toggle(self.syn["utility"].interaction)) {
 							self playSoundToPlayer("h1_ui_menu_scroll", self);
@@ -483,8 +483,7 @@ initial_monitor() {
 						self set_slider(scrolling);
 					}
 					wait .07;
-				}
-				else if(self useButtonPressed()) {
+				} else if(self useButtonPressed()) {
 					if(isDefined(self.structure[cursor].function)) {
 						if(return_toggle(self.syn["utility"].interaction)) {
 							self playSoundToPlayer("mp_ui_decline", self);
@@ -514,13 +513,13 @@ open_menu(menu) {
 	}
 	
 	self.syn["hud"] = [];
-	self.syn["hud"]["title"][0] = self create_text(self.syn["title"], self.syn["utility"].font, self.syn["utility"].font_scale, "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 86), (self.syn["utility"].y_offset + 2), self.syn["utility"].color[4], 1, 10);
-	self.syn["hud"]["title"][1] = self create_text("______                         ______", self.syn["utility"].font, self.syn["utility"].font_scale * 1.5, "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 4), (self.syn["utility"].y_offset - 4), self.syn["utility"].color[5], 1, 10);
+	self.syn["hud"]["title"][0] = self create_text(self.syn["title"], self.syn["utility"].font, self.syn["utility"].font_scale, "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 86), (self.syn["utility"].y_offset + 2), self.syn["utility"].color[4], 1, 10); // Title Text
+	self.syn["hud"]["title"][1] = self create_text("______                         ______", self.syn["utility"].font, self.syn["utility"].font_scale * 1.5, "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 4), (self.syn["utility"].y_offset - 4), self.syn["utility"].color[5], 1, 10); // Title Separator
 	
-	self.syn["hud"]["background"][0] = self create_shader("white", "TOP_LEFT", "CENTER", self.syn["utility"].x_offset - 1, (self.syn["utility"].y_offset - 1), 202, 30, self.syn["utility"].color[5], 1, 1);
-	self.syn["hud"]["background"][1] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset), self.syn["utility"].y_offset, 200, 28, self.syn["utility"].color[1], 1, 2);
-	self.syn["hud"]["foreground"][1] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset), (self.syn["utility"].y_offset + 14), 194, 14, self.syn["utility"].color[3], 1, 4);
-	self.syn["hud"]["foreground"][2] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 195), (self.syn["utility"].y_offset + 14), 4, 14, self.syn["utility"].color[3], 1, 4);
+	self.syn["hud"]["background"][0] = self create_shader("white", "TOP_LEFT", "CENTER", self.syn["utility"].x_offset - 1, (self.syn["utility"].y_offset - 1), 202, 30, self.syn["utility"].color[5], 1, 1); // Outline
+	self.syn["hud"]["background"][1] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset), self.syn["utility"].y_offset, 200, 28, self.syn["utility"].color[1], 1, 2); // Main Background
+	self.syn["hud"]["foreground"][0] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset), (self.syn["utility"].y_offset + 14), 194, 14, self.syn["utility"].color[3], 1, 4); // Cursor
+	self.syn["hud"]["foreground"][1] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 195), (self.syn["utility"].y_offset + 14), 4, 14, self.syn["utility"].color[3], 1, 4); // Scrollbar
 	
 	self set_menu(menu);
 	self create_option();
@@ -570,7 +569,7 @@ create_option() {
 			}
 			
 			if(isDefined(self.structure[index].toggle)) {
-				self.syn["hud"]["toggle"][1][index] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 4), (self.syn["utility"].y_offset + ((i * self.syn["utility"].option_spacing) + 17)), 8, 8, color[1], 1, 10);
+				self.syn["hud"]["toggle"][1][index] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 4), (self.syn["utility"].y_offset + ((i * self.syn["utility"].option_spacing) + 17)), 8, 8, color[1], 1, 10); // Toggle Box
 			}
 			
 			for(x = 0; x < 15; x++) {
@@ -588,15 +587,15 @@ create_option() {
 				} else {
 					if(cursor) {
 						self.syn["hud"]["slider"][0][index] = self create_text(self.slider[self get_menu() + "_" + index], self.syn["utility"].font, (self.syn["utility"].font_scale - 0.1), "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 155), (self.syn["utility"].y_offset + ((i * self.syn["utility"].option_spacing) + 17)), self.syn["utility"].color[4], 1, 10);
-						self.syn["hud"]["arrow"][0][self get_cursor()] = self create_text("<", self.syn["utility"].font, self.syn["utility"].font_scale, "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 129), (self.syn["utility"].y_offset + ((i * self.syn["utility"].option_spacing) + 16)), self.syn["utility"].color[4], 1, 10);
-						self.syn["hud"]["arrow"][1][self get_cursor()] = self create_text(">", self.syn["utility"].font, self.syn["utility"].font_scale, "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 185), (self.syn["utility"].y_offset + ((i * self.syn["utility"].option_spacing) + 16)), self.syn["utility"].color[4], 1, 10);
+						self.syn["hud"]["arrow"][0][self get_cursor()] = self create_text("<", self.syn["utility"].font, self.syn["utility"].font_scale, "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 129), (self.syn["utility"].y_offset + ((i * self.syn["utility"].option_spacing) + 16)), self.syn["utility"].color[4], 1, 10); // Slider Arrow
+						self.syn["hud"]["arrow"][1][self get_cursor()] = self create_text(">", self.syn["utility"].font, self.syn["utility"].font_scale, "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 185), (self.syn["utility"].y_offset + ((i * self.syn["utility"].option_spacing) + 16)), self.syn["utility"].color[4], 1, 10); // Slider Arrow
 					} else {
 						self.syn["hud"]["arrow"][0][index] destroy();
 						self.syn["hud"]["arrow"][1][index] destroy();
 					}
 				
-					self.syn["hud"]["slider"][1][index] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 135), (self.syn["utility"].y_offset + ((i * self.syn["utility"].option_spacing) + 17)), 50, 8, cursor ? self.syn["utility"].color[2] : self.syn["utility"].color[1], 1, 8);
-					self.syn["hud"]["slider"][2][index] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 149), (self.syn["utility"].y_offset + ((i * self.syn["utility"].option_spacing) + 17)), 8, 8, cursor ? self.syn["utility"].color[0] : self.syn["utility"].color[3], 1, 9);
+					self.syn["hud"]["slider"][1][index] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 135), (self.syn["utility"].y_offset + ((i * self.syn["utility"].option_spacing) + 17)), 50, 8, cursor ? self.syn["utility"].color[2] : self.syn["utility"].color[1], 1, 8); // Slider Background
+					self.syn["hud"]["slider"][2][index] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 149), (self.syn["utility"].y_offset + ((i * self.syn["utility"].option_spacing) + 17)), 8, 8, cursor ? self.syn["utility"].color[0] : self.syn["utility"].color[3], 1, 9); // Slider Thumb
 				}
 				
 				self set_slider(undefined, index);
@@ -604,7 +603,7 @@ create_option() {
 			
 			if(return_toggle(self.structure[index].category)) {
 				self.syn["hud"]["category"][0][index] = self create_text(self.structure[index].text, self.syn["utility"].font, self.syn["utility"].font_scale, "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 88), (self.syn["utility"].y_offset + ((i * self.syn["utility"].option_spacing) + 17)), self.syn["utility"].color[0], 1, 10);
-				self.syn["hud"]["category"][1][index] = self create_text("______                         ______", self.syn["utility"].font, self.syn["utility"].font_scale * 1.5, "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 4), (self.syn["utility"].y_offset + ((i * self.syn["utility"].option_spacing) + 11)), self.syn["utility"].color[5], 1, 10);
+				self.syn["hud"]["category"][1][index] = self create_text("______                         ______", self.syn["utility"].font, self.syn["utility"].font_scale * 1.5, "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 4), (self.syn["utility"].y_offset + ((i * self.syn["utility"].option_spacing) + 11)), self.syn["utility"].color[5], 1, 10); // Category Separator
 			}
 			else {
 				if(return_toggle(self.shader_option[self get_menu()])) {
@@ -643,26 +642,26 @@ update_resize() {
 	adjust = (self.structure.size > self.syn["utility"].option_limit) ? int(((94 / self.structure.size) * limit)) : height;
 	position = (self.structure.size - 1) / (height - adjust);
 	if(!return_toggle(self.shader_option[self get_menu()])) {
-		if(!isDefined(self.syn["hud"]["foreground"][1])) {
-			self.syn["hud"]["foreground"][1] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset), (self.syn["utility"].y_offset + 14), 194, 14, self.syn["utility"].color[3], 1, 4);
+		if(!isDefined(self.syn["hud"]["foreground"][0])) {
+			self.syn["hud"]["foreground"][0] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset), (self.syn["utility"].y_offset + 14), 194, 14, self.syn["utility"].color[3], 1, 4); // Cursor
 		}
 		
-		if(!isDefined(self.syn["hud"]["foreground"][2])) {
-			self.syn["hud"]["foreground"][2] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 195), (self.syn["utility"].y_offset + 14), 4, 14, self.syn["utility"].color[3], 1, 4);
+		if(!isDefined(self.syn["hud"]["foreground"][1])) {
+			self.syn["hud"]["foreground"][1] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 195), (self.syn["utility"].y_offset + 14), 4, 14, self.syn["utility"].color[3], 1, 4); // Scrollbar
 		}
 	}
 	
-	self.syn["hud"]["background"][0] set_shader(self.syn["hud"]["background"][0].shader, self.syn["hud"]["background"][0].width, return_toggle(self.shader_option[self get_menu()]) ? 42 : (height + 16));
-	self.syn["hud"]["background"][1] set_shader(self.syn["hud"]["background"][1].shader, self.syn["hud"]["background"][1].width, return_toggle(self.shader_option[self get_menu()]) ? 40 : (height + 14));
-	self.syn["hud"]["foreground"][2] set_shader(self.syn["hud"]["foreground"][2].shader, self.syn["hud"]["foreground"][2].width, adjust);
+	self.syn["hud"]["background"][0] set_shader("white", self.syn["hud"]["background"][0].width, return_toggle(self.shader_option[self get_menu()]) ? 42 : (height + 16));
+	self.syn["hud"]["background"][1] set_shader("white", self.syn["hud"]["background"][1].width, return_toggle(self.shader_option[self get_menu()]) ? 40 : (height + 14));
+	self.syn["hud"]["foreground"][1] set_shader("white", self.syn["hud"]["foreground"][1].width, adjust);
 	
-	if(isDefined(self.syn["hud"]["foreground"][1])) {
-		self.syn["hud"]["foreground"][1].y = (self.syn["hud"]["text"][self get_cursor()].y - 2);
+	if(isDefined(self.syn["hud"]["foreground"][0])) {
+		self.syn["hud"]["foreground"][0].y = (self.syn["hud"]["text"][self get_cursor()].y - 2);
 	}
 	
-	self.syn["hud"]["foreground"][2].y = (self.syn["utility"].y_offset + 14);
+	self.syn["hud"]["foreground"][1].y = (self.syn["utility"].y_offset + 14);
 	if(self.structure.size > self.syn["utility"].option_limit) {
-	    self.syn["hud"]["foreground"][2].y += (self get_cursor() / position);
+			self.syn["hud"]["foreground"][1].y += (self get_cursor() / position);
 	}
 }
 
@@ -723,12 +722,14 @@ create_rainbow_color() {
 		}
 		
 		x += 3;
-		if(x > 255)
+		if(x > 255) {
 			x = 0;
+		}
 		
 		y += 3;
-		if(y > 1545)
+		if(y > 1545) {
 			y = 0;
+		}
 		
 		level.rainbow_color = (r/255, g/255, b/255);
 		wait .05;
@@ -810,7 +811,7 @@ onPlayerSpawned() {
 			
 			self.syn["controls-hud"] = [];
 			self.syn["controls-hud"]["title"][0] = self create_text("Controls", self.syn["utility"].font, self.syn["utility"].font_scale, "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 86), (self.syn["utility"].y_offset + 2), self.syn["utility"].color[4], 1, 10);
-			self.syn["controls-hud"]["title"][1] = self create_text("______                             ______", self.syn["utility"].font, self.syn["utility"].font_scale * 1.5, "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 4), (self.syn["utility"].y_offset - 4), self.syn["utility"].color[5], 1, 10);
+			self.syn["controls-hud"]["title"][1] = self create_text("______														 ______", self.syn["utility"].font, self.syn["utility"].font_scale * 1.5, "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 4), (self.syn["utility"].y_offset - 4), self.syn["utility"].color[5], 1, 10);
 			
 			self.syn["controls-hud"]["background"][0] = self create_shader("white", "TOP_LEFT", "CENTER", self.syn["utility"].x_offset - 1, (self.syn["utility"].y_offset - 1), 222, 97, self.syn["utility"].color[5], 1, 1);
 			self.syn["controls-hud"]["background"][1] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset), self.syn["utility"].y_offset, 220, 95, self.syn["utility"].color[1], 1, 2);
@@ -859,6 +860,7 @@ menu_index() {
 			self add_option("Basic Options", ::new_menu, "Basic Options");
 			self add_option("Fun Options", ::new_menu, "Fun Options");
 			self add_option("Weapon Options", ::new_menu, "Weapon Options");
+			self add_option("Give Killstreaks", ::new_menu, "Give Killstreaks");
 			self add_option("Menu Options", ::new_menu, "Menu Options");
 			
 			break;
@@ -873,6 +875,8 @@ menu_index() {
 			break;
 		case "Fun Options":
 			self add_menu(menu, menu.size);
+			
+			self add_toggle("Forge Mode (Not Working)", ::forge_mode, self.forge_mode);
 			
 			self add_toggle("Super Jump", ::super_jump, self.super_jump);
 			self add_increment("Set Speed", ::set_speed, 190, 190, 990, 50);
@@ -1071,6 +1075,8 @@ menu_index() {
 	}
 }
 
+// Common Functions
+
 iPrintString(string) {
 	if(!isDefined(self.syn["string"])) {
 		self.syn["string"] = self create_text(string, "default", 1, "center", "top", 0, -115, (1,1,1), 1, 9999, false, true);
@@ -1128,6 +1134,8 @@ hide_weapon() {
 	setDvar("cg_drawgun", !self.hide_weapon);
 }
 
+// Basic Options
+
 god_mode() {
 	self.god_mode = !return_toggle(self.god_mode);
 	executeCommand("god");
@@ -1184,6 +1192,8 @@ infinite_ammo_loop() {
 	}
 }
 
+// Fun Options
+
 set_speed(value) {
 	setdvar("g_speed", value);
 }
@@ -1204,6 +1214,65 @@ super_jump() {
 			god_mode();
 		}
 		self iPrintString("Super Jump [^1OFF^7]");
+	}
+}
+
+forge_mode() {
+	self.forge_mode = !return_toggle(self.forge_mode);
+	if(self.forge_mode) {
+		self iPrintString("Forge Mode [^2ON^7]");
+		self thread forge_mode_loop();
+		wait 1;
+		self iPrintString("Press [{+speed_throw}] To Pick Up/Drop Objects");
+	} else {
+		self iPrintString("Forge Mode [^1OFF^7]");
+		self notify("stop_forge_mode");
+	}
+}
+
+forge_mode_loop() {
+	self endon("death");
+	self endon("stop_forge_mode");
+	while(true) {
+		trace = bulletTrace(self getTagOrigin("j_head"), self getTagOrigin("j_head") + anglesToForward(self getPlayerAngles()) * 1000000, true, self);
+		if(isDefined(trace["entity"])) {
+			while(self adsButtonPressed()) {
+				trace["entity"] moveTo(self getTagOrigin("j_head") + anglesToForward(self getPlayerAngles()) * 200);
+				trace["entity"].origin = self getTagOrigin("j_head") + anglesToForward(self getPlayerAngles()) * 200;
+				wait .01;
+				
+				if(self attackButtonPressed()) {
+					while(self attackButtonPressed()) {
+						trace["entity"] rotatePitch(1, .01);
+						trace["entity"] moveTo(self getTagOrigin("j_head") + anglesToForward(self getPlayerAngles()) * 200);
+						trace["entity"].origin = self getTagOrigin("j_head") + anglesToForward(self getPlayerAngles()) * 200;
+						wait .01;
+					}
+				}
+				if(self fragButtonPressed()) {
+					while(self fragButtonPressed()) {	 
+						trace["entity"] rotateYaw(1, .01);
+						trace["entity"] moveTo(self getTagOrigin("j_head") + anglesToForward(self getPlayerAngles()) * 200);
+						trace["entity"].origin = self getTagOrigin("j_head") + anglesToForward(self getPlayerAngles()) * 200;
+						wait .01;
+					}
+				}
+				if(self secondaryOffhandButtonPressed()) {
+					while(self secondaryOffhandButtonPressed()) {	 
+						trace["entity"] rotateRoll(1, .01);
+						trace["entity"] moveTo(self getTagOrigin("j_head") + anglesToForward(self getPlayerAngles()) * 200);
+						trace["entity"].origin = self getTagOrigin("j_head") + anglesToForward(self getPlayerAngles()) * 200;
+						wait .01;
+					}
+				}
+				if(!isPlayer( trace["entity"]) && self meleeButtonPressed()) {
+					trace["entity"] delete();
+					wait .2;
+				}
+				wait .01;
+			}
+		}
+		wait .05;
 	}
 }
 
@@ -1236,6 +1305,8 @@ set_vision(vision) {
 	wait .25;
 	self visionSetNakedForPlayer(vision, 0.1);
 }
+
+// Weapon Options
 
 get_category(weapon) {
 	forEach(weapon_category in self.syn["weapons"]["category"][0]) {
@@ -1292,12 +1363,14 @@ equip_kit(kit) {
 	weapon = getBaseWeaponName(self getCurrentWeapon()) + "_mp_a";
 	weapon_attachment = strtok(self getCurrentWeapon(), "#")[1];
 	weapon_camo = strtok(strtok(self getCurrentWeapon(), "#")[2], "_")[1];
+
 	if(check_weapons(weapon)) {
 		if(isDefined(weapon_camo)) {
 			weapon_kitted = weapon + "#" + weapon_attachment + "#" + kit + "_" + weapon_camo;
 		} else {
 			weapon_kitted = weapon + "#" + weapon_attachment + "#" + kit;
 		}
+		
 		self take_weapon(self getCurrentWeapon());
 		self give_weapon(weapon_kitted);
 	} else {
@@ -1314,6 +1387,7 @@ equip_camo(camo) {
 	} else if(int(camo) > 9 && int(camo) < 100) {
 		camo = "0" + camo;
 	}
+	
 	weapon_painted = weapon + "#" + weapon_attachment + "#" + weapon_kit + "_camo" + camo;
 	if(check_weapons(weapon_painted)) {
 		self take_weapon(self getCurrentWeapon());

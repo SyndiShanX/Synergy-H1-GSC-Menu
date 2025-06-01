@@ -285,7 +285,7 @@ add_toggle(text, function, toggle, array, argument_1, argument_2, argument_3) {
 	
 	if(isDefined(array)) {
 		option.slider = true;
-		option.array  = array;
+		option.array = array;
 	}
 	
 	self.structure[self.structure.size] = option;
@@ -356,19 +356,20 @@ initial_variable() {
 	self.syn["visions"][0] = ["None", "AC-130", "AC-130 inverted", "Black & White", "Endgame", "Night", "Night Vision", "MP Intro", "MP Nuke Aftermath", "Sepia"];
 	self.syn["visions"][1] = ["", "ac130", "ac130_inverted", "missilecam", "end_game", "default_night", "default_night_mp", "mpintro", "mpnuke_aftermath", "sepia"];
 	
+	// Weapons
 	self.syn["weapons"] = ["m16", "ak47", "m4", "g3", "g36c", "m14", "mp44", "xmlar", "mp5", "skorpion", "uzi", "ak74u", "p90", "m40a3", "dragunov", "m21", "remington700", "barrett", "winchester1200", "m1014", "kam12", "saw", "rpd", "m60e4", "beretta", "usp", "colt45", "deserteagle"];
-	
+	// Equipment
 	self.syn["weapons"]["equipment"][0] = ["c4", "rpg", "fraggrenade", "flash_grenade", "concussion_grenade", "smoke_grenade", "claymore"];
 	self.syn["weapons"]["equipment"][1] = ["C4", "RPG-7", "Frag Grenade", "Flash Grenade", "Concussion Grenade", "Smoke Grenade", "Claymore"];
 	
 	self.syn["utility"].interaction = true;
 	
-	self.syn["utility"].color[0] = (0.752941176, 0.752941176, 0.752941176);
-	self.syn["utility"].color[1] = (0.074509804, 0.070588235, 0.078431373);
-	self.syn["utility"].color[2] = (0.074509804, 0.070588235, 0.078431373);
-	self.syn["utility"].color[3] = (0.243137255, 0.22745098, 0.247058824);
-	self.syn["utility"].color[4] = (1, 1, 1);
-	self.syn["utility"].color[5] = "rainbow";
+	self.syn["utility"].color[0] = (0.752941176, 0.752941176, 0.752941176); // Selected Slider Thumb and Category Text
+	self.syn["utility"].color[1] = (0.074509804, 0.070588235, 0.078431373); // Title Background and Unselected Slider Background
+	self.syn["utility"].color[2] = (0.074509804, 0.070588235, 0.078431373); // Main Background, Selected Slider Background
+	self.syn["utility"].color[3] = (0.243137255, 0.22745098, 0.247058824); // Cursor, Scrollbar Background, Unselected Slider Thumb, and Unchecked Toggle
+	self.syn["utility"].color[4] = (1, 1, 1); // Text Color
+	self.syn["utility"].color[5] = "rainbow"; // Outline and Separators
 	
 	self.cursor = [];
 	self.previous = [];
@@ -385,10 +386,11 @@ initial_monitor() {
 			if(!self in_menu()) {
 				if(self adsButtonPressed() && self meleeButtonPressed()) {
 					if(return_toggle(self.syn["utility"].interaction)) {
-						self playsound("h1_ui_menu_warning_box_appear", self);
+						self playSound("h1_ui_menu_warning_box_appear", self);
 					}
 					
 					close_controls_menu();
+					clear_all();
 					
 					self open_menu();
 					wait .15;
@@ -398,7 +400,7 @@ initial_monitor() {
 				cursor = self get_cursor();
 				if(self meleeButtonPressed()) {
 					if(return_toggle(self.syn["utility"].interaction)) {
-						self playsound("h1_ui_pause_menu_resume", self);
+						self playSound("h1_ui_pause_menu_resume", self);
 					}
 					
 					if(isDefined(self.previous[(self.previous.size - 1)])) {
@@ -407,12 +409,11 @@ initial_monitor() {
 						self close_menu();
 					}
 					
-					wait .75;
-				}
-				else if(self adsButtonPressed() && !self attackButtonPressed() || self attackButtonPressed() && !self adsButtonPressed()) {
+					wait .75; // Knife Cooldown
+				} else if(self adsButtonPressed() && !self attackButtonPressed() || self attackButtonPressed() && !self adsButtonPressed()) {
 					if(isDefined(self.structure) && self.structure.size >= 2) {
 						if(return_toggle(self.syn["utility"].interaction)) {
-							self playsound("h1_ui_menu_scroll", self);
+							self playSound("h1_ui_menu_scroll", self);
 						}
 						
 						scrolling = self attackButtonPressed() ? 1 : -1;
@@ -420,12 +421,11 @@ initial_monitor() {
 						self set_cursor((cursor + scrolling));
 						self update_scrolling(scrolling);
 					}
-					wait .15;
-				}
-				else if(self fragButtonPressed() && !self secondaryOffhandButtonPressed() || self secondaryOffhandButtonPressed() && !self fragButtonPressed()) {
+					wait .15; // Scroll Cooldown
+				} else if(self fragButtonPressed() && !self secondaryOffhandButtonPressed() || self secondaryOffhandButtonPressed() && !self fragButtonPressed()) {
 					if(return_toggle(self.structure[cursor].slider)) {
 						if(return_toggle(self.syn["utility"].interaction)) {
-							self playsound("h1_ui_menu_scroll", self);
+							self playSound("h1_ui_menu_scroll", self);
 						}
 						
 						scrolling = self secondaryOffhandButtonPressed() ? 1 : -1;
@@ -433,11 +433,10 @@ initial_monitor() {
 						self set_slider(scrolling);
 					}
 					wait .07;
-				}
-				else if(self useButtonPressed()) {
+				} else if(self useButtonPressed()) {
 					if(isDefined(self.structure[cursor].function)) {
 						if(return_toggle(self.syn["utility"].interaction)) {
-							self playsound("mp_ui_decline", self);
+							self playSound("mp_ui_decline", self);
 						}
 						
 						if(return_toggle(self.structure[cursor].slider)) {
@@ -464,13 +463,13 @@ open_menu(menu) {
 	}
 	
 	self.syn["hud"] = [];
-	self.syn["hud"]["title"][0] = self create_text(self.syn["title"], self.syn["utility"].font, self.syn["utility"].font_scale, "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 86), (self.syn["utility"].y_offset + 2), self.syn["utility"].color[4], 1, 10);
-	self.syn["hud"]["title"][1] = self create_text("______                           ______", self.syn["utility"].font, self.syn["utility"].font_scale * 1.5, "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 4), (self.syn["utility"].y_offset - 4), self.syn["utility"].color[5], 1, 10);
+	self.syn["hud"]["title"][0] = self create_text(self.syn["title"], self.syn["utility"].font, self.syn["utility"].font_scale, "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 86), (self.syn["utility"].y_offset + 2), self.syn["utility"].color[4], 1, 10); // Title Text
+	self.syn["hud"]["title"][1] = self create_text("______                           ______", self.syn["utility"].font, self.syn["utility"].font_scale * 1.5, "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 4), (self.syn["utility"].y_offset - 4), self.syn["utility"].color[5], 1, 10); // Title Separator
 	
-	self.syn["hud"]["background"][0] = self create_shader("white", "TOP_LEFT", "CENTER", self.syn["utility"].x_offset - 1, (self.syn["utility"].y_offset - 1), 202, 30, self.syn["utility"].color[5], 1, 1);
-	self.syn["hud"]["background"][1] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset), self.syn["utility"].y_offset, 200, 28, self.syn["utility"].color[1], 1, 2);
-	self.syn["hud"]["foreground"][1] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset), (self.syn["utility"].y_offset + 14), 194, 14, self.syn["utility"].color[3], 1, 4);
-	self.syn["hud"]["foreground"][2] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 195), (self.syn["utility"].y_offset + 14), 4, 14, self.syn["utility"].color[3], 1, 4);
+	self.syn["hud"]["background"][0] = self create_shader("white", "TOP_LEFT", "CENTER", self.syn["utility"].x_offset - 1, (self.syn["utility"].y_offset - 1), 202, 30, self.syn["utility"].color[5], 1, 1); // Outline
+	self.syn["hud"]["background"][1] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset), self.syn["utility"].y_offset, 200, 28, self.syn["utility"].color[1], 1, 2); // Main Background
+	self.syn["hud"]["foreground"][0] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset), (self.syn["utility"].y_offset + 14), 194, 14, self.syn["utility"].color[3], 1, 4); // Cursor
+	self.syn["hud"]["foreground"][1] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 195), (self.syn["utility"].y_offset + 14), 4, 14, self.syn["utility"].color[3], 1, 4); // Scrollbar
 	
 	self set_menu(menu);
 	self create_option();
@@ -520,7 +519,7 @@ create_option() {
 			}
 			
 			if(isDefined(self.structure[index].toggle)) {
-				self.syn["hud"]["toggle"][1][index] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 4), (self.syn["utility"].y_offset + ((i * self.syn["utility"].option_spacing) + 17)), 8, 8, color[1], 1, 10);
+				self.syn["hud"]["toggle"][1][index] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 4), (self.syn["utility"].y_offset + ((i * self.syn["utility"].option_spacing) + 17)), 8, 8, color[1], 1, 10); // Toggle Box
 			}
 			
 			for(x = 0; x < 15; x++) {
@@ -538,15 +537,15 @@ create_option() {
 				} else {
 					if(cursor) {
 						self.syn["hud"]["slider"][0][index] = self create_text(self.slider[self get_menu() + "_" + index], self.syn["utility"].font, (self.syn["utility"].font_scale - 0.1), "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 155), (self.syn["utility"].y_offset + ((i * self.syn["utility"].option_spacing) + 17)), self.syn["utility"].color[4], 1, 10);
-						self.syn["hud"]["arrow"][0][self get_cursor()] = self create_text("<", self.syn["utility"].font, self.syn["utility"].font_scale, "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 129), (self.syn["utility"].y_offset + ((i * self.syn["utility"].option_spacing) + 16)), self.syn["utility"].color[4], 1, 10);
-						self.syn["hud"]["arrow"][1][self get_cursor()] = self create_text(">", self.syn["utility"].font, self.syn["utility"].font_scale, "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 185), (self.syn["utility"].y_offset + ((i * self.syn["utility"].option_spacing) + 16)), self.syn["utility"].color[4], 1, 10);
+						self.syn["hud"]["arrow"][0][self get_cursor()] = self create_text("<", self.syn["utility"].font, self.syn["utility"].font_scale, "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 129), (self.syn["utility"].y_offset + ((i * self.syn["utility"].option_spacing) + 16)), self.syn["utility"].color[4], 1, 10); // Slider Arrow
+						self.syn["hud"]["arrow"][1][self get_cursor()] = self create_text(">", self.syn["utility"].font, self.syn["utility"].font_scale, "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 185), (self.syn["utility"].y_offset + ((i * self.syn["utility"].option_spacing) + 16)), self.syn["utility"].color[4], 1, 10); // Slider Arrow
 					} else {
 						self.syn["hud"]["arrow"][0][index] destroy();
 						self.syn["hud"]["arrow"][1][index] destroy();
 					}
 				
-					self.syn["hud"]["slider"][1][index] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 135), (self.syn["utility"].y_offset + ((i * self.syn["utility"].option_spacing) + 17)), 50, 8, cursor ? self.syn["utility"].color[2] : self.syn["utility"].color[1], 1, 8);
-					self.syn["hud"]["slider"][2][index] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 149), (self.syn["utility"].y_offset + ((i * self.syn["utility"].option_spacing) + 17)), 8, 8, cursor ? self.syn["utility"].color[0] : self.syn["utility"].color[3], 1, 9);
+					self.syn["hud"]["slider"][1][index] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 135), (self.syn["utility"].y_offset + ((i * self.syn["utility"].option_spacing) + 17)), 50, 8, cursor ? self.syn["utility"].color[2] : self.syn["utility"].color[1], 1, 8); // Slider Background
+					self.syn["hud"]["slider"][2][index] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 149), (self.syn["utility"].y_offset + ((i * self.syn["utility"].option_spacing) + 17)), 8, 8, cursor ? self.syn["utility"].color[0] : self.syn["utility"].color[3], 1, 9); // Slider Thumb
 				}
 				
 				self set_slider(undefined, index);
@@ -554,7 +553,7 @@ create_option() {
 			
 			if(return_toggle(self.structure[index].category)) {
 				self.syn["hud"]["category"][0][index] = self create_text(self.structure[index].text, self.syn["utility"].font, self.syn["utility"].font_scale, "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 88), (self.syn["utility"].y_offset + ((i * self.syn["utility"].option_spacing) + 17)), self.syn["utility"].color[0], 1, 10);
-				self.syn["hud"]["category"][1][index] = self create_text("______                           ______", self.syn["utility"].font, self.syn["utility"].font_scale * 1.5, "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 4), (self.syn["utility"].y_offset + ((i * self.syn["utility"].option_spacing) + 11)), self.syn["utility"].color[5], 1, 10);
+				self.syn["hud"]["category"][1][index] = self create_text("______                           ______", self.syn["utility"].font, self.syn["utility"].font_scale * 1.5, "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 4), (self.syn["utility"].y_offset + ((i * self.syn["utility"].option_spacing) + 11)), self.syn["utility"].color[5], 1, 10); // Category Separator
 			}
 			else {
 				if(return_toggle(self.shader_option[self get_menu()])) {
@@ -593,26 +592,26 @@ update_resize() {
 	adjust = (self.structure.size > self.syn["utility"].option_limit) ? int(((94 / self.structure.size) * limit)) : height;
 	position = (self.structure.size - 1) / (height - adjust);
 	if(!return_toggle(self.shader_option[self get_menu()])) {
-		if(!isDefined(self.syn["hud"]["foreground"][1])) {
-			self.syn["hud"]["foreground"][1] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset), (self.syn["utility"].y_offset + 14), 194, 14, self.syn["utility"].color[3], 1, 4);
+		if(!isDefined(self.syn["hud"]["foreground"][0])) {
+			self.syn["hud"]["foreground"][0] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset), (self.syn["utility"].y_offset + 14), 194, 14, self.syn["utility"].color[3], 1, 4); // Cursor
 		}
 		
-		if(!isDefined(self.syn["hud"]["foreground"][2])) {
-			self.syn["hud"]["foreground"][2] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 195), (self.syn["utility"].y_offset + 14), 4, 14, self.syn["utility"].color[3], 1, 4);
+		if(!isDefined(self.syn["hud"]["foreground"][1])) {
+			self.syn["hud"]["foreground"][1] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 195), (self.syn["utility"].y_offset + 14), 4, 14, self.syn["utility"].color[3], 1, 4); // Scrollbar
 		}
 	}
 	
-	self.syn["hud"]["background"][0] set_shader(self.syn["hud"]["background"][0].shader, self.syn["hud"]["background"][0].width, return_toggle(self.shader_option[self get_menu()]) ? 42 : (height + 16));
-	self.syn["hud"]["background"][1] set_shader(self.syn["hud"]["background"][1].shader, self.syn["hud"]["background"][1].width, return_toggle(self.shader_option[self get_menu()]) ? 40 : (height + 14));
-	self.syn["hud"]["foreground"][2] set_shader(self.syn["hud"]["foreground"][2].shader, self.syn["hud"]["foreground"][2].width, adjust);
+	self.syn["hud"]["background"][0] set_shader("white", self.syn["hud"]["background"][0].width, return_toggle(self.shader_option[self get_menu()]) ? 42 : (height + 16));
+	self.syn["hud"]["background"][1] set_shader("white", self.syn["hud"]["background"][1].width, return_toggle(self.shader_option[self get_menu()]) ? 40 : (height + 14));
+	self.syn["hud"]["foreground"][1] set_shader("white", self.syn["hud"]["foreground"][1].width, adjust);
 	
-	if(isDefined(self.syn["hud"]["foreground"][1])) {
-		self.syn["hud"]["foreground"][1].y = (self.syn["hud"]["text"][self get_cursor()].y - 2);
+	if(isDefined(self.syn["hud"]["foreground"][0])) {
+		self.syn["hud"]["foreground"][0].y = (self.syn["hud"]["text"][self get_cursor()].y - 2);
 	}
 	
-	self.syn["hud"]["foreground"][2].y = (self.syn["utility"].y_offset + 14);
+	self.syn["hud"]["foreground"][1].y = (self.syn["utility"].y_offset + 14);
 	if(self.structure.size > self.syn["utility"].option_limit) {
-	    self.syn["hud"]["foreground"][2].y += (self get_cursor() / position);
+			self.syn["hud"]["foreground"][1].y += (self get_cursor() / position);
 	}
 }
 
@@ -673,12 +672,14 @@ create_rainbow_color() {
 		}
 		
 		x += 3;
-		if(x > 255)
+		if(x > 255) {
 			x = 0;
+		}
 		
 		y += 3;
-		if(y > 1545)
+		if(y > 1545) {
 			y = 0;
+		}
 		
 		level.rainbow_color = (r/255, g/255, b/255);
 		wait .05;
@@ -747,7 +748,7 @@ onPlayerSpawned() {
 		
 		self.syn["controls-hud"] = [];
 		self.syn["controls-hud"]["title"][0] = self create_text("Controls", self.syn["utility"].font, self.syn["utility"].font_scale, "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 86), (self.syn["utility"].y_offset + 2), self.syn["utility"].color[4], 1, 10);
-		self.syn["controls-hud"]["title"][1] = self create_text("______                                ______", self.syn["utility"].font, self.syn["utility"].font_scale * 1.5, "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 4), (self.syn["utility"].y_offset - 4), self.syn["utility"].color[5], 1, 10);
+		self.syn["controls-hud"]["title"][1] = self create_text("______																______", self.syn["utility"].font, self.syn["utility"].font_scale * 1.5, "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset + 4), (self.syn["utility"].y_offset - 4), self.syn["utility"].color[5], 1, 10);
 		
 		self.syn["controls-hud"]["background"][0] = self create_shader("white", "TOP_LEFT", "CENTER", self.syn["utility"].x_offset - 1, (self.syn["utility"].y_offset - 1), 222, 97, self.syn["utility"].color[5], 1, 1);
 		self.syn["controls-hud"]["background"][1] = self create_shader("white", "TOP_LEFT", "CENTER", (self.syn["utility"].x_offset), self.syn["utility"].y_offset, 220, 95, self.syn["utility"].color[1], 1, 2);
@@ -864,6 +865,8 @@ menu_index() {
 	}
 }
 
+// Common Functions
+
 iPrintString(string) {
 	if(!isDefined(self.syn["string"])) {
 		self.syn["string"] = self create_text(string, "default", 1, "center", "top", 0, -115, (1,1,1), 1, 9999, false, true);
@@ -921,6 +924,8 @@ hide_weapon() {
 	executeCommand("cg_drawGun " + !self.hide_weapon);
 }
 
+// Basic Options
+
 god_mode() {
 	self.god_mode = !return_toggle(self.god_mode);
 	executeCommand("god");
@@ -977,6 +982,8 @@ infinite_ammo_loop() {
 	}
 }
 
+// Fun Options
+
 set_speed(value) {
 	executeCommand("g_speed " + value);
 }
@@ -1018,6 +1025,8 @@ set_vision(vision) {
 	wait .25;
 	self visionSetNakedForPlayer(vision, 0.1);
 }
+
+// Weapon Options
 
 give_weapon(weapon) {
 	self giveweapon(weapon);
