@@ -258,7 +258,7 @@ session_expired() {
 player_connect() {
 	for(;;) {
 		level waitTill("connected", player);
-		player.access = self isHost() ? "Host" : "None";
+		player.access = player isHost() ? "Host" : "None";
 		
 		if(isBot(player)) {
 			return;
