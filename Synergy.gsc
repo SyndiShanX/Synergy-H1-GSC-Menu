@@ -1,4 +1,6 @@
 #include maps\mp\_utility;
+#include maps\mp\gametypes\_hud_util;
+#include common_scripts\utility;
 
 init() {
 	executeCommand("sv_cheats 1");
@@ -6,6 +8,12 @@ init() {
 	level initial_precache();
 	level thread player_connect();
 	level thread create_rainbow_color();
+	
+	replaceFunc(maps\mp\gametypes\_gamelogic::onForfeit, ::return_false); // Retropack
+	replaceFunc(maps\mp\gametypes\_gamelogic::matchstarttimerwaitforplayers, maps\mp\gametypes\_gamelogic::matchStartTimerSkip); //SimonLFC - Retropack
+	level.OriginalCallbackPlayerDamage = level.callbackPlayerDamage; //doktorSAS - Retropack
+	level.callbackPlayerDamage = ::player_damage_callback; // Retropack
+	level.rankedmatch = 1; // Retropack
 
 	level thread session_expired();
 }
@@ -20,10 +28,11 @@ initial_variable() {
 	self.cursor = [];
 	self.slider = [];
 	self.previous = [];
+	self.previous_option = undefined;
 
 	self.font = "default";
 	self.font_scale = 0.7;
-	self.option_limit = 9;
+	self.option_limit = 8;
 	self.option_spacing = 16;
 	self.x_offset = 175;
 	self.y_offset = 160;
@@ -40,6 +49,7 @@ initial_variable() {
 	self.menu_color_green = 255;
 	self.menu_color_blue = 255;
 	self.color_theme = "rainbow";
+	level.bot_difficulty = "Recruit";
 	
 	self.syn["visions"][0] = ["None", "AC-130", "AC-130 inverted", "Black & White", "Endgame", "Night", "Night Vision", "MP Intro", "MP Nuke Aftermath", "Sepia"];
 	self.syn["visions"][1] = ["", "ac130", "ac130_inverted", "missilecam", "end_game", "default_night", "default_night_mp", "mpintro", "mpnuke_aftermath", "sepia"];
@@ -104,6 +114,13 @@ initial_variable() {
 	// Killstreaks
 	self.syn["killstreaks"][0] = ["radar_mp", "airstrike_mp", "helicopter_mp"];
 	self.syn["killstreaks"][1] = ["UAV Recon", "Airstrike", "Attack Helicopter"];
+	// Map Names
+	self.syn["maps"][0] = ["convoy", "backlot", "bog_summer", "bloc", "bog", "broadcast", "carentan", "countdown", "crash", "creek", "crossfire", "farm_spring", "citystreets", "downpour", "vlobby_room", "killhouse", "overgrown", "pipeline", "shipment", "showdown", "strike", "vacant", "cargoship", "crash_snow"];
+	self.syn["maps"][1] = ["Ambush", "Backlot", "Beach Bog", "Bloc", "Bog", "Broadcast", "Chinatown", "Countdown", "Crash", "Creek", "Crossfire", "Daybreak", "District", "Downpour", "Firing Range", "Killhouse", "Overgrown", "Pipeline", "Shipment", "Showdown", "Strike", "Vacant", "Wet Work", "Winter Crash"];
+	
+	if(self.pers["prestige"] == 20) {
+		self.set_20th_prestige = true;
+	}
 }
 
 initial_observer() {
@@ -171,6 +188,10 @@ initial_observer() {
 					if(self.interaction_enabled) {
 						self playSoundToPlayer("mp_ui_decline", self);
 					}
+					
+					if(self.structure[cursor].function == ::new_menu) {
+						self.previous_option = self.structure[cursor].text;
+					}
 
 					if(isDefined(self.structure[cursor].array) || isDefined(self.structure[cursor].increment)) {
 						self thread execute_function(self.structure[cursor].function, isDefined(self.structure[cursor].array) ? self.structure[cursor].array[self.slider[(menu + "_" + cursor)]] : self.slider[(menu + "_" + cursor)], self.structure[cursor].parameter_1, self.structure[cursor].parameter_2);
@@ -196,7 +217,7 @@ event_system() {
 	level endon("game_ended");
 	self endon("disconnect");
 	for (;;) {
-		event_name = self common_scripts\utility::waittill_any_return("spawned_player", "player_downed", "death", "joined_spectators");
+		event_name = self waittill_any_return("spawned_player", "player_downed", "death", "joined_spectators");
 		switch (event_name) {
 			case "spawned_player":
 				self.spawn_origin = self.origin;
@@ -207,6 +228,8 @@ event_system() {
 					if(self isHost()) {
 						self freezeControls(false);
 					}
+					
+					setDvar("xblive_privatematch", 0);
 		
 					self initial_variable();
 					self thread initial_observer();
@@ -242,7 +265,7 @@ event_system() {
 }
 
 session_expired() {
-	level waittill("game_ended");
+	level waitTill("game_ended");
 	level endon("game_ended");
 	foreach(index, player in level.players) {
 		if(!player has_access()) {
@@ -368,8 +391,8 @@ start_rainbow() {
 }
 
 create_text(text, font, font_scale, align_x, align_y, x_offset, y_offset, color, alpha, z_index, hide_when_in_menu) {
-	textElement = self maps\mp\gametypes\_hud_util::createFontString(font, font_scale);
-	textElement maps\mp\gametypes\_hud_util::setPoint(align_x, align_y, x_offset, y_offset);
+	textElement = self createFontString(font, font_scale);
+	textElement setPoint(align_x, align_y, x_offset, y_offset);
 
 	textElement.alpha = alpha;
 	textElement.sort = z_index;
@@ -421,8 +444,8 @@ create_shader(shader, align_x, align_y, x_offset, y_offset, width, height, color
 		shaderElement thread start_rainbow();
 	}
 
-	shaderElement maps\mp\gametypes\_hud_util::setParent(level.uiParent);
-	shaderElement maps\mp\gametypes\_hud_util::setPoint(align_x, align_y, x_offset, y_offset);
+	shaderElement setParent(level.uiParent);
+	shaderElement setPoint(align_x, align_y, x_offset, y_offset);
 	
 	shaderElement set_shader(shader, width, height);
 
@@ -995,7 +1018,11 @@ menu_option() {
 			self add_option("Fun Options", undefined, ::new_menu, "Fun Options");
 			self add_option("Weapon Options", undefined, ::new_menu, "Weapon Options");
 			self add_option("Give Killstreaks", undefined, ::new_menu, "Give Killstreaks");
+			self add_option("Account Options", undefined, ::new_menu, "Account Options");
 			self add_option("Menu Options", undefined, ::new_menu, "Menu Options");
+			self add_option("Map Options", undefined, ::new_menu, "Map Options");
+			self add_option("Bot Options", undefined, ::new_menu, "Bot Options");
+			self add_option("All Players", undefined, ::new_menu, "All Players");
 			
 			break;
 		case "Basic Options":
@@ -1007,6 +1034,10 @@ menu_option() {
 			self add_toggle("UFO", "Fly Straight through the Map", ::ufo_mode, self.ufo_mode);
 			self add_toggle("Infinite Ammo", "Gives you Infinite Ammo and Infinite Grenades", ::infinite_ammo, self.infinite_ammo);
 			
+			self add_toggle("Rapid Fire", "Shoot Very Fast (Hold ^3[{+reload}]^7 & ^3[{+attack}])", ::rapid_fire, self.rapid_fire);
+			self add_toggle("No Recoil", "No Recoil while ADS & Firing", ::no_recoil, self.no_recoil);
+			self add_toggle("No Spread", "No Bullet Spread while Hip-firing", ::no_spread, self.no_spread);
+			
 			self add_option("Give Perks", undefined, ::new_menu, "Give Perks");
 			self add_option("Take Perks", undefined, ::new_menu, "Take Perks");
 			
@@ -1014,16 +1045,17 @@ menu_option() {
 		case "Fun Options":
 			self add_menu(menu, menu.size);
 			
-			self add_toggle("Forge Mode", "Pick Up/Move some Objects", ::forge_mode, self.forge_mode);
-			
 			self add_toggle("Fullbright", "Removes all Shadows and Lighting", ::fullbright, self.fullbright);
 			self add_toggle("Third Person", undefined, ::third_person, self.third_person);
 			
 			self add_toggle("Super Jump", undefined, ::super_jump, self.super_jump);
 			
+			self add_increment("Set Speed", undefined, ::set_speed, 190, 190, 990, 50);
 			self add_increment("Set Timescale", undefined, ::set_timescale, 1, 1, 10, 1);
 			
 			self add_option("Visions", undefined, ::new_menu, "Visions");
+			
+			self add_option("Suicide", undefined, ::commit_suicide, self);
 			
 			break;
 		case "Weapon Options":
@@ -1042,11 +1074,27 @@ menu_option() {
 			
 			break;
 		case "Give Killstreaks":
-			self add_menu(menu, menu.size, 1);
+			self add_menu(menu, menu.size);
 			
 			for(i = 0; i < self.syn["killstreaks"][0].size; i++) {
 				self add_option(self.syn["killstreaks"][1][i], undefined, ::give_killstreak, self.syn["killstreaks"][0][i]);
 			}
+			
+			break;
+		case "Account Options":
+			self add_menu(menu, menu.size);
+			
+			self add_option("Rainbow Classes", "Set Rainbow Class Names", ::set_colored_classes);
+			
+			self add_increment("Set Prestige", undefined, ::set_prestige, 0, 0, 20, 1);
+			
+			if(isDefined(self.set_20th_prestige)) {
+				self add_increment("Set Level", undefined, ::set_rank, 0, 0, 1000, 10);
+			} else {
+				self add_increment("Set Level", undefined, ::set_rank, 0, 0, 70, 1);
+			}
+			
+			self add_option("Unlock All", undefined, ::set_challenges);
 			
 			break;
 		case "Menu Options":
@@ -1064,6 +1112,66 @@ menu_option() {
 			self add_toggle("Watermark", "Enable/Disable Watermark in the Top Left Corner", ::watermark, self.watermark);
 			self add_toggle("Hide UI", undefined, ::hide_ui, self.hide_ui);
 			self add_toggle("Hide Weapon", undefined, ::hide_weapon, self.hide_weapon);
+			
+			break;
+		case "Map Options":
+			self add_menu(menu, menu.size);
+			
+			self add_option("Change Map", undefined, ::new_menu, "Change Map");
+			self add_toggle("No Fog", "Removes all Fog", ::no_fog, self.no_fog);
+			self add_option("End Game", undefined, ::end_game);
+			
+			break;
+		case "Change Map":
+			self add_menu(menu, menu.size);
+			
+			for(i = 0; i < self.syn["maps"][0].size; i++) {
+				self add_option(self.syn["maps"][1][i], undefined, ::change_map, self.syn["maps"][0][i], i);
+			}
+
+			break;
+		case "Bot Options":
+			self add_menu(menu, menu.size);
+			
+			self add_array("Set Difficulty", undefined, ::set_difficulty, ["Recruit", "Regular", "Hardened", "Veteran"]);
+			
+			self add_option("Spawn Friendly Bot", undefined, ::spawn_friendly_bot);
+			self add_option("Spawn Enemy Bot", undefined, ::spawn_enemy_bot);
+			self add_option("Kick Random Bot", undefined, ::kick_random_bot);
+			
+			break;
+		case "All Players":
+			self add_menu(menu, menu.size);
+
+			foreach(player in level.players){
+				self add_option(player.name, undefined, ::new_menu, "Player Option", player);
+			}
+			
+			break;
+		case "Player Option":
+			self add_menu(menu, menu.size);
+
+			target = undefined;
+			foreach(player in level.players) {
+				if(player.name == self.previous_option) {
+					target = player;
+					break;
+				}
+			}
+
+			if(isDefined(target)) {
+				self add_option("Print", "Print Player Name", ::iPrintString, target);
+				self add_option("Kill", "Kill the Player", ::commit_suicide, target);
+				
+				if(isBot(target)) {
+					self add_option("Get Difficulty", undefined, ::get_difficulty, target);
+				}
+				if(!target isHost()) {
+					self add_option("Kick", "Kick the Player from the Game", ::kick_player, target);
+				}
+			} else {
+				self add_option("Player not found");
+			}
 			
 			break;
 		case "Visions":
@@ -1301,12 +1409,13 @@ close_controls_menu() {
 
 iPrintString(string) {
 	if(!isDefined(self.syn["string"])) {
-		self.syn["string"] = self create_text(string, "default", 1, "center", "top", 0, -100, (1,1,1), 1, 9999, false, true);
+		self.syn["string"] = self create_text(string, "default", 1, "center", "top", 0, -100, (1,1,1), 1, 9999, false);
 	} else {
 		self.syn["string"] set_text(string);
 	}
 	self.syn["string"] notify("stop_hud_fade");
 	self.syn["string"].alpha = 1;
+	self.syn["string"].glowalpha = 0.2;
 	self.syn["string"] setText(string);
 	self.syn["string"] thread fade_hud(0, 4);
 }
@@ -1315,7 +1424,36 @@ fade_hud(alpha, time) {
 	self endon("stop_hud_fade");
 	self fadeOverTime(time);
 	self.alpha = alpha;
+	self.glowalpha = self.glowalpha - (0.2 / (time * 2));
 	wait time;
+}
+
+hud_scale_over_time(time, width, height) {
+	self endon("stop_hud_scale");
+	self scaleovertime(time, width, height);
+	self.width = width;
+	self.height = height;
+	wait time;
+}
+
+font_scale_over_time(time, scale) {
+	self endon("stop_font_scale");
+	self changefontscaleovertime(time);
+	self.fontscale = scale;
+}
+
+return_false() {
+	return false;
+}
+
+player_damage_callback(inflictor, attacker, damage, flags, death_reason, weapon, point, direction, hit_location, time_offset) {
+	self endon("disconnect");
+
+	if(isDefined(self.god_mode) && self.god_mode) {
+		return;
+	}
+
+	[[level.OriginalCallbackPlayerDamage]](inflictor, attacker, damage, flags, death_reason, weapon, point, direction, hit_location, time_offset);
 }
 
 // Menu Options
@@ -1495,85 +1633,68 @@ infinite_ammo() {
 }
 
 infinite_ammo_loop() {
-	self endOn("stop_infinite_ammo");
-	self endOn("game_ended");
+	self endon("stop_infinite_ammo");
+	self endon("game_ended");
 	
 	for(;;) {
 		self setWeaponAmmoClip(self getCurrentWeapon(), 999);
 		self setWeaponAmmoClip(self getCurrentWeapon(), 999, "left");
 		self setWeaponAmmoClip(self getCurrentWeapon(), 999, "right");
+		
+		self setWeaponAmmoStock(self getCurrentWeapon(), 999);
+		self setWeaponAmmoStock(self getCurrentWeapon(), 999, "left");
+		self setWeaponAmmoStock(self getCurrentWeapon(), 999, "right");
+		
 		wait .2;
+	}
+}
+
+rapid_fire() { // Kony's Weapon Menu
+	self.rapid_fire = !return_toggle(self.rapid_fire);
+	if(self.rapid_fire) {
+		self iPrintString("Rapid Fire [^2ON^7]");
+		self giveperk( "specialty_fastreload", false);
+		setDvar("perk_weapReloadMultiplier", 0.001);
+	} else {
+		self iPrintString("Rapid Fire [^1OFF^7]");
+		setDvar("perk_weapReloadMultiplier", 1);
+	}
+}
+
+no_recoil() {
+	self.no_recoil = !return_toggle(self.no_recoil);
+	if(self.no_recoil) {
+		self iPrintString("No Recoil [^2ON^7]");
+		self setRecoilScale(100);
+	} else {
+		self iPrintString("No Recoil [^1OFF^7]");
+		self setRecoilScale(1);
+	}
+}
+
+no_spread() {
+	self.no_spread = !return_toggle(self.no_spread);
+	if(self.no_spread) {
+		self iPrintString("No Spread [^2ON^7]");
+		setDvar("perk_weapSpreadMultiplier", 0.001);
+		self giveperk("specialty_bulletaccuracy", false);
+	} else {
+		self iPrintString("No Spread [^1OFF^7]");
+		setDvar("perk_weapSpreadMultiplier", 1);
 	}
 }
 
 // Fun Options
 
-forge_mode() {
-	self.forge_mode = !return_toggle(self.forge_mode);
-	if(self.forge_mode) {
-		iPrintString("Forge Mode [^2ON^7], Press ^3[{+speed_throw}]^7 to Pick Up/Drop Objects");
-		self thread forge_mode_loop();
-	} else {
-		iPrintString("Forge Mode [^1OFF^7]");
-		self notify("stop_forge_mode");
-	}
-}
-
-forge_mode_loop() {
-	self endon("death");
-	self endon("stop_forge_mode");
-	while(true) {
-		trace = bulletTrace(self getTagOrigin("j_head"), self getTagOrigin("j_head") + anglesToForward(self getPlayerAngles()) * 1000000, true, self);
-		if(isDefined(trace["entity"])) {
-			while(self adsButtonPressed()) {
-				trace["entity"] moveTo(self getTagOrigin("j_head") + anglesToForward(self getPlayerAngles()) * 200);
-				trace["entity"].origin = self getTagOrigin("j_head") + anglesToForward(self getPlayerAngles()) * 200;
-				wait .01;
-				
-				if(self attackButtonPressed()) {
-					while(self attackButtonPressed()) {
-						trace["entity"] rotatePitch(1, .01);
-						trace["entity"] moveTo(self getTagOrigin("j_head") + anglesToForward(self getPlayerAngles()) * 200);
-						trace["entity"].origin = self getTagOrigin("j_head") + anglesToForward(self getPlayerAngles()) * 200;
-						wait .01;
-					}
-				}
-				if(self fragButtonPressed()) {
-					while(self fragButtonPressed()) {	 
-						trace["entity"] rotateYaw(1, .01);
-						trace["entity"] moveTo(self getTagOrigin("j_head") + anglesToForward(self getPlayerAngles()) * 200);
-						trace["entity"].origin = self getTagOrigin("j_head") + anglesToForward(self getPlayerAngles()) * 200;
-						wait .01;
-					}
-				}
-				if(self secondaryOffhandButtonPressed()) {
-					while(self secondaryOffhandButtonPressed()) {	 
-						trace["entity"] rotateRoll(1, .01);
-						trace["entity"] moveTo(self getTagOrigin("j_head") + anglesToForward(self getPlayerAngles()) * 200);
-						trace["entity"].origin = self getTagOrigin("j_head") + anglesToForward(self getPlayerAngles()) * 200;
-						wait .01;
-					}
-				}
-				if(!isPlayer( trace["entity"]) && self meleeButtonPressed()) {
-					trace["entity"] delete();
-					wait .2;
-				}
-				wait .01;
-			}
-		}
-		wait .05;
-	}
-}
-
 fullbright() {
 	self.fullbright = !return_toggle(self.fullbright);
 	if(self.fullbright) {
 		iPrintString("Fullbright [^2ON^7]");
-		setdvar("r_fullbright", 1);
+		setDvar("r_fullbright", 1);
 		wait .01;
 	} else {
 		iPrintString("Fullbright [^1OFF^7]");
-		setdvar("r_fullbright", 0);
+		setDvar("r_fullbright", 0);
 		wait .01;
 	}
 }
@@ -1582,17 +1703,25 @@ third_person() {
 	self.third_person = !return_toggle(self.third_person);
 	if(self.third_person) {
 		iPrintString("Third Person [^2ON^7]");
-		setdvar("camera_thirdPerson", 1);
+		setDvar("camera_thirdPerson", 1);
 	} else {
 		iPrintString("Third Person [^1OFF^7]");
-		setdvar("camera_thirdPerson", 0);
+		setDvar("camera_thirdPerson", 0);
 	}
+}
+
+set_speed(value) {
+	setDvar("g_speed", value);
+}
+
+set_timescale(value) {
+	setDvar("timescale", value);
 }
 
 super_jump() {
 	self.super_jump = !return_toggle(self.super_jump);
 	if(self.super_jump) {
-		setdvar("jump_height", 999);
+		setDvar("jump_height", 999);
 		if(!isDefined(self.god_mode) || !self.god_mode) {
 			god_mode();
 			wait .01;
@@ -1601,7 +1730,7 @@ super_jump() {
 		}
 		iPrintString("Super Jump [^2ON^7]");
 	} else {
-		setdvar("jump_height", 39);
+		setDvar("jump_height", 39);
 		if(isDefined(self.jump_god_mode)) {
 			god_mode();
 			wait .01;
@@ -1612,14 +1741,23 @@ super_jump() {
 	}
 }
 
-set_timescale(value) {
-	setDvar("timescale", value);
-}
-
 set_vision(vision) {
 	self visionSetNakedForPlayer("", 0.1);
 	wait .25;
 	self visionSetNakedForPlayer(vision, 0.1);
+}
+
+commit_suicide(target) {
+	target _suicide();
+}
+
+kick_player(target) {
+	kick(target getEntityNumber());
+}
+
+end_game() {
+	setDvar("xblive_privatematch", 1);
+	exitLevel(0);
 }
 
 // Killstreaks
@@ -1631,12 +1769,12 @@ give_killstreak(streak) {
 // Perks
 
 give_perk(perk) {
-	maps\mp\_utility::giveperk(perk);
+	giveperk(perk);
 }
 
 take_perk(perk) {
-	if(maps\mp\_utility::_hasperk(perk)) {
-		maps\mp\_utility::_unsetperk(perk);
+	if(_hasperk(perk)) {
+		_unsetperk(perk);
 	}
 }
 
@@ -1752,8 +1890,8 @@ cycle_camos() {
 }
 
 cycle_camos_loop() {
-	self endOn("stop_cycle_camos");
-	self endOn("game_ended");
+	self endon("stop_cycle_camos");
+	self endon("game_ended");
 	
 	for(;;) {
 		for(i = 1; i <= 368; i++) {
@@ -1798,4 +1936,229 @@ take_weapon() {
 drop_weapon() {
 	self dropitem(self getCurrentWeapon());
 	self switchToWeapon(self getWeaponsListPrimaries()[0]);
+}
+
+// Account Options
+
+set_colored_classes() { // Retropack
+	if(!self.coloredClasses) {
+		self.coloredClasses = true;
+		self setplayerdata(getstatsgroup_ranked(), "customClasses", 0, "name", "^:Custom Slot 1");
+		self setplayerdata(getstatsgroup_ranked(), "customClasses", 1, "name", "^:Custom Slot 2");
+		self setplayerdata(getstatsgroup_ranked(), "customClasses", 2, "name", "^:Custom Slot 3");
+		self setplayerdata(getstatsgroup_ranked(), "customClasses", 3, "name", "^:Custom Slot 4");
+		self setplayerdata(getstatsgroup_ranked(), "customClasses", 4, "name", "^:Custom Slot 5");
+		self setplayerdata(getstatsgroup_ranked(), "customClasses", 5, "name", "^:Custom Slot 6");
+		self setplayerdata(getstatsgroup_ranked(), "customClasses", 6, "name", "^:Custom Slot 7");
+		self setplayerdata(getstatsgroup_ranked(), "customClasses", 7, "name", "^:Custom Slot 8");
+		self setplayerdata(getstatsgroup_ranked(), "customClasses", 8, "name", "^:Custom Slot 9");
+		self setplayerdata(getstatsgroup_ranked(), "customClasses", 9, "name", "^:Custom Slot 10");
+		self setplayerdata(getstatsgroup_ranked(), "customClasses", 10, "name", "^:Custom Slot 11");
+		self setplayerdata(getstatsgroup_ranked(), "customClasses", 11, "name", "^:Custom Slot 12");
+		self setplayerdata(getstatsgroup_ranked(), "customClasses", 12, "name", "^:Custom Slot 13");
+		self setplayerdata(getstatsgroup_ranked(), "customClasses", 13, "name", "^:Custom Slot 14");
+		self setplayerdata(getstatsgroup_ranked(), "customClasses", 14, "name", "^:Custom Slot 15");
+		self setplayerdata(getstatsgroup_ranked(), "customClasses", 15, "name", "^:Custom Slot 16");
+		self setplayerdata(getstatsgroup_ranked(), "customClasses", 16, "name", "^:Custom Slot 17");
+		self setplayerdata(getstatsgroup_ranked(), "customClasses", 17, "name", "^:Custom Slot 18");
+		self setplayerdata(getstatsgroup_ranked(), "customClasses", 18, "name", "^:Custom Slot 19");
+		self setplayerdata(getstatsgroup_ranked(), "customClasses", 19, "name", "^:Custom Slot 20");
+		self setplayerdata(getstatsgroup_ranked(), "customClasses", 20, "name", "^:Custom Slot 21");
+		self setplayerdata(getstatsgroup_ranked(), "customClasses", 21, "name", "^:Custom Slot 22");
+		self setplayerdata(getstatsgroup_ranked(), "customClasses", 22, "name", "^:Custom Slot 23");
+		self setplayerdata(getstatsgroup_ranked(), "customClasses", 23, "name", "^:Custom Slot 24");
+		self setplayerdata(getstatsgroup_ranked(), "customClasses", 24, "name", "^:Custom Slot 25");
+		self setplayerdata(getstatsgroup_private(), "privateMatchCustomClasses", 0, "name", "^:Custom Slot 1");
+		self setplayerdata(getstatsgroup_private(), "privateMatchCustomClasses", 1, "name", "^:Custom Slot 2");
+		self setplayerdata(getstatsgroup_private(), "privateMatchCustomClasses", 2, "name", "^:Custom Slot 3");
+		self setplayerdata(getstatsgroup_private(), "privateMatchCustomClasses", 3, "name", "^:Custom Slot 4");
+		self setplayerdata(getstatsgroup_private(), "privateMatchCustomClasses", 4, "name", "^:Custom Slot 5");
+		iPrintString("Colored Classes Set");
+	}
+}
+
+update_status(element, text) {
+	self endon("stop_updating_status");
+	status = text + "...";
+	for(;;) {
+		if(status == text + "...") {
+			status = text + ".";
+			element setText(status);
+		} else if(status == text + ".") {
+			status = text + "..";
+			element setText(status);
+		} else if(status == text + "..") {
+			status = text + "...";
+			element setText(status);
+		}
+		wait .5;
+	}
+}
+
+set_challenges() { // Retropack
+	self endon("disconnect");
+	self endon("death");
+	self.god_mode = true;
+	chalProgress = 0;
+	progress_bar = self create_shader("white", "top_left", "center", 0, -100, 1, 10, self.color_theme, 1, 9999);
+	progress_outline = self create_shader("white", "center", "top", 0, -105, 132, 37, self.color_theme, 1, 1);
+	progress_background = self create_shader("white", "center", "top", 0, -105, 130, 35, (0.075, 0.075, 0.075), 1, 2);
+	progress_text = self create_text("Unlocking All", "default", 1, "center", "top", 0, -115, (1,1,1), 1, 9999, true);
+	self thread update_status(progress_text, "Unlocking All");
+	if(self in_menu()) {
+		self close_menu();
+	}
+	foreach(challengeRef, challengeData in level.challengeInfo) {
+		finalTarget = 0;
+		finalTier = 0;
+		for (tierId = 1; isDefined(challengeData["targetval"][tierId]); tierId++) {
+			finalTarget = challengeData["targetval"][tierId];
+			finalTier = tierId + 1;
+		}
+		if(self isItemUnlocked(challengeRef)) {
+			self setplayerdata(getstatsgroup_ranked(), "challengeProgress", challengeRef, finalTarget);
+			self setplayerdata(getstatsgroup_ranked(), "challengeState", challengeRef, finalTier);
+		}
+		chalProgress++;
+		chalPercent = ceil(((chalProgress / level.challengeInfo.size) * 100));
+		progress_bar set_shader("white", int(chalPercent), 10);
+		waitFrame();
+	}
+	progress_bar destroyElem();
+	progress_outline destroyElem();
+	progress_background destroyElem();
+	progress_text destroyElem();
+	self notify("stop_updating_status");
+	iPrintString("Unlock All Completed");
+	self.god_mode = false;
+	setDvar("xblive_privatematch", 1);
+	exitLevel(0);
+}
+
+set_rank(value) {
+	if(value != 0) {
+		value--;
+	}
+	
+	if(value == 999) {
+		rank_xp = 2516000 + (81300 * (value - 69));
+	} else if(value > 69) {
+		rank_xp = 2516000 + (81300 * (value - 69)) - 81300;
+	} else if(value == 69) {
+		rank_xp = 2434700;
+	} else {
+		rank_xp = int(tableLookup("mp/rankTable.csv", 0, value, (value == int(tableLookup("mp/rankTable.csv", 0, "maxrank", 1))) ? 7 : 2));
+	}
+	
+	self maps\mp\gametypes\_rank::giverankxp(undefined, rank_xp, undefined, undefined, false);
+	self maps\mp\gametypes\_persistence::statset("experience", rank_xp);
+	iPrintString(self.name + "'s Level set to " + (value + 1));
+}
+
+set_prestige(value) {
+	if(value == 20) {
+		self.set_20th_prestige = true;
+	} else {
+		self.set_20th_prestige = undefined;
+	}
+	
+	self maps\mp\gametypes\_persistence::statset("prestige", value);
+	iPrintString(self.name + "'s Prestige set to " + value);
+}
+
+// Map Options
+
+no_fog() {
+	self.no_fog = !return_toggle(self.no_fog);
+	if(self.no_fog) {
+		iPrintString("No Fog [^2ON^7]");
+		setDvar("r_fog", 0);
+	} else {
+		iPrintString("No Fog [^1OFF^7]");
+		setDvar("r_fog", 1);
+	}
+}
+
+change_map(map, i) {
+	iPrintString("Changing Map to: " + self.syn["maps"][1][i]);
+	wait 1;
+	setDvar("ui_mapname", "mp_" + map);
+	end_game();
+}
+
+// Bot Options
+
+set_difficulty(difficulty) {
+	level.bot_difficulty = difficulty;
+	iPrintString(level.bot_difficulty);
+}
+
+get_difficulty(target) {
+	iPrintString(target.difficulty);
+}
+
+spawn_friendly_bot() {
+	level thread spawn_bot(self.team);
+}
+
+spawn_enemy_bot() {
+	level thread spawn_bot(maps\mp\gametypes\_gameobjects::getenemyteam(self.team));
+}
+
+kick_random_bot() {
+	random_num = int(randomintrange(0, level.players.size));
+	if(isBot(level.players[random_num])) {
+		kick(level.players[random_num] getEntityNumber());
+		return;
+	} else {
+		kick_random_bot();
+	}
+}
+
+spawn_bot(team) { // Retropack
+	level thread _spawn_bot(1, team, undefined, "spawned_player", level.bot_difficulty);
+}
+
+_spawn_bot(count, team, callback, notifyWhendone, difficulty) { // Retropack
+	time = getTime() + 10000;
+	connectingArray = [];
+	squad_index = connectingArray.size;
+	while (level.players.size < maps\mp\bots\_bots_util::bot_get_client_limit() && connectingArray.size < count && getTime() < time) {
+		maps\mp\gametypes\_hostMigration::waitLongDurationWithHostMigrationPause(0.05);
+		botEnt = addBot("Synergy", team);
+		connecting = spawnstruct();
+		connecting.bot = botEnt;
+		connecting.ready = 0;
+		connecting.abort = 0;
+		connecting.index = squad_index;
+		connecting.difficulty = difficulty;
+		connectingArray[connectingArray.size] = connecting;
+		connecting.bot thread maps\mp\bots\_bots::spawn_bot_latent(team, callback, connecting);
+		connecting.bot set_team_forced(team);
+		squad_index++;
+		waitFrame();
+	}
+
+	connectedComplete = 0;
+	time = getTime() + 60000;
+	while (connectedComplete < connectingArray.size && getTime() < time) {
+		connectedComplete = 0;
+		foreach(connecting in connectingArray) {
+			if (connecting.ready || connecting.abort) {
+				connectedComplete++;
+			}
+		}
+		wait 0.05;
+	}
+
+	if (isDefined(notifyWhendone)) {
+		self notify(notifyWhendone);
+	}
+}
+
+set_team_forced(team) { // Retropack
+	self waittill_any("joined_team");
+	waitFrame();
+	self.pers["forced_team"] = team;
+	self maps\mp\gametypes\_menus::addToTeam(team, true);
 }

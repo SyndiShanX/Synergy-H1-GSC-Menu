@@ -1,4 +1,6 @@
 #include maps\_utility;
+#include maps\_hud_util;
+#include common_scripts\utility;
 
 init() {
 	executeCommand("sv_cheats 1");
@@ -169,7 +171,7 @@ event_system() {
 }
 
 session_expired() {
-	level waittill("game_ended");
+	level waitTill("game_ended");
 	level endon("game_ended");
 	foreach(index, player in level.players) {
 		if(!player has_access()) {
@@ -293,8 +295,8 @@ start_rainbow() {
 }
 
 create_text(text, font, font_scale, align_x, align_y, x_offset, y_offset, color, alpha, z_index, hide_when_in_menu) {
-	textElement = self maps\_hud_util::createFontString(font, font_scale);
-	textElement maps\_hud_util::setPoint(align_x, align_y, x_offset, y_offset);
+	textElement = self createFontString(font, font_scale);
+	textElement setPoint(align_x, align_y, x_offset, y_offset);
 
 	textElement.alpha = alpha;
 	textElement.sort = z_index;
@@ -346,8 +348,8 @@ create_shader(shader, align_x, align_y, x_offset, y_offset, width, height, color
 		shaderElement thread start_rainbow();
 	}
 
-	shaderElement maps\_hud_util::setParent(level.uiParent);
-	shaderElement maps\_hud_util::setPoint(align_x, align_y, x_offset, y_offset);
+	shaderElement setParent(level.uiParent);
+	shaderElement setPoint(align_x, align_y, x_offset, y_offset);
 	
 	shaderElement set_shader(shader, width, height);
 
@@ -935,8 +937,6 @@ menu_option() {
 		case "Fun Options":
 			self add_menu(menu, menu.size);
 			
-			self add_toggle("Forge Mode", "Pick Up/Move some Objects", ::forge_mode, self.forge_mode);
-			
 			self add_toggle("Fullbright", "Removes all Shadows and Lighting", ::fullbright, self.fullbright);
 			
 			self add_toggle("Super Jump", undefined, ::super_jump, self.super_jump);
@@ -1262,63 +1262,6 @@ infinite_ammo_loop() {
 }
 
 // Fun Options
-
-forge_mode() {
-	self.forge_mode = !return_toggle(self.forge_mode);
-	if(self.forge_mode) {
-		iPrintString("Forge Mode [^2ON^7], Press ^3[{+speed_throw}]^7 to Pick Up/Drop Objects");
-		self thread forge_mode_loop();
-	} else {
-		iPrintString("Forge Mode [^1OFF^7]");
-		self notify("stop_forge_mode");
-	}
-}
-
-forge_mode_loop() {
-	self endon("death");
-	self endon("stop_forge_mode");
-	while(true) {
-		trace = bulletTrace(self getTagOrigin("j_head"), self getTagOrigin("j_head") + anglesToForward(self getPlayerAngles()) * 1000000, true, self);
-		if(isDefined(trace["entity"])) {
-			while(self adsButtonPressed()) {
-				trace["entity"] moveTo(self getTagOrigin("j_head") + anglesToForward(self getPlayerAngles()) * 200);
-				trace["entity"].origin = self getTagOrigin("j_head") + anglesToForward(self getPlayerAngles()) * 200;
-				wait .01;
-				
-				if(self attackButtonPressed()) {
-					while(self attackButtonPressed()) {
-						trace["entity"] rotatePitch(1, .01);
-						trace["entity"] moveTo(self getTagOrigin("j_head") + anglesToForward(self getPlayerAngles()) * 200);
-						trace["entity"].origin = self getTagOrigin("j_head") + anglesToForward(self getPlayerAngles()) * 200;
-						wait .01;
-					}
-				}
-				if(self fragButtonPressed()) {
-					while(self fragButtonPressed()) {	 
-						trace["entity"] rotateYaw(1, .01);
-						trace["entity"] moveTo(self getTagOrigin("j_head") + anglesToForward(self getPlayerAngles()) * 200);
-						trace["entity"].origin = self getTagOrigin("j_head") + anglesToForward(self getPlayerAngles()) * 200;
-						wait .01;
-					}
-				}
-				if(self secondaryOffhandButtonPressed()) {
-					while(self secondaryOffhandButtonPressed()) {	 
-						trace["entity"] rotateRoll(1, .01);
-						trace["entity"] moveTo(self getTagOrigin("j_head") + anglesToForward(self getPlayerAngles()) * 200);
-						trace["entity"].origin = self getTagOrigin("j_head") + anglesToForward(self getPlayerAngles()) * 200;
-						wait .01;
-					}
-				}
-				if(!isPlayer( trace["entity"]) && self meleeButtonPressed()) {
-					trace["entity"] delete();
-					wait .2;
-				}
-				wait .01;
-			}
-		}
-		wait .05;
-	}
-}
 
 fullbright() {
 	self.fullbright = !return_toggle(self.fullbright);
