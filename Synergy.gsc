@@ -1940,6 +1940,19 @@ drop_weapon() {
 
 // Account Options
 
+set_colored_classes() {
+	if(!self.coloredClasses) {
+		self.coloredClasses = true;
+		for(i = 0; i < 25; i++) {
+			self setplayerdata(getstatsgroup_ranked(), "customClasses", i, "name", "^:" + self getplayerdata(common_scripts\utility::getstatsgroup_ranked(), "customClasses", i, "name"));
+		}
+		for(i = 0; i < 5; i++) {
+			self setplayerdata(getstatsgroup_private(), "privateMatchCustomClasses", i, "name", "^:" + self getplayerdata(common_scripts\utility::getstatsgroup_private(), "privateMatchCustomClasses", i, "name"));
+		}
+		iPrintString("Colored Classes Set");
+	}
+}
+
 set_colored_classes() { // Retropack
 	if(!self.coloredClasses) {
 		self.coloredClasses = true;
