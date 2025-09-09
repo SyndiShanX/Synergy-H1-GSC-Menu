@@ -10,8 +10,8 @@ init() {
 	level thread create_rainbow_color();
 
 	replaceFunc(maps\mp\gametypes\_gamelogic::onForfeit, ::return_false); // Retropack
-	replaceFunc(maps\mp\gametypes\_gamelogic::matchstarttimerwaitforplayers, maps\mp\gametypes\_gamelogic::matchStartTimerSkip); //SimonLFC - Retropack
-	level.OriginalCallbackPlayerDamage = level.callbackPlayerDamage; //doktorSAS - Retropack
+	replaceFunc(maps\mp\gametypes\_gamelogic::matchStartTimerWaitForPlayers, maps\mp\gametypes\_gamelogic::matchStartTimerSkip); //SimonLFC - Retropack
+	level.originalCallbackPlayerDamage = level.callbackPlayerDamage; //doktorSAS - Retropack
 	level.callbackPlayerDamage = ::player_damage_callback; // Retropack
 	level.rankedmatch = 1; // Retropack
 
@@ -306,7 +306,7 @@ player_damage_callback(inflictor, attacker, damage, flags, death_reason, weapon,
 		return;
 	}
 
-	[[level.OriginalCallbackPlayerDamage]](inflictor, attacker, damage, flags, death_reason, weapon, point, direction, hit_location, time_offset);
+	[[level.originalCallbackPlayerDamage]](inflictor, attacker, damage, flags, death_reason, weapon, point, direction, hit_location, time_offset);
 }
 
 player_downed(einflictor, eattacker, idamage, smeansofdeath, sweapon, vdir, shitloc, psoffsettime, deathanimduration) {
@@ -874,10 +874,6 @@ display_option() {
 			self.menu["toggle"][0] = [];
 		}
 
-		if(!isDefined(self.menu["toggle"][1])) {
-			self.menu["toggle"][1] = [];
-		}
-
 		menu = self get_menu();
 		cursor = self get_cursor();
 		maximum = min(self.structure.size, self.option_limit);
@@ -891,7 +887,7 @@ display_option() {
 			if(isDefined(self.structure[index].toggle)) { // Toggle Off
 				self.menu["toggle"][0][index] = self create_shader("white", "TOP_RIGHT", "TOPCENTER", (self.x_offset + 14), (self.y_offset + ((a * self.option_spacing) + 19)), 10, 10, (0.25, 0.25, 0.25), 1, 9);
 				if(self.structure[index].toggle) { // Toggle On
-					self.menu["toggle"][1][index] = self create_shader("white", "TOP_RIGHT", "TOPCENTER", (self.x_offset + 13), (self.y_offset + ((a * self.option_spacing) + 20)), 8, 8, (1, 1, 1), 1, 10);
+					self.menu["toggle"][0][index].color = (1, 1, 1);
 				}
 			}
 
@@ -1532,8 +1528,6 @@ hide_weapon() {
 
 god_mode() {
 	self.god_mode = !return_toggle(self.god_mode);
-	executeCommand("god");
-	wait .01;
 	if(self.god_mode) {
 		iPrintString("God Mode [^2ON^7]");
 	} else {
@@ -1585,9 +1579,7 @@ frag_no_clip_loop() {
 	clip = spawn("script_origin", self.origin);
 	self playerLinkTo(clip);
 	if(!isDefined(self.god_mode) || !self.god_mode) {
-		executeCommand("god");
-		wait .01;
-		iPrintString("");
+		god_mode();
 		self.temp_god_mode = true;
 	}
 
@@ -1611,9 +1603,7 @@ frag_no_clip_loop() {
 	self enableOffhandWeapons();
 
 	if(isDefined(self.temp_god_mode)) {
-		executeCommand("god");
-		wait .01;
-		iPrintString("");
+		god_mode();
 		self.temp_god_mode = undefined;
 	}
 
@@ -1734,8 +1724,6 @@ super_jump() {
 		setDvar("jump_height", 999);
 		if(!isDefined(self.god_mode) || !self.god_mode) {
 			god_mode();
-			wait .01;
-			iPrintString("");
 			self.jump_god_mode = true;
 		}
 		iPrintString("Super Jump [^2ON^7]");
@@ -1743,8 +1731,6 @@ super_jump() {
 		setDvar("jump_height", 39);
 		if(isDefined(self.jump_god_mode)) {
 			god_mode();
-			wait .01;
-			iPrintString("");
 			self.jump_god_mode = undefined;
 		}
 		iPrintString("Super Jump [^1OFF^7]");
@@ -1959,43 +1945,6 @@ set_colored_classes() {
 		for(i = 0; i < 5; i++) {
 			self setplayerdata(getstatsgroup_private(), "privateMatchCustomClasses", i, "name", "^:" + self getplayerdata(common_scripts\utility::getstatsgroup_private(), "privateMatchCustomClasses", i, "name"));
 		}
-		iPrintString("Colored Classes Set");
-	}
-}
-
-set_colored_classes() { // Retropack
-	if(!self.coloredClasses) {
-		self.coloredClasses = true;
-		self setplayerdata(getstatsgroup_ranked(), "customClasses", 0, "name", "^:Custom Slot 1");
-		self setplayerdata(getstatsgroup_ranked(), "customClasses", 1, "name", "^:Custom Slot 2");
-		self setplayerdata(getstatsgroup_ranked(), "customClasses", 2, "name", "^:Custom Slot 3");
-		self setplayerdata(getstatsgroup_ranked(), "customClasses", 3, "name", "^:Custom Slot 4");
-		self setplayerdata(getstatsgroup_ranked(), "customClasses", 4, "name", "^:Custom Slot 5");
-		self setplayerdata(getstatsgroup_ranked(), "customClasses", 5, "name", "^:Custom Slot 6");
-		self setplayerdata(getstatsgroup_ranked(), "customClasses", 6, "name", "^:Custom Slot 7");
-		self setplayerdata(getstatsgroup_ranked(), "customClasses", 7, "name", "^:Custom Slot 8");
-		self setplayerdata(getstatsgroup_ranked(), "customClasses", 8, "name", "^:Custom Slot 9");
-		self setplayerdata(getstatsgroup_ranked(), "customClasses", 9, "name", "^:Custom Slot 10");
-		self setplayerdata(getstatsgroup_ranked(), "customClasses", 10, "name", "^:Custom Slot 11");
-		self setplayerdata(getstatsgroup_ranked(), "customClasses", 11, "name", "^:Custom Slot 12");
-		self setplayerdata(getstatsgroup_ranked(), "customClasses", 12, "name", "^:Custom Slot 13");
-		self setplayerdata(getstatsgroup_ranked(), "customClasses", 13, "name", "^:Custom Slot 14");
-		self setplayerdata(getstatsgroup_ranked(), "customClasses", 14, "name", "^:Custom Slot 15");
-		self setplayerdata(getstatsgroup_ranked(), "customClasses", 15, "name", "^:Custom Slot 16");
-		self setplayerdata(getstatsgroup_ranked(), "customClasses", 16, "name", "^:Custom Slot 17");
-		self setplayerdata(getstatsgroup_ranked(), "customClasses", 17, "name", "^:Custom Slot 18");
-		self setplayerdata(getstatsgroup_ranked(), "customClasses", 18, "name", "^:Custom Slot 19");
-		self setplayerdata(getstatsgroup_ranked(), "customClasses", 19, "name", "^:Custom Slot 20");
-		self setplayerdata(getstatsgroup_ranked(), "customClasses", 20, "name", "^:Custom Slot 21");
-		self setplayerdata(getstatsgroup_ranked(), "customClasses", 21, "name", "^:Custom Slot 22");
-		self setplayerdata(getstatsgroup_ranked(), "customClasses", 22, "name", "^:Custom Slot 23");
-		self setplayerdata(getstatsgroup_ranked(), "customClasses", 23, "name", "^:Custom Slot 24");
-		self setplayerdata(getstatsgroup_ranked(), "customClasses", 24, "name", "^:Custom Slot 25");
-		self setplayerdata(getstatsgroup_private(), "privateMatchCustomClasses", 0, "name", "^:Custom Slot 1");
-		self setplayerdata(getstatsgroup_private(), "privateMatchCustomClasses", 1, "name", "^:Custom Slot 2");
-		self setplayerdata(getstatsgroup_private(), "privateMatchCustomClasses", 2, "name", "^:Custom Slot 3");
-		self setplayerdata(getstatsgroup_private(), "privateMatchCustomClasses", 3, "name", "^:Custom Slot 4");
-		self setplayerdata(getstatsgroup_private(), "privateMatchCustomClasses", 4, "name", "^:Custom Slot 5");
 		iPrintString("Colored Classes Set");
 	}
 }
