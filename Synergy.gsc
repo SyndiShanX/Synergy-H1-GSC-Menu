@@ -13,6 +13,7 @@ init() {
 	replaceFunc(maps\mp\gametypes\_gamelogic::matchStartTimerWaitForPlayers, maps\mp\gametypes\_gamelogic::matchStartTimerSkip); //SimonLFC - Retropack
 	level.originalCallbackPlayerDamage = level.callbackPlayerDamage; //doktorSAS - Retropack
 	level.callbackPlayerDamage = ::player_damage_callback; // Retropack
+	level.rankedmatch = 1; // Retropack
 
 	level thread session_expired();
 }
@@ -228,6 +229,8 @@ event_system() {
 					if(self isHost()) {
 						self freezeControls(false);
 					}
+
+					setDvar("xblive_privatematch", 0);
 
 					self initial_variable();
 					self thread initial_observer();
@@ -1093,7 +1096,6 @@ menu_option() {
 		case "Account Options":
 			self add_menu(menu, menu.size);
 
-			self add_option("Enable Ranking", "Enables the ability to rankup, use online classes, etc.", ::enable_ranking);
 			self add_option("Rainbow Classes", "Set Rainbow Class Names", ::set_colored_classes);
 
 			self add_increment("Set Prestige", undefined, ::set_prestige, 0, 0, 20, 1);
@@ -1751,7 +1753,6 @@ kick_player(target) {
 
 end_game() {
 	setDvar("xblive_privatematch", 1);
-	level.rankedmatch = 0;
 	exitLevel(0);
 }
 
@@ -1935,19 +1936,6 @@ drop_weapon() {
 
 // Account Options
 
-enable_ranking() {	
-	self.enable_ranking = !return_toggle(self.enable_ranking);
-	if(self.enable_ranking) {
-		iPrintString("Ranking [^2ON^7]");
-		setDvar("xblive_privatematch", 0);
-		setDvar("onlinegame", 1);
-	} else {
-		iPrintString("Ranking [^1OFF^7]");
-		setDvar("xblive_privatematch", 1);
-		setDvar("onlinegame", 0);
-	}
-}
-
 set_colored_classes() {
 	if(!self.coloredClasses) {
 		self.coloredClasses = true;
@@ -1981,10 +1969,8 @@ update_status(element, text) {
 
 set_challenges() { // Retropack
 	self endon("disconnect");
+
 	self endon("death");
-	
-	setDvar("xblive_privatematch", 0);
-	setDvar("onlinegame", 1);
 	self.god_mode = true;
 	chalProgress = 0;
 	progress_bar = self create_shader("white", "top_left", "center", 0, -100, 1, 10, self.color_theme, 1, 9999);
@@ -2019,7 +2005,6 @@ set_challenges() { // Retropack
 	iPrintString("Unlock All Completed");
 	self.god_mode = false;
 	setDvar("xblive_privatematch", 1);
-	level.rankedmatch = 0;
 	exitLevel(0);
 }
 
