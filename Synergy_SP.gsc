@@ -37,9 +37,9 @@ initial_variable() {
 	self set_menu();
 	self set_title();
 
-	self.menu_color_red = 255;
-	self.menu_color_green = 255;
-	self.menu_color_blue = 255;
+	self.menu_color_red = 0;
+	self.menu_color_green = 0;
+	self.menu_color_blue = 0;
 	self.color_theme = "rainbow";
 
 	self.syn["visions"][0] = ["None", "AC-130", "AC-130 inverted", "Black & White", "Endgame", "Night", "Night Vision", "MP Intro", "MP Nuke Aftermath", "Sepia"];

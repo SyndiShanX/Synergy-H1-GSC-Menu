@@ -44,9 +44,9 @@ initial_variable() {
 	self set_menu();
 	self set_title();
 
-	self.menu_color_red = 255;
-	self.menu_color_green = 255;
-	self.menu_color_blue = 255;
+	self.menu_color_red = 0;
+	self.menu_color_green = 0;
+	self.menu_color_blue = 0;
 	self.color_theme = "rainbow";
 	level.bot_difficulty = "Recruit";
 
