@@ -44,9 +44,9 @@ initial_variable() {
 	self set_menu();
 	self set_title();
 
-	self.menu_color_red = 255;
-	self.menu_color_green = 255;
-	self.menu_color_blue = 255;
+	self.menu_color_red = 0;
+	self.menu_color_green = 0;
+	self.menu_color_blue = 0;
 	self.color_theme = "rainbow";
 	level.bot_difficulty = "Recruit";
 
@@ -1375,7 +1375,7 @@ menu_option() {
 }
 
 player_option(menu, player) {
-	if(!isDefined(menu) || !isDefined(player) || !isplayer(player)) {
+	if(!isDefined(menu) || !isDefined(player) || !isPlayer(player)) {
 		menu = "Error";
 	}
 
@@ -1777,8 +1777,8 @@ take_perk(perk) {
 // Weapon Options
 
 get_category(weapon) {
-	forEach(weapon_category in self.syn["weapons"]["category"][0]) {
-		forEach(weapon_id in self.syn["weapons"][weapon_category][0]) {
+	foreach(weapon_category in self.syn["weapons"]["category"][0]) {
+		foreach(weapon_id in self.syn["weapons"][weapon_category][0]) {
 			if(weapon_id == weapon + "_a" || weapon_id == weapon) {
 				return weapon_category;
 			}
@@ -2099,7 +2099,7 @@ _spawn_bot(count, team, callback, notifyWhendone, difficulty) { // Retropack
 	while (level.players.size < maps\mp\bots\_bots_util::bot_get_client_limit() && connectingArray.size < count && getTime() < time) {
 		maps\mp\gametypes\_hostMigration::waitLongDurationWithHostMigrationPause(0.05);
 		botEnt = addBot("Synergy", team);
-		connecting = spawnstruct();
+		connecting = spawnStruct();
 		connecting.bot = botEnt;
 		connecting.ready = 0;
 		connecting.abort = 0;
