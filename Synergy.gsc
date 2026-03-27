@@ -5,6 +5,8 @@
 init() {
 	executeCommand("sv_cheats 1");
 
+	precacheshader("ui_scrollbar_arrow_right");
+
 	level thread player_connect();
 	level thread create_rainbow_color();
 
@@ -21,7 +23,7 @@ initial_variables() {
 	self.in_menu = false;
 	self.hud_created = false;
 	self.loaded_offset = false;
-	self.option_limit = 7;
+	self.option_limit = 5;
 	self.current_menu = "Synergy";
 	self.structure = [];
 	self.previous = [];
@@ -160,20 +162,22 @@ initialize_menu() {
 	          self.menu["title"] = self create_text("Title", self.font, self.font_scale, "TOP_LEFT", "TOPCENTER", (self.x_offset + 94.5), (self.y_offset + 3), (1, 1, 1), 1, 10);
 	          self.menu["description"] = self create_text("Description", self.font, self.font_scale, "TOP_LEFT", "TOPCENTER", (self.x_offset + 5), (self.y_offset + (self.option_limit * 17.5)), (0.75, 0.75, 0.75), 0, 10);
 
-						self.menu["options"] = self create_text("", self.font, self.font_scale, "TOP_LEFT", "TOPCENTER", (self.x_offset + 5), (self.y_offset + 20), (0.75, 0.75, 0.75), 1, 10);
-						self.menu["submenu_icons"] = self create_text("", self.font, self.font_scale, "TOP_LEFT", "TOPCENTER", (self.x_offset + 215), ((self.y_offset + 20)), (0.75, 0.75, 0.75), 0, 10);
-						self.menu["slider_texts"] = self create_text("", self.font, self.font_scale, "TOP_LEFT", "TOPCENTER", (self.x_offset + 132.5), (self.y_offset + 20), (0.75, 0.75, 0.75), 0, 10);
-
 						for(i = 1; i <= self.option_limit; i++) {
-							self.menu["toggle_" + i] = self create_shader("white", "TOP_RIGHT", "TOPCENTER", (self.x_offset + 11), ((self.y_offset + 4) + (i * 16.5)), 8, 8, (0.25, 0.25, 0.25), 0, 9);
-							self.menu["slider_" + i] = self create_shader("white", "TOP_LEFT", "TOPCENTER", self.x_offset, (self.y_offset + (i * 16.5)), 224, 16, (0.25, 0.25, 0.25), 0, 5);
+							self.menu["toggle_" + i] = self create_shader("white", "TOP_RIGHT", "TOPCENTER", (self.x_offset + 11), ((self.y_offset + 4) + (i * 15)), 8, 8, (0.25, 0.25, 0.25), 0, 9);
+							self.menu["slider_" + i] = self create_shader("white", "TOP_LEFT", "TOPCENTER", self.x_offset, (self.y_offset + (i * 15)), 224, 16, (0.25, 0.25, 0.25), 0, 5);
+							self.menu["option_" + i] = self create_text("", self.font, self.font_scale, "TOP_LEFT", "TOPCENTER", (self.x_offset + 5), ((self.y_offset + 4) + (i * 15)), (0.75, 0.75, 0.75), 1, 10);
+							self.menu["slider_text_" + i] = self create_text("", self.font, self.font_scale, "TOP_LEFT", "TOPCENTER", (self.x_offset + 132.5), ((self.y_offset + 4) + (i * 15)), (0.75, 0.75, 0.75), 0, 10);
+							self.menu["submenu_icon_" + i] = self create_shader("ui_scrollbar_arrow_right", "TOP_RIGHT", "TOPCENTER", (self.x_offset + 223), ((self.y_offset + 4) + (i * 15)), 7, 7, (0.5, 0.5, 0.5), 0, 10);
 						}
 
 	          self.hud_created = true;
 
 	          self.menu["title"] set_text("Controls");
-
-	          self.menu["options"] set_text("Open: ^3[{+speed_throw}] ^7and ^3[{+melee}]\n\nScroll: ^3[{+speed_throw}] ^7and ^3[{+attack}]\n\nSelect: ^3[{+activate}] ^7Back: ^3[{+melee}]\n\nSliders: ^3[{+smoke}] ^7and ^3[{+frag}]");
+						self.menu["option_1"] set_text("Open: ^3[{+speed_throw}] ^7and ^3[{+melee}]");
+						self.menu["option_2"] set_text("Scroll: ^3[{+speed_throw}] ^7and ^3[{+attack}]");
+						self.menu["option_3"] set_text("Select: ^3[{+activate}] ^7Back: ^3[{+melee}]");
+						self.menu["option_4"] set_text("Sliders: ^3[{+smoke}] ^7and ^3[{+frag}]");
+						self.menu["option_5"].alpha = 0;
 
 	          self.menu["border"] set_shader("white", self.menu["border"].width, 83);
 	          self.menu["background"] set_shader("white", self.menu["background"].width, 81);
@@ -333,27 +337,33 @@ close_controls_menu() {
 	set_menu_visibility(0);
 
 	self.menu["title"] set_text("");
+	self.menu["option_1"] set_text("");
+	self.menu["option_2"] set_text("");
+	self.menu["option_3"] set_text("");
+	self.menu["option_4"] set_text("");
 
 	self.in_menu = false;
 }
 
 set_menu_visibility(opacity) {
 	if(opacity == 0) {
-	  self.menu["border"].alpha = opacity;
-	  self.menu["description"].alpha = opacity;
-	  for(i = 1; i <= self.option_limit; i++) {
-	    self.menu["toggle_" + i].alpha = opacity;
-	    self.menu["slider_" + i].alpha = opacity;
-	  }
+		self.menu["border"].alpha = opacity;
+		self.menu["description"].alpha = opacity;
+		for(i = 1; i <= self.option_limit; i++) {
+			self.menu["toggle_" + i].alpha = opacity;
+			self.menu["slider_" + i].alpha = opacity;
+			self.menu["submenu_icon_" + i].alpha = opacity;
+		}
 	}
 
 	self.menu["title"].alpha = opacity;
 	self.menu["separator_1"].alpha = opacity;
 	self.menu["separator_2"].alpha = opacity;
 
-	self.menu["options"].alpha = opacity;
-	self.menu["submenu_icons"].alpha = opacity;
-	self.menu["slider_texts"].alpha = opacity;
+	for(i = 1; i <= self.option_limit; i++) {
+		self.menu["option_" + i].alpha = opacity;
+		self.menu["slider_text_" + i].alpha = opacity;
+	}
 
 	waitframe();
 
@@ -362,7 +372,7 @@ set_menu_visibility(opacity) {
 	self.menu["cursor"].alpha = opacity;
 
 	if(opacity == 1) {
-	  self.menu["border"].alpha = opacity;
+		self.menu["border"].alpha = opacity;
 	}
 }
 
@@ -406,41 +416,11 @@ create_text(text, font, font_scale, align_x, align_y, x_offset, y_offset, color,
 
 set_text(text) {
 	if(!isDefined(self) || !isDefined(text)) {
-	  return;
+		return;
 	}
 
 	self.text = text;
 	self setText(text);
-}
-
-add_text(text, index) {
-	if(!isDefined(self) || !isDefined(text)) {
-		return;
-	}
-
-	self.text = text;
-	self.text_array[index] = text + "\n\n";
-}
-
-set_text_array() {
-	if(!isDefined(self)) {
-		return;
-	}
-
-	if(!isDefined(self.previous_text)) {
-		self.previous_text = "";
-	}
-
-	text = "";
-
-	for(i = 1; i <= self.text_array.size; i++) {
-		text = text + self.text_array[i];
-	}
-
-	if(text != self.previous_text) {
-		self.previous_text = text;
-		self setText(text);
-	}
 }
 
 create_shader(shader, align_x, align_y, x_offset, y_offset, width, height, color, alpha, z_index, hide_when_in_menu) {
@@ -545,21 +525,20 @@ update_element_positions() {
 
 	self.menu["description"].y = (self.y_offset + (self.option_limit * 17.5));
 
-	self.menu["options"].x = (self.x_offset + 5);
-	self.menu["options"].y = (self.y_offset + 20);
-
-	self.menu["submenu_icons"].x = (self.x_offset + 215);
-	self.menu["submenu_icons"].y = (self.y_offset + 20);
-
-	self.menu["slider_texts"].x = (self.x_offset + 132.5);
-	self.menu["slider_texts"].y = (self.y_offset + 20);
-
 	for(i = 1; i <= self.option_limit; i++) {
 		self.menu["toggle_" + i].x = (self.x_offset + 11);
-		self.menu["toggle_" + i].y = ((self.y_offset + 4) + (i * 16.5));
+		self.menu["toggle_" + i].y = ((self.y_offset + 4) + (i * 15));
 
 		self.menu["slider_" + i].x = self.x_offset;
-		self.menu["slider_" + i].y = (self.y_offset + (i * 16.5));
+		self.menu["slider_" + i].y = (self.y_offset + (i * 15));
+
+		self.menu["option_" + i].y = ((self.y_offset + 4) + (i * 15));
+
+		self.menu["slider_text_" + i].x = (self.x_offset + 132.5);
+		self.menu["slider_text_" + i].y = ((self.y_offset + 4) + (i * 15));
+
+		self.menu["submenu_icon_" + i].x = (self.x_offset + 223);
+		self.menu["submenu_icon_" + i].y = ((self.y_offset + 4) + (i * 15));
 	}
 }
 
@@ -951,7 +930,7 @@ scroll_cursor(direction) {
 	  while(self.cursor_index > maximum) {
 	    self.cursor_index--;
 	  }
-	  self.menu["cursor"].y = int(self.y_offset + (((self.cursor_index + 1) - self.scrolling_offset) * 16.5));
+	  self.menu["cursor"].y = int(self.y_offset + (((self.cursor_index + 1) - self.scrolling_offset) * 15));
 	}
 
 	self.previous_scrolling_offset = self.scrolling_offset;
@@ -982,7 +961,7 @@ scroll_cursor(direction) {
 	}
 
 	if(!fake_scroll) {
-	  self.menu["cursor"].y = int(self.y_offset + (((self.cursor_index + 1) - self.scrolling_offset) * 16.5));
+	  self.menu["cursor"].y = int(self.y_offset + (((self.cursor_index + 1) - self.scrolling_offset) * 15));
 	}
 
 	if(isDefined(self.structure[self.cursor_index]) && isDefined(self.structure[self.cursor_index].description)) {
@@ -1036,91 +1015,99 @@ scroll_slider(direction) {
 
 set_options() {
 	for(i = 1; i <= self.option_limit; i++) {
-	  self.menu["toggle_" + i].alpha = 0;
-	  self.menu["slider_" + i].alpha = 0;
-
-		self.menu["options"] add_text("", i);
-		self.menu["submenu_icons"] add_text("", i);
-		self.menu["slider_texts"] add_text("", i);
+		self.menu["toggle_" + i].alpha = 0;
+		self.menu["slider_" + i].alpha = 0;
+		self.menu["option_" + i] set_text("");
+		self.menu["slider_text_" + i] set_text("");
+		self.menu["submenu_icon_" + i].alpha = 0;
 	}
 
 	update_element_positions();
 
 	if(isDefined(self.structure)) {
-	  if(self.structure.size == 0) {
-	    self add_option(empty_option());
-	  }
+		if(self.structure.size == 0) {
+			self add_option(empty_option());
+		}
 
-	  self.maximum = int(min(self.structure.size, self.option_limit));
+		self.maximum = int(min(self.structure.size, self.option_limit));
 
-	  if(self.structure.size <= self.option_limit) {
-	    self.scrolling_offset = 0;
-	  }
+		if(self.structure.size <= self.option_limit) {
+			self.scrolling_offset = 0;
+		}
 
-	  for(i = 1; i <= self.maximum; i++) {
-	    x = ((i - 1) + self.scrolling_offset);
+		for(i = 1; i <= self.maximum; i++) {
+			x = ((i - 1) + self.scrolling_offset);
 
-	    self.menu["options"] add_text(self.structure[x].text, i);
+			self.menu["option_" + i] set_text(self.structure[x].text);
 
-	    if(isDefined(self.structure[x].toggle)) {
-	      self.menu["options"].alpha = 1;
-	      self.menu["toggle_" + i].alpha = 1;
+			if(isDefined(self.structure[x].toggle)) {
+				self.menu["option_" + i].x = (self.x_offset + 13.5);
+				self.menu["option_" + i].alpha = 1;
+				self.menu["toggle_" + i].alpha = 1;
 
-	      if(self.structure[x].toggle) {
-	        self.menu["toggle_" + i].color = (1, 1, 1);
-	      } else {
-	        self.menu["toggle_" + i].color = (0.25, 0.25, 0.25);
-	      }
-	    } else {
-	      self.menu["toggle_" + i].alpha = 0;
-	    }
+				if(self.structure[x].toggle) {
+					self.menu["toggle_" + i].color = (1, 1, 1);
+				} else {
+					self.menu["toggle_" + i].color = (0.25, 0.25, 0.25);
+				}
+			} else {
+				self.menu["option_" + i].x = (self.x_offset + 5);
+				self.menu["toggle_" + i].alpha = 0;
+			}
 
-	    if(isDefined(self.structure[x].array) && (self.cursor_index) == x) {
-	      if(!isDefined(self.slider[(self.current_menu + "_" + x)])) {
-	        self.slider[(self.current_menu + "_" + x)] = 0;
-	      }
+			if(isDefined(self.structure[x].array) && (self.cursor_index) == x) {
+				if(!isDefined(self.slider[(self.current_menu + "_" + x)])) {
+					self.slider[(self.current_menu + "_" + x)] = 0;
+				}
 
-	      if(self.slider[(self.current_menu + "_" + x)] > (self.structure[x].array.size - 1) || self.slider[(self.current_menu + "_" + x)] < 0) {
-	        self.slider[(self.current_menu + "_" + x)] = set_variable(self.slider[(self.current_menu + "_" + x)] > (self.structure[x].array.size - 1), 0, (self.structure[x].array.size - 1));
-	      }
+				if(self.slider[(self.current_menu + "_" + x)] > (self.structure[x].array.size - 1) || self.slider[(self.current_menu + "_" + x)] < 0) {
+					self.slider[(self.current_menu + "_" + x)] = set_variable(self.slider[(self.current_menu + "_" + x)] > (self.structure[x].array.size - 1), 0, (self.structure[x].array.size - 1));
+				}
 
-	      slider_text = self.structure[x].array[self.slider[(self.current_menu + "_" + x)]] + " [" + (self.slider[(self.current_menu + "_" + x)] + 1) + "/" + self.structure[x].array.size + "]";
+				slider_text = self.structure[x].array[self.slider[(self.current_menu + "_" + x)]] + " [" + (self.slider[(self.current_menu + "_" + x)] + 1) + "/" + self.structure[x].array.size + "]";
 
-	      self.menu["slider_texts"] add_text(slider_text, i);
-	    } else if(isDefined(self.structure[x].increment) && (self.cursor_index) == x) {
-	      value = abs((self.structure[x].minimum - self.structure[x].maximum)) / 224;
-	      width = ceil((self.slider[(self.current_menu + "_" + x)] - self.structure[x].minimum) / value);
+				self.menu["slider_text_" + i] set_text(slider_text);
+			} else if(isDefined(self.structure[x].increment) && (self.cursor_index) == x) {
+				value = abs((self.structure[x].minimum - self.structure[x].maximum)) / 224;
+				width = ceil((self.slider[(self.current_menu + "_" + x)] - self.structure[x].minimum) / value);
 
-	      if(width >= 0) {
-	        self.menu["slider_" + i] set_shader("white", int(width), 16);
-	      } else {
-	        self.menu["slider_" + i] set_shader("white", 0, 16);
-	        self.menu["slider_" + i].alpha = 0;
-	      }
+				if(width >= 0) {
+					self.menu["slider_" + i] set_shader("white", int(width), 16);
+				} else {
+					self.menu["slider_" + i] set_shader("white", 0, 16);
+					self.menu["slider_" + i].alpha = 0;
+				}
 
-	      if(!isDefined(self.slider[(self.current_menu + "_" + x)]) || self.slider[(self.current_menu + "_" + x)] < self.structure[x].minimum) {
-	        self.slider[(self.current_menu + "_" + x)] = self.structure[x].start;
-	      }
+				if(!isDefined(self.slider[(self.current_menu + "_" + x)]) || self.slider[(self.current_menu + "_" + x)] < self.structure[x].minimum) {
+					self.slider[(self.current_menu + "_" + x)] = self.structure[x].start;
+				}
 
-	      slider_value = self.slider[(self.current_menu + "_" + x)];
+				slider_value = self.slider[(self.current_menu + "_" + x)];
+				self.menu["slider_text_" + i] set_text("" + slider_value);
+				self.menu["slider_" + i].alpha = 1;
+			}
 
-	      self.menu["slider_texts"] add_text(slider_value, i);
-	      self.menu["slider_" + i].alpha = 1;
-	    }
+			if(isDefined(self.structure[x].command) && self.structure[x].command == ::new_menu) {
+				self.menu["submenu_icon_" + i].alpha = 1;
+			}
 
-	    if(isDefined(self.structure[x].command) && self.structure[x].command == ::new_menu) {
-	      self.menu["submenu_icons"] add_text(">", i);
-	    }
-	  }
+			if(!isDefined(self.structure[x].command)) {
+				self.menu["option_" + i].color = (0.75, 0.75, 0.75);
+			} else {
+				if((self.cursor_index) == x) {
+					self.menu["option_" + i].color = (0.75, 0.75, 0.75);
+					self.menu["submenu_icon_" + i].color = (0.75, 0.75, 0.75);
+				} else {
+					self.menu["option_" + i].color = (0.5, 0.5, 0.5);
+					self.menu["submenu_icon_" + i].color = (0.5, 0.5, 0.5);
+				}
+			}
+		}
 	}
 
-	self.menu["options"] set_text_array();
-	self.menu["submenu_icons"] set_text_array();
-	self.menu["slider_texts"] set_text_array();
+	menu_height = int(18 + (self.maximum * 15));
 
-	menu_height = int(18 + (self.maximum * 16.5));
-
-	self.menu["description"].y = int((self.y_offset + 4) + ((self.maximum + 1) * 16.5));
+	self.menu["description"].y = int((self.y_offset + 4) + ((self.maximum + 1) * 15));
 
 	self.menu["border"] set_shader("white", self.menu["border"].width, int(menu_height + self.description_height));
 	self.menu["background"] set_shader("white", self.menu["background"].width, int((menu_height - 2) + self.description_height));
@@ -1150,15 +1137,15 @@ menu_option() {
 	  case "Basic Options":
 	    self add_menu(menu);
 
-	    self add_toggle("     God Mode", "Makes you Invincible", ::god_mode, self.god_mode);
-	    self add_toggle("     No Clip", "Fly through the Map", ::no_clip, self.no_clip);
-	    self add_toggle("     Frag No Clip", "Fly through the Map using (^3[{+frag}]^7)", ::frag_no_clip, self.frag_no_clip);
-	    self add_toggle("     UFO", "Fly Straight through the Map", ::ufo_mode, self.ufo_mode);
-	    self add_toggle("     Infinite Ammo", "Gives you Infinite Ammo and Infinite Grenades", ::infinite_ammo, self.infinite_ammo);
+	    self add_toggle("God Mode", "Makes you Invincible", ::god_mode, self.god_mode);
+	    self add_toggle("No Clip", "Fly through the Map", ::no_clip, self.no_clip);
+	    self add_toggle("Frag No Clip", "Fly through the Map using (^3[{+frag}]^7)", ::frag_no_clip, self.frag_no_clip);
+	    self add_toggle("UFO", "Fly Straight through the Map", ::ufo_mode, self.ufo_mode);
+	    self add_toggle("Infinite Ammo", "Gives you Infinite Ammo and Infinite Grenades", ::infinite_ammo, self.infinite_ammo);
 
-			self add_toggle("     Rapid Fire", "Shoot Very Fast (Hold ^3[{+reload}]^7 & ^3[{+attack}])", ::rapid_fire, self.rapid_fire);
-			self add_toggle("     No Recoil", "No Recoil while ADS & Firing", ::no_recoil, self.no_recoil);
-			self add_toggle("     No Spread", "No Bullet Spread while Hip-firing", ::no_spread, self.no_spread);
+			self add_toggle("Rapid Fire", "Shoot Very Fast (Hold ^3[{+reload}]^7 & ^3[{+attack}])", ::rapid_fire, self.rapid_fire);
+			self add_toggle("No Recoil", "No Recoil while ADS & Firing", ::no_recoil, self.no_recoil);
+			self add_toggle("No Spread", "No Bullet Spread while Hip-firing", ::no_spread, self.no_spread);
 
 	    self add_option("Give All Perks", undefined, ::give_all_perks);
 	    self add_option("Take All Perks", undefined, ::take_all_perks);
@@ -1170,10 +1157,10 @@ menu_option() {
 	  case "Fun Options":
 	    self add_menu(menu);
 
-	    self add_toggle("     Fullbright", "Removes all Shadows and Lighting", ::fullbright, self.fullbright);
-	    self add_toggle("     Third Person", undefined, ::third_person, self.third_person);
+	    self add_toggle("Fullbright", "Removes all Shadows and Lighting", ::fullbright, self.fullbright);
+	    self add_toggle("Third Person", undefined, ::third_person, self.third_person);
 
-			self add_toggle("     Super Jump", undefined, ::super_jump, self.super_jump);
+			self add_toggle("Super Jump", undefined, ::super_jump, self.super_jump);
 
 	    self add_increment("Set Speed", undefined, ::set_speed, 190, 190, 990, 50);
 	    self add_increment("Set Timescale", undefined, ::set_timescale, 1, 1, 10, 1);
@@ -1232,15 +1219,15 @@ menu_option() {
 	    self add_increment("Green", "Set the Green Value for the Menu Outline Color", ::set_menu_color, 255, 1, 255, 1, "Green");
 	    self add_increment("Blue", "Set the Blue Value for the Menu Outline Color", ::set_menu_color, 255, 1, 255, 1, "Blue");
 
-	    self add_toggle("     Hide UI", undefined, ::hide_ui, self.hide_ui);
-	    self add_toggle("     Hide Weapon", undefined, ::hide_weapon, self.hide_weapon);
+	    self add_toggle("Hide UI", undefined, ::hide_ui, self.hide_ui);
+	    self add_toggle("Hide Weapon", undefined, ::hide_weapon, self.hide_weapon);
 
 	    break;
 		case "Map Options":
 			self add_menu(menu);
 
 			self add_option("Change Map", undefined, ::new_menu, "Change Map");
-			self add_toggle("     No Fog", "Removes all Fog", ::no_fog, self.no_fog);
+			self add_toggle("No Fog", "Removes all Fog", ::no_fog, self.no_fog);
 			self add_option("End Game", undefined, ::end_game);
 
 			break;
@@ -1392,7 +1379,7 @@ menu_option() {
 			self add_menu(menu);
 
 			self add_increment("Equip Camo", undefined, ::equip_camo, 1, 1, 368, 1);
-			self add_toggle("     Cycle Camos", "Cycle through all Available Camos", ::cycle_camos, self.cycle_camos);
+			self add_toggle("Cycle Camos", "Cycle through all Available Camos", ::cycle_camos, self.cycle_camos);
 
 			break;
 	  case "Assault Rifles":
