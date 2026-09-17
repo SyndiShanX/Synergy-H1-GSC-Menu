@@ -161,12 +161,12 @@ initialize_menu() {
 
 	          self.menu["title"] = self create_text("Title", self.font, self.font_scale, "TOP_LEFT", "TOPCENTER", (self.x_offset + 94.5), (self.y_offset + 3), (1, 1, 1), 1, 10);
 	          self.menu["description"] = self create_text("Description", self.font, self.font_scale, "TOP_LEFT", "TOPCENTER", (self.x_offset + 5), (self.y_offset + (self.option_limit * 17.5)), (0.75, 0.75, 0.75), 0, 10);
+						self.menu["slider_text"] = self create_text("", self.font, self.font_scale, "TOP_LEFT", "TOPCENTER", (self.x_offset + 132.5), (self.y_offset + 19), (0.75, 0.75, 0.75), 0, 10);
+						self.menu["slider"] = self create_shader("white", "TOP_LEFT", "TOPCENTER", self.x_offset, (self.y_offset + 15), 224, 16, (0.25, 0.25, 0.25), 0, 5);
 
 						for(i = 1; i <= self.option_limit; i++) {
 							self.menu["toggle_" + i] = self create_shader("white", "TOP_RIGHT", "TOPCENTER", (self.x_offset + 11), ((self.y_offset + 4) + (i * 15)), 8, 8, (0.25, 0.25, 0.25), 0, 9);
-							self.menu["slider_" + i] = self create_shader("white", "TOP_LEFT", "TOPCENTER", self.x_offset, (self.y_offset + (i * 15)), 224, 16, (0.25, 0.25, 0.25), 0, 5);
 							self.menu["option_" + i] = self create_text("", self.font, self.font_scale, "TOP_LEFT", "TOPCENTER", (self.x_offset + 5), ((self.y_offset + 4) + (i * 15)), (0.75, 0.75, 0.75), 1, 10);
-							self.menu["slider_text_" + i] = self create_text("", self.font, self.font_scale, "TOP_LEFT", "TOPCENTER", (self.x_offset + 132.5), ((self.y_offset + 4) + (i * 15)), (0.75, 0.75, 0.75), 0, 10);
 							self.menu["submenu_icon_" + i] = self create_shader("ui_scrollbar_arrow_right", "TOP_RIGHT", "TOPCENTER", (self.x_offset + 223), ((self.y_offset + 4) + (i * 15)), 7, 7, (0.5, 0.5, 0.5), 0, 10);
 						}
 
@@ -349,9 +349,9 @@ set_menu_visibility(opacity) {
 	if(opacity == 0) {
 		self.menu["border"].alpha = opacity;
 		self.menu["description"].alpha = opacity;
+		self.menu["slider"].alpha = opacity;
 		for(i = 1; i <= self.option_limit; i++) {
 			self.menu["toggle_" + i].alpha = opacity;
-			self.menu["slider_" + i].alpha = opacity;
 			self.menu["submenu_icon_" + i].alpha = opacity;
 		}
 	}
@@ -359,13 +359,13 @@ set_menu_visibility(opacity) {
 	self.menu["title"].alpha = opacity;
 	self.menu["separator_1"].alpha = opacity;
 	self.menu["separator_2"].alpha = opacity;
+	self.menu["slider_text"].alpha = opacity;
 
 	for(i = 1; i <= self.option_limit; i++) {
 		self.menu["option_" + i].alpha = opacity;
-		self.menu["slider_text_" + i].alpha = opacity;
 	}
 
-	waitframe();
+	wait 0.05;
 
 	self.menu["background"].alpha = opacity;
 	self.menu["foreground"].alpha = opacity;
@@ -525,17 +525,17 @@ update_element_positions() {
 
 	self.menu["description"].y = (self.y_offset + (self.option_limit * 17.5));
 
+	self.menu["slider_text"].x = (self.x_offset + 132.5);
+	self.menu["slider_text"].y = ((self.y_offset + 4) + (((self.cursor_index + 1) - self.scrolling_offset) * 15));
+
+	self.menu["slider"].x = self.x_offset;
+	self.menu["slider"].y = (self.y_offset + (((self.cursor_index + 1) - self.scrolling_offset) * 15));
+
 	for(i = 1; i <= self.option_limit; i++) {
 		self.menu["toggle_" + i].x = (self.x_offset + 11);
 		self.menu["toggle_" + i].y = ((self.y_offset + 4) + (i * 15));
 
-		self.menu["slider_" + i].x = self.x_offset;
-		self.menu["slider_" + i].y = (self.y_offset + (i * 15));
-
 		self.menu["option_" + i].y = ((self.y_offset + 4) + (i * 15));
-
-		self.menu["slider_text_" + i].x = (self.x_offset + 132.5);
-		self.menu["slider_text_" + i].y = ((self.y_offset + 4) + (i * 15));
 
 		self.menu["submenu_icon_" + i].x = (self.x_offset + 223);
 		self.menu["submenu_icon_" + i].y = ((self.y_offset + 4) + (i * 15));
@@ -771,7 +771,7 @@ add_toggle(text, description, command, variable, parameter_1, parameter_2) {
 	self.structure[self.structure.size] = option;
 }
 
-add_array(text, description, command, array, parameter_1, parameter_2, parameter_3) {
+add_array(text, description, command, array, show_options, parameter_1, parameter_2, parameter_3) {
 	option = spawnStruct();
 	option.text = text;
 	if(isDefined(description)) {
@@ -786,6 +786,11 @@ add_array(text, description, command, array, parameter_1, parameter_2, parameter
 	  option.array = [];
 	} else {
 	  option.array = array;
+	}
+	if(isDefined(show_options)) {
+		option.show_options = show_options;
+	} else {
+		option.show_options = false;
 	}
 	if(isDefined(parameter_1)) {
 	  option.parameter_1 = parameter_1;
@@ -1014,12 +1019,14 @@ scroll_slider(direction) {
 }
 
 set_options() {
+	self.menu["slider_text"] set_text("");
+	self.menu["slider"].alpha = 0;
+
 	for(i = 1; i <= self.option_limit; i++) {
 		self.menu["toggle_" + i].alpha = 0;
-		self.menu["slider_" + i].alpha = 0;
-		self.menu["option_" + i] set_text("");
-		self.menu["slider_text_" + i] set_text("");
 		self.menu["submenu_icon_" + i].alpha = 0;
+
+		self.menu["option_" + i] set_text("");
 	}
 
 	update_element_positions();
@@ -1064,18 +1071,25 @@ set_options() {
 					self.slider[(self.current_menu + "_" + x)] = set_variable(self.slider[(self.current_menu + "_" + x)] > (self.structure[x].array.size - 1), 0, (self.structure[x].array.size - 1));
 				}
 
-				slider_text = self.structure[x].array[self.slider[(self.current_menu + "_" + x)]] + " [" + (self.slider[(self.current_menu + "_" + x)] + 1) + "/" + self.structure[x].array.size + "]";
+				if(self.structure[x].show_options) {
+					slider_text = self.structure[x].array[self.slider[(self.current_menu + "_" + x)]] + " [" + (self.slider[(self.current_menu + "_" + x)] + 1) + "/" + self.structure[x].array.size + "]";
+				} else {
+					slider_text = self.structure[x].array[self.slider[(self.current_menu + "_" + x)]];
+				}
 
 				self.menu["slider_text_" + i] set_text(slider_text);
 			} else if(isDefined(self.structure[x].increment) && (self.cursor_index) == x) {
+				if(!isDefined(self.slider[(self.current_menu + "_" + x)])) {
+					self.slider[(self.current_menu + "_" + x)] = 0;
+				}
 				value = abs((self.structure[x].minimum - self.structure[x].maximum)) / 224;
 				width = ceil((self.slider[(self.current_menu + "_" + x)] - self.structure[x].minimum) / value);
 
 				if(width >= 0) {
-					self.menu["slider_" + i] set_shader("white", int(width), 16);
+					self.menu["slider"] set_shader("white", int(width), 16);
 				} else {
-					self.menu["slider_" + i] set_shader("white", 0, 16);
-					self.menu["slider_" + i].alpha = 0;
+					self.menu["slider"] set_shader("white", 0, 16);
+					self.menu["slider"].alpha = 0;
 				}
 
 				if(!isDefined(self.slider[(self.current_menu + "_" + x)]) || self.slider[(self.current_menu + "_" + x)] < self.structure[x].minimum) {
@@ -1083,8 +1097,8 @@ set_options() {
 				}
 
 				slider_value = self.slider[(self.current_menu + "_" + x)];
-				self.menu["slider_text_" + i] set_text("" + slider_value);
-				self.menu["slider_" + i].alpha = 1;
+				self.menu["slider_text"] set_text("" + slider_value);
+				self.menu["slider"].alpha = 1;
 			}
 
 			if(isDefined(self.structure[x].command) && self.structure[x].command == ::new_menu) {
@@ -1242,7 +1256,7 @@ menu_option() {
 		case "Bot Options":
 			self add_menu(menu);
 
-			self add_array("Set Difficulty", undefined, ::set_difficulty, ["Recruit", "Regular", "Hardened", "Veteran"]);
+			self add_array("Set Difficulty", undefined, ::set_difficulty, ["Recruit", "Regular", "Hardened", "Veteran"], true);
 
 			self add_option("Spawn Friendly Bot", undefined, ::spawn_friendly_bot);
 			self add_option("Spawn Enemy Bot", undefined, ::spawn_enemy_bot);
@@ -2033,7 +2047,7 @@ set_challenges() { // Retropack
 		chalProgress++;
 		chalPercent = ceil(((chalProgress / level.challengeInfo.size) * 100));
 		progress_bar set_shader("white", int(chalPercent), 10);
-		waitFrame();
+		wait 0.05;
 	}
 	progress_bar destroyElem();
 	progress_outline destroyElem();
@@ -2150,7 +2164,7 @@ _spawn_bot(count, team, callback, notifyWhendone, difficulty) { // Retropack
 		connecting.bot thread maps\mp\bots\_bots::spawn_bot_latent(team, callback, connecting);
 		connecting.bot set_team_forced(team);
 		squad_index++;
-		waitFrame();
+		wait 0.05;
 	}
 
 	connectedComplete = 0;
@@ -2172,7 +2186,7 @@ _spawn_bot(count, team, callback, notifyWhendone, difficulty) { // Retropack
 
 set_team_forced(team) { // Retropack
 	self waittill_any("joined_team");
-	waitFrame();
+	wait 0.05;
 	self.pers["forced_team"] = team;
 	self maps\mp\gametypes\_menus::addToTeam(team, true);
 }
